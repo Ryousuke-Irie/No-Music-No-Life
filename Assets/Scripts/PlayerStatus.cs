@@ -11,6 +11,8 @@ public class PlayerStatus : MonoBehaviour
 
     public bool isRight = true;
 
+    public bool isAttacked = false;
+
     public bool intervalFlag = false;
 
     public float Green = 255;

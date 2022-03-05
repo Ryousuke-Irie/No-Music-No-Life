@@ -59,12 +59,14 @@ public class SlushScript : MonoBehaviour
             if (isRight)
             {
                 cloneSlush.GetComponent<Rigidbody2D>().velocity = new Vector2(10.0f, 0.0f);
+                cloneSlush.GetComponent<ZangekiScript>().rotateFlag = true;
             }
 
             if (!isRight)
             {
                 cloneSlush.GetComponent<Rigidbody2D>().velocity = new Vector2(-10.0f, 0.0f);
                 cloneSlush.GetComponent<SpriteRenderer>().flipX = false;
+                cloneSlush.GetComponent<ZangekiScript>().rotateFlag = true;
             }
 
             oneTimeFlag = true;

@@ -18,5 +18,13 @@ public class forDebugScript : MonoBehaviour
             GameObject enemy = (GameObject)Resources.Load("Enemy");
             GameObject cloneEnemy = Instantiate(enemy, new Vector3(4.56f, -1.51f, 0.0f), Quaternion.identity);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+#if UNITY_EDITOR
+      UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+      UnityEngine.Application.Quit();
+#endif
+        }
     }
 }

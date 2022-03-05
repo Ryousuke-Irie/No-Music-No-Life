@@ -23,7 +23,7 @@ public class PlayerKey : MonoBehaviour
     // êGÇ¡ÇøÇ·É_ÉÅ
     private float time;
     private float intervalTime;
-    private bool attackFlag;
+    public bool attackFlag;
     private bool tempoFlag;
     public float AlphaE = 0;
     public float RedE = 255;
@@ -34,6 +34,15 @@ public class PlayerKey : MonoBehaviour
     private bool colFlagLeft = false;
 
     private bool jumpFlag = true;
+
+    private float shakeTime = 0.0f;
+    private bool shakeFlag = false;
+    private float shakeAmount = 0.0f;
+
+    private bool rotateFlag = false;
+
+    private int tempoNum = 0;
+    private int SnareNum = 0;
 
     GameObject cloneEffect;
     GameObject cloneEffect2;
@@ -109,6 +118,37 @@ public class PlayerKey : MonoBehaviour
         {
             cloneEffect2.transform.localScale += new Vector3(0.03f, 0.03f, 0.0f);
         }
+
+        // è„â∫ÇÃóhÇÍ
+        if (shakeFlag && shakeAmount < 0.2f)
+        {
+            this.transform.localScale -= new Vector3(0.1f, 0.1f, 0.0f);
+            shakeAmount += 0.1f;
+        }
+
+        if (shakeFlag && shakeAmount >= 0.2f && shakeAmount < 0.4f)
+        {
+            this.transform.localScale += new Vector3(0.1f, 0.1f, 0.0f);
+            shakeAmount += 0.1f;
+        }
+
+        if (shakeFlag && shakeAmount >= 0.4f)
+        {
+            shakeFlag = false;
+            shakeAmount = 0.0f;
+            this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        // âÒì]
+        if (rotateFlag)
+        {
+            this.transform.Rotate(0.0f, 0.0f, -30.0f);
+            if (this.transform.localEulerAngles.z <= 3.0f)
+            {
+                this.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                rotateFlag = false;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -121,9 +161,16 @@ public class PlayerKey : MonoBehaviour
             this.GetComponent<PlayerController>().enabled = true;
         }
 
+        // è„â∫ÇÃóhÇÍ
+        if (Input.GetKeyDown(KeyCode.Space)
+            && attackFlag)
+        {
+            shakeFlag = true;
+        }
+
         // ÉGÉtÉFÉNÉgóp
         cloneEffect.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
-        cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)RedE, (byte)GreenE, (byte)BlueE, (byte)AlphaE);
+        cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
 
         cloneEffect2.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
         cloneEffect2.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, (byte)AlphaE);
@@ -173,6 +220,9 @@ public class PlayerKey : MonoBehaviour
 
                 AlphaE = 0;
                 RedE = 255;
+
+                tempoNum = 0;
+                SnareNum = 0;
             }
         }
 
@@ -195,6 +245,9 @@ public class PlayerKey : MonoBehaviour
                 AlphaE = 0;
                 RedE = 255;
             }
+
+            tempoNum = 0;
+            SnareNum = 0;
         }
 
         if (attackFlag && tempoFlag)
@@ -207,10 +260,17 @@ public class PlayerKey : MonoBehaviour
             }
         }
 
+        if (this.GetComponent<PlayerStatus>().isAttacked)
+        {
+            this.GetComponent<PlayerStatus>().isAttacked = false;
+        }
+
         // çUåÇ
         if (Input.GetKeyDown(KeyCode.Space)
             && attackFlag)
         {
+            this.GetComponent<PlayerStatus>().isAttacked = true;
+
             RedE = 255;
             BlueE = 0;
 
@@ -242,6 +302,8 @@ public class PlayerKey : MonoBehaviour
                     {
                         this.GetComponent<PlayerStatus>().Blue = 0;
                     }
+
+                    tempoNum += 1;
                 }
                 else  // ìríÜÇ≈ÇÃÉeÉìÉ|ïœçXèàóù
                 {
@@ -255,6 +317,14 @@ public class PlayerKey : MonoBehaviour
                     this.GetComponent<PlayerStatus>().Blue = 255;
 
                     cloneEffect2.transform.localScale = cloneEffect.transform.localScale;
+
+                    tempoNum = -2;
+                    SnareNum = 0;
+
+                    GameObject SE = (GameObject)Resources.Load("SE03");
+                    GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+
+                    rotateFlag = true;
                 }
             }
 
@@ -271,6 +341,29 @@ public class PlayerKey : MonoBehaviour
                 GameObject Slush = (GameObject)Resources.Load("SlushLeft");
                 GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-2.0f, 0.0f, 0.0f), Quaternion.identity);
                 cloneSlush.GetComponent<ParticleSystem>().startColor = new Color32(255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, 255);
+            }
+
+            if(tempoNum > -2)
+            {
+                GameObject SE = (GameObject)Resources.Load("SE02");
+                GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+            }
+
+            if (tempoNum >= 3)
+            {
+                if (SnareNum >= 1)
+                {
+                    GameObject SE2 = (GameObject)Resources.Load("SE01");
+                    GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+                    SnareNum = 0;
+                }
+                else
+                {
+                    SnareNum += 1;
+                }
+
+
+                tempoNum = 3;
             }
 
             attackFlag = false;

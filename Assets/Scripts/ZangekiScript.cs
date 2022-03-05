@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ZangekiScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ZangekiScript : MonoBehaviour
     public float initialScaleMag = 0.25f;
     public float PowerMag = 3.0f;
 
+    public bool rotateFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +27,30 @@ public class ZangekiScript : MonoBehaviour
         this.transform.localScale = new Vector3(playerStatus.TempoTime * initialScaleMag, playerStatus.TempoTime * initialScaleMag, 1.0f);
     }
 
+    void FixedUpdate()
+    {
+        // ‰ñ“]
+        if (rotateFlag)
+        {
+            this.transform.Rotate(0.0f, 0.0f, -30.0f);
+            if (this.transform.localEulerAngles.z <= 3.0f)
+            {
+                this.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                rotateFlag = false;
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         this.transform.localScale += new Vector3(-minusScale, -minusScale, 0.0f);
         Power = playerStatus.Power * this.transform.localScale.x * PowerMag;
+
+        if (playerStatus.isAttacked)
+        {
+            rotateFlag = true;
+        }
 
         if (this.transform.localScale.x < deleteScale)
         {
