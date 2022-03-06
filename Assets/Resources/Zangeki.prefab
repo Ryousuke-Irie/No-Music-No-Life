@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Power: 100
-  minusScale: 0.0003
+  minusScale: 0.003
   deleteScale: 0.05
   initialScaleMag: 0.25
+  PowerMag: 3
+  rotateFlag: 0

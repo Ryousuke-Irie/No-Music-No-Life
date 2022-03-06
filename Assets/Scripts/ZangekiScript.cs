@@ -9,7 +9,7 @@ public class ZangekiScript : MonoBehaviour
     PlayerStatus playerStatus;
 
     public float Power = 1.0f;
-    public float minusScale = 0.0005f;
+    public float minusScale = 0.005f;
     public float deleteScale = 0.05f;
     public float initialScaleMag = 0.25f;
     public float PowerMag = 3.0f;
@@ -39,14 +39,14 @@ public class ZangekiScript : MonoBehaviour
                 rotateFlag = false;
             }
         }
+
+        this.transform.localScale += new Vector3(-minusScale, -minusScale, 0.0f);
+        Power = playerStatus.Power * this.transform.localScale.x * PowerMag;
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.localScale += new Vector3(-minusScale, -minusScale, 0.0f);
-        Power = playerStatus.Power * this.transform.localScale.x * PowerMag;
-
         if (playerStatus.isAttacked)
         {
             rotateFlag = true;
