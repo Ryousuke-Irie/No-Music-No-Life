@@ -16,6 +16,7 @@ public class CameraScript : MonoBehaviour
     private float PtoClengthAfterReturn = 0.1f;
     public float StartLineX = 0.0f;
     public float EndLineX = 0.0f;
+    private float CameraWidth;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +27,13 @@ public class CameraScript : MonoBehaviour
         PtoClengthAfterOriginal = PToCLengthAfter;
         PToCLengthAfter = 0.0f;
         playerPosX = refObj.GetComponent<Transform>().localPosition.x;
+        CameraWidth = this.GetComponent<Camera>().orthographicSize * (16.0f / 9.0f); // アスペクト比が16:9のとき
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (this.transform.localPosition.x >= StartLineX && this.transform.localPosition.x <= EndLineX)
+        if (this.transform.localPosition.x >= StartLineX + CameraWidth && this.transform.localPosition.x <= EndLineX - CameraWidth)
         {
             if (refObj.GetComponent<PlayerStatus>().isRight)
             {
@@ -96,19 +98,19 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
-        if (this.transform.localPosition.x >= StartLineX && this.transform.localPosition.x <= EndLineX)
+        if (this.transform.localPosition.x >= StartLineX + CameraWidth && this.transform.localPosition.x <= EndLineX - CameraWidth)
         {
-            this.transform.localPosition = new Vector3(PToCLength - PToCLengthAfter + refObj.GetComponent<Transform>().localPosition.x, 0.0f, -10.0f);
+            this.transform.localPosition = new Vector3(PToCLength - PToCLengthAfter + refObj.GetComponent<Transform>().localPosition.x, 0.0f, this.transform.localPosition.z);
         }
         
-        if (this.transform.localPosition.x < StartLineX)
+        if (this.transform.localPosition.x < StartLineX + CameraWidth)
         {
-            this.transform.localPosition = new Vector3(StartLineX, 0.0f, -10.0f);
+            this.transform.localPosition = new Vector3(StartLineX + CameraWidth, 0.0f, this.transform.localPosition.z);
         }
 
-        if (this.transform.localPosition.x > EndLineX)
+        if (this.transform.localPosition.x > EndLineX - CameraWidth)
         {
-            this.transform.localPosition = new Vector3(EndLineX, 0.0f, -10.0f);
+            this.transform.localPosition = new Vector3(EndLineX - CameraWidth, 0.0f, this.transform.localPosition.z);
         }
     }
 }
