@@ -448,10 +448,25 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Floor")
+        if (col.gameObject.tag == "Floor")
         {
             jumpFlag = true;
             this.GetComponent<PlayerStatus>().isDamaged = false;
+        }
+
+        if (col.gameObject.tag == "Wall")
+        {
+            if (this.GetComponent<PlayerStatus>().isDamaged)
+            {
+                if (col.transform.position.x < this.transform.position.x)
+                {
+                    this.GetComponent<Rigidbody2D>().AddForce(new Vector2(30.0f, 0.0f));
+                }
+                else
+                {
+                    this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-30.0f, 0.0f));
+                }
+            }
         }
     }
 
