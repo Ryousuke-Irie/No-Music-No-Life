@@ -9,7 +9,7 @@ public class EnemyCollisionCheck : MonoBehaviour
     /// </summary>
     [HideInInspector] public bool isOn = false;
 
-    private string groundTag = "Ground";
+    private string groundTag = "Wall";
     private string enemyTag = "Enemy";
 
 	#region // ÚG”»’è

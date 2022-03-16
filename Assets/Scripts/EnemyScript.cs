@@ -36,6 +36,8 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cloneBar.transform.position = this.transform.position + new Vector3(0.0f, EnemyToBar, 0.0f);
+
         if (HP <= 0.0f)
         {
             Destroy(gameObject, 0.0f);
