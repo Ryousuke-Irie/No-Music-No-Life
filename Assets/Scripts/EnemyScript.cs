@@ -95,4 +95,28 @@ public class EnemyScript : MonoBehaviour
             col.gameObject.tag = "Untagged";
         }
     }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            if (!refObj.GetComponent<PlayerStatus>().isDamaged)
+            {
+                refObj.GetComponent<PlayerStatus>().HP -= 1;
+
+                refObj.GetComponent<PlayerStatus>().isDamaged = true;
+
+                refObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+                if (refObj.transform.position.x < this.transform.position.x)
+                {
+                    refObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(-300.0f, 500.0f));
+                }
+                else
+                {
+                    refObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(300.0f, 500.0f));
+                }
+            }
+        }
+    }
 }

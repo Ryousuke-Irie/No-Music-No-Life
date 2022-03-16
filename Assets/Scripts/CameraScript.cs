@@ -18,6 +18,12 @@ public class CameraScript : MonoBehaviour
     public float EndLineX = 0.0f;
     private float CameraWidth;
 
+    private static int ONPU_MAX = 10;
+    GameObject[] cloneOnpu = new GameObject[ONPU_MAX];
+    private float onpuSpaceX = 2.0f;
+    private float onpuSpaceY = 1.0f;
+    private float onpuToOnpuSpace = 1.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +117,26 @@ public class CameraScript : MonoBehaviour
         if (this.transform.localPosition.x > EndLineX - CameraWidth)
         {
             this.transform.localPosition = new Vector3(EndLineX - CameraWidth, 0.0f, this.transform.localPosition.z);
+        }
+
+        // PlayerÇÃHP(âπïÑ)Çê›íu
+        for (int i = 0; i < refObj.GetComponent<PlayerStatus>().HP; i++)
+        {
+            if (cloneOnpu[i] == null)
+            {
+                GameObject Onpu = (GameObject)Resources.Load("Onpu");
+                cloneOnpu[i] = Instantiate(Onpu, new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f), Quaternion.identity);
+            }
+
+            cloneOnpu[i].transform.position = new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f);
+        }
+
+        for (int i = refObj.GetComponent<PlayerStatus>().HP; i < ONPU_MAX; i++)
+        {
+            if(cloneOnpu[i])
+            {
+                Destroy(cloneOnpu[i]);
+            }
         }
     }
 }

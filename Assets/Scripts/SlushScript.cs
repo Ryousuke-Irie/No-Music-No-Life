@@ -13,6 +13,8 @@ public class SlushScript : MonoBehaviour
 
     public float ZangekiTime = 0.2f;
 
+    private float ZangekiSpeed = 15.0f;
+
     GameObject refObj;
     PlayerStatus playerStatus;
 
@@ -58,13 +60,13 @@ public class SlushScript : MonoBehaviour
 
             if (isRight)
             {
-                cloneSlush.GetComponent<Rigidbody2D>().velocity = new Vector2(10.0f, 0.0f);
+                cloneSlush.GetComponent<Rigidbody2D>().velocity = new Vector2(ZangekiSpeed, 0.0f);
                 cloneSlush.GetComponent<ZangekiScript>().rotateFlag = true;
             }
 
             if (!isRight)
             {
-                cloneSlush.GetComponent<Rigidbody2D>().velocity = new Vector2(-10.0f, 0.0f);
+                cloneSlush.GetComponent<Rigidbody2D>().velocity = new Vector2(-ZangekiSpeed, 0.0f);
                 cloneSlush.GetComponent<SpriteRenderer>().flipX = false;
                 cloneSlush.GetComponent<ZangekiScript>().rotateFlag = true;
             }

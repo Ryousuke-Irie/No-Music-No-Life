@@ -17,8 +17,11 @@ public class EnemyMove : MonoBehaviour
     private bool rightTleftF = false;
 	#endregion
 
+	GameObject refObj;
+
 	private void Start()
 	{
+		refObj = GameObject.Find("Player");
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
 	}
@@ -35,17 +38,43 @@ public class EnemyMove : MonoBehaviour
 			if (rightTleftF)
 			{
 				xVector = 1;
-				transform.localScale = new Vector3(-1, 1, 1);
+				gameObject.GetComponent<SpriteRenderer>().flipX = true;
 			}
 			else
 			{
-				transform.localScale = new Vector3(1, 1, 1);
+				gameObject.GetComponent<SpriteRenderer>().flipX = false;
 			}
 			rb.velocity = new Vector2(xVector * speed, -gravity);
 		}
 		else
 		{
 			rb.Sleep();
+		}
+	}
+
+	void Update()
+    {
+		if (this.transform.position.y < -10.0f)
+        {
+			Destroy(gameObject);
+        }
+    }
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.tag == "Player")
+		{
+			if (!refObj.GetComponent<PlayerStatus>().isDamaged)
+			{
+				if (refObj.transform.position.x > this.transform.position.x)
+				{
+					rightTleftF = false;
+				}
+				else
+				{
+					rightTleftF = true;
+				}
+			}
 		}
 	}
 }
