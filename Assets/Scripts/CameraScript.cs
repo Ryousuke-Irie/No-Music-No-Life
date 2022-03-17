@@ -104,7 +104,7 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
-        if (this.transform.localPosition.x >= StartLineX + CameraWidth && this.transform.localPosition.x <= EndLineX - CameraWidth)
+        if (this.transform.localPosition.x >= StartLineX + CameraWidth && this.transform.localPosition.x <= EndLineX - CameraWidth + 1)
         {
             this.transform.localPosition = new Vector3(PToCLength - PToCLengthAfter + refObj.GetComponent<Transform>().localPosition.x, 0.0f, this.transform.localPosition.z);
         }

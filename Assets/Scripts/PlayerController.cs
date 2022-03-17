@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float upForce = 1000.0f;
 
     public float DeadZone = 0.5f;
+
+    public float PlayerToSlush = 2.0f;
    
     // êGÇ¡ÇøÇ·É_ÉÅ
     private float time;
@@ -28,8 +30,7 @@ public class PlayerController : MonoBehaviour
     private bool attackFlag;
     private bool tempoFlag;
 
-
-    public float AlphaE = 0;
+    [Header("Å´Å´Å´Ç±Ç±Ç©ÇÁâ∫ÇÃïœêîÇÕêGÇÁÇ»Ç¢Å´Å´Å´")] public float AlphaE = 0;
     public float RedE = 255;
     public float GreenE = 255;
     public float BlueE = 0;
@@ -42,8 +43,6 @@ public class PlayerController : MonoBehaviour
     private float shakeTime = 0.0f;
     private bool shakeFlag = false;
     private float shakeAmount = 0.0f;
-
-    private bool rotateFlag = false;
 
     private int tempoNum = 0;
     private int SnareNum = 0;
@@ -144,13 +143,13 @@ public class PlayerController : MonoBehaviour
             }
 
             // âÒì]
-            if (rotateFlag)
+            if (this.GetComponent<PlayerStatus>().rotateFlag)
             {
                 this.transform.Rotate(0.0f, 0.0f, -30.0f);
                 if (this.transform.localEulerAngles.z <= 3.0f)
                 {
                     this.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                    rotateFlag = false;
+                    this.GetComponent<PlayerStatus>().rotateFlag = false;
                 }
             }
         }
@@ -176,7 +175,7 @@ public class PlayerController : MonoBehaviour
         if (this.GetComponent<PlayerStatus>().isDamaged)
         {
             this.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            rotateFlag = false;
+            this.GetComponent<PlayerStatus>().rotateFlag = false;
 
             shakeFlag = false;
             shakeAmount = 0.0f;
@@ -372,7 +371,7 @@ public class PlayerController : MonoBehaviour
                         GameObject SE = (GameObject)Resources.Load("SE03");
                         GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
 
-                        rotateFlag = true;
+                        this.GetComponent<PlayerStatus>().rotateFlag = true;
                     }
                 }
 
@@ -381,20 +380,20 @@ public class PlayerController : MonoBehaviour
                 if (this.GetComponent<PlayerStatus>().isRight)
                 {
                     GameObject Slush = (GameObject)Resources.Load("Slush");
-                    GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+                    GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
                     cloneSlush.GetComponent<ParticleSystem>().startColor = new Color32(255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, 255);
                 }
                 if (!this.GetComponent<PlayerStatus>().isRight)
                 {
                     GameObject Slush = (GameObject)Resources.Load("SlushLeft");
-                    GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-2.0f, 0.0f, 0.0f), Quaternion.identity);
+                    GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
                     cloneSlush.GetComponent<ParticleSystem>().startColor = new Color32(255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, 255);
                 }
 
                 if (tempoNum > -2)
                 {
                     GameObject SE = (GameObject)Resources.Load("SE02");
-                    GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+                    GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                 }
 
                 if (tempoNum >= 3)
@@ -402,7 +401,7 @@ public class PlayerController : MonoBehaviour
                     if (SnareNum >= 1)
                     {
                         GameObject SE2 = (GameObject)Resources.Load("SE01");
-                        GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+                        GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                         SnareNum = 0;
                     }
                     else
@@ -450,7 +449,6 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Floor")
         {
-            jumpFlag = true;
             this.GetComponent<PlayerStatus>().isDamaged = false;
         }
 
@@ -467,6 +465,14 @@ public class PlayerController : MonoBehaviour
                     this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-30.0f, 0.0f));
                 }
             }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Floor")
+        {
+            jumpFlag = true;
         }
     }
 
@@ -490,16 +496,41 @@ public class PlayerController : MonoBehaviour
                 colFlagLeft = false;
             }
         }
+
+        if (col.gameObject.tag == "Floor")
+        {
+            if(!jumpFlag)
+            {
+                if (this.GetComponent<PlayerStatus>().isRight)
+                {
+                    colFlagRight = true;
+                }
+
+                if (!this.GetComponent<PlayerStatus>().isRight)
+                {
+                    colFlagLeft = true;
+                }
+
+                if (colFlagRight && colFlagLeft)
+                {
+                    colFlagRight = false;
+                    colFlagLeft = false;
+                }
+            }
+        }
     }
     
     void OnCollisionExit2D(Collision2D col) 
     {
-        if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Floor")
         {
             colFlagRight = false;
             colFlagLeft = false;
         }
+    }
 
+    void OnTriggerExit2D(Collider2D col)
+    {
         if (col.gameObject.tag == "Floor")
         {
             jumpFlag = false;

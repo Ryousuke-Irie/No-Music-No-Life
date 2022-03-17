@@ -15,6 +15,8 @@ public class EnemyScript : MonoBehaviour
 
     private float time = 0;
 
+    [Header("Å´Å´Å´êGÇÁÇ»Ç¢ÅIÅIÅ´Å´Å´")] public bool floorFlag = false;
+
     GameObject refObj;
     PlayerStatus playerStatus;
 
@@ -31,6 +33,14 @@ public class EnemyScript : MonoBehaviour
         slider = cloneBar.GetComponentInChildren<Slider>();
         slider.maxValue = HP;
         slider.value = HP;
+    }
+
+    void FixedUpdate()
+    {
+        if (!floorFlag)
+        {
+            this.transform.position -= new Vector3(0.0f, 0.1f, 0.0f);
+        }
     }
 
     // Update is called once per frame
@@ -50,11 +60,12 @@ public class EnemyScript : MonoBehaviour
             {
                 time = 0.0f;
                 damageFlag2 = false;
-                this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                this.transform.position += new Vector3(0.0f, 0.2f, 0.0f);
+                this.transform.localScale = new Vector3(1.0f * transform.localScale.x, 1.0f * transform.localScale.y, 1.0f);
             }
             else 
             {
-                this.transform.localScale += new Vector3(0.01f, 0.01f, 0.0f);
+                this.transform.localScale += new Vector3(0.01f * transform.localScale.x, 0.01f * transform.localScale.y, 0.0f);
                 time -= Time.deltaTime;
             }
         }
@@ -69,9 +80,17 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                this.transform.localScale += new Vector3(-0.01f, -0.01f, 0.0f);
+                this.transform.localScale += new Vector3(-0.01f * transform.localScale.x, -0.01f * transform.localScale.y, 0.0f);
                 time += Time.deltaTime;
             }
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (cloneBar)
+        {
+            Destroy(cloneBar);
         }
     }
 
@@ -94,14 +113,31 @@ public class EnemyScript : MonoBehaviour
 
             col.gameObject.tag = "Untagged";
         }
-    }
 
-    void OnCollisionStay2D(Collision2D col)
-    {
         if (col.gameObject.tag == "Player")
         {
-            if (!refObj.GetComponent<PlayerStatus>().isDamaged)
+            if (!refObj.GetComponent<PlayerStatus>().isDamaged && !refObj.GetComponent<PlayerStatus>().rotateFlag && !damageFlag && !damageFlag2)
             {
+                if (this.GetComponent<EnemyMove>().isMove && floorFlag)
+                {
+                    if (refObj.transform.position.x > this.transform.position.x)
+                    {
+                        if (this.GetComponent<EnemyMove>().rightTleftF)
+                        {
+                            this.GetComponent<EnemyMove>().rightTleftF = false;
+                            transform.localScale = new Vector3(-1 * transform.localScale.x, 1 * transform.localScale.y, 1);
+                        }
+                    }
+                    else
+                    {
+                        if (!this.GetComponent<EnemyMove>().rightTleftF)
+                        {
+                            this.GetComponent<EnemyMove>().rightTleftF = true;
+                            transform.localScale = new Vector3(-1 * transform.localScale.x, 1 * transform.localScale.y, 1);
+                        }
+                    }
+                }
+
                 refObj.GetComponent<PlayerStatus>().HP -= 1;
 
                 refObj.GetComponent<PlayerStatus>().isDamaged = true;
@@ -117,6 +153,22 @@ public class EnemyScript : MonoBehaviour
                     refObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(300.0f, 500.0f));
                 }
             }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Floor")
+        {
+            floorFlag = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Floor")
+        {
+            floorFlag = false;
         }
     }
 }

@@ -9,12 +9,15 @@ public class EnemyMove : MonoBehaviour
     [Header("重力")] public float gravity;
     [Header("画面外でも行動する")] public bool nonVisibleAct;
 	[Header("接触判定")] public EnemyCollisionCheck checkCollision;
+	[Header("動く")] public bool isMove = false;
+	[Header("プレイヤーとエネミーの距離")] public float PlayerToEnemy;
 	#endregion
 
 	#region // プライベート変数
 	private Rigidbody2D rb = null;
     private SpriteRenderer sr = null;
-    private bool rightTleftF = false;
+	[Header("↓↓↓触らない！！↓↓↓")] public bool rightTleftF = false;
+	private float speedOriginel;
 	#endregion
 
 	GameObject refObj;
@@ -24,25 +27,43 @@ public class EnemyMove : MonoBehaviour
 		refObj = GameObject.Find("Player");
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
+		speedOriginel = speed;
 	}
 
 	private void FixedUpdate()
 	{
-		if (sr.isVisible || nonVisibleAct)
+		float dist = this.transform.position.x - refObj.transform.position.x;
+
+		if (!this.GetComponent<EnemyScript>().floorFlag)
+        {
+			speed = 0.0f;
+        }
+
+		if (this.GetComponent<EnemyScript>().floorFlag)
+		{
+			speed = speedOriginel;
+		}
+
+		if (dist < 0.0f)
+		{
+			dist *= -1;
+		}
+
+		if ((sr.isVisible || nonVisibleAct) && isMove && PlayerToEnemy > dist)
 		{
 			if (checkCollision.isOn)
 			{
 				rightTleftF = !rightTleftF;
+				transform.localScale = new Vector3(-1 * transform.localScale.x, 1 * transform.localScale.y, 1);
 			}
 			int xVector = -1;
 			if (rightTleftF)
 			{
 				xVector = 1;
-				gameObject.GetComponent<SpriteRenderer>().flipX = true;
 			}
 			else
 			{
-				gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
 			}
 			rb.velocity = new Vector2(xVector * speed, -gravity);
 		}
@@ -59,22 +80,4 @@ public class EnemyMove : MonoBehaviour
 			Destroy(gameObject);
         }
     }
-
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		if (col.gameObject.tag == "Player")
-		{
-			if (!refObj.GetComponent<PlayerStatus>().isDamaged)
-			{
-				if (refObj.transform.position.x > this.transform.position.x)
-				{
-					rightTleftF = false;
-				}
-				else
-				{
-					rightTleftF = true;
-				}
-			}
-		}
-	}
 }

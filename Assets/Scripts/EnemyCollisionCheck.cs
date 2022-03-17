@@ -18,6 +18,7 @@ public class EnemyCollisionCheck : MonoBehaviour
 		if (collision.tag == groundTag || collision.tag == enemyTag)
 		{
             isOn = true;
+			this.transform.position += new Vector3(0.0f, 0.2f, 0.0f);
 		}
 	}
 
@@ -26,6 +27,7 @@ public class EnemyCollisionCheck : MonoBehaviour
 		if (collision.tag == groundTag || collision.tag == enemyTag)
 		{
 			isOn = false;
+			this.transform.position += new Vector3(0.0f, 0.2f, 0.0f);
 		}
 	}
 	#endregion
