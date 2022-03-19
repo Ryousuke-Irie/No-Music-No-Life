@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     private int tempoNum = 0;
     private int SnareNum = 0;
 
+    private bool oneTimeFlag = false;
+
     GameObject cloneEffect;
     GameObject cloneEffect2;
     private Rigidbody2D rbody2D;
@@ -308,6 +310,16 @@ public class PlayerController : MonoBehaviour
                 this.GetComponent<PlayerStatus>().isAttacked = false;
             }
 
+            if (tempoFlag)
+            {
+                if (this.GetComponent<PlayerStatus>().TempoTime * 0.5f < intervalTime && !oneTimeFlag)
+                {
+                    oneTimeFlag = true;
+                    GameObject SE2 = (GameObject)Resources.Load("SE02");
+                    GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                }
+            }
+
             // UŒ‚
             if ((Input.GetKeyDown(KeyCode.Space)
                 || Gamepad.current.buttonNorth.wasPressedThisFrame
@@ -317,6 +329,8 @@ public class PlayerController : MonoBehaviour
                 && attackFlag)
             {
                 this.GetComponent<PlayerStatus>().isAttacked = true;
+
+                oneTimeFlag = false;
 
                 RedE = 255;
                 BlueE = 0;
@@ -392,16 +406,18 @@ public class PlayerController : MonoBehaviour
 
                 if (tempoNum > -2)
                 {
-                    GameObject SE = (GameObject)Resources.Load("SE02");
+                    GameObject SE = (GameObject)Resources.Load("SE01");
                     GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                    GameObject SE2 = (GameObject)Resources.Load("SE02");
+                    GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                 }
 
                 if (tempoNum >= 3)
                 {
                     if (SnareNum >= 1)
                     {
-                        GameObject SE2 = (GameObject)Resources.Load("SE01");
-                        GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                        //GameObject SE2 = (GameObject)Resources.Load("SE01");
+                        //GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                         SnareNum = 0;
                     }
                     else
