@@ -52,7 +52,7 @@ public class SlushScript : MonoBehaviour
             }
         }
 
-        if (!colFlag && !oneTimeFlag && time >= 0.05f && playerStatus.intervalFlag && playerStatus.TempoTime > ZangekiTime)
+        if (!colFlag && !oneTimeFlag && time >= 0.05f && playerStatus.intervalFlag && playerStatus.intervalTime3 > ZangekiTime)
         {
             GameObject Slush = (GameObject)Resources.Load("Zangeki");
             GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -72,6 +72,11 @@ public class SlushScript : MonoBehaviour
             }
 
             oneTimeFlag = true;
+        }
+
+        if (playerStatus.intervalTime3 <= ZangekiTime)
+        {
+            playerStatus.intervalTime3 = 0.0f;
         }
 
         if (!ps.isPlaying)

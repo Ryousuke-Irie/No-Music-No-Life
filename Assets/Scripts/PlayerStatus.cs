@@ -11,6 +11,8 @@ public class PlayerStatus : MonoBehaviour
 
     public float TempoTime = 0.0f;
 
+    public float intervalTime3;
+
     public bool isRight = true;
 
     public bool isDamaged = false;

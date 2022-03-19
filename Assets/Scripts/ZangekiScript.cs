@@ -24,7 +24,8 @@ public class ZangekiScript : MonoBehaviour
 
         Power = playerStatus.Power * this.transform.localScale.x * PowerMag;
 
-        this.transform.localScale = new Vector3(playerStatus.TempoTime * initialScaleMag, playerStatus.TempoTime * initialScaleMag, 1.0f);
+        this.transform.localScale = new Vector3(playerStatus.intervalTime3 * initialScaleMag, playerStatus.intervalTime3 * initialScaleMag, 1.0f);
+        playerStatus.intervalTime3 = 0.0f;
     }
 
     void FixedUpdate()

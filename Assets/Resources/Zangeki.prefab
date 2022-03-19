@@ -147,6 +147,6 @@ MonoBehaviour:
   Power: 100
   minusScale: 0.003
   deleteScale: 0.05
-  initialScaleMag: 0.25
+  initialScaleMag: 0.15
   PowerMag: 3
   rotateFlag: 0
