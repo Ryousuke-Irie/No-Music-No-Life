@@ -22,15 +22,22 @@ public class PlayerKey : MonoBehaviour
 
     public float PlayerToSlush = 2.0f;
 
+    public float GearFast = 0.3f;
+    public float GearMiddle = 0.6f;
+    public float GearLow = 0.9f;
+
     // 触っちゃダメ
     private float time;
     private float intervalTime;
+    private float intervalTime2;
     private bool attackFlag;
     private bool tempoFlag;
+    private int GearNum = 0;
+
     [Header("↓↓↓ここから下の変数は触らない↓↓↓")] public float AlphaE = 0;
     public float RedE = 255;
     public float GreenE = 255;
-    public float BlueE = 0;
+    public float BlueE = 1;
 
     private bool colFlagRight = false;
     private bool colFlagLeft = false;
@@ -46,8 +53,15 @@ public class PlayerKey : MonoBehaviour
 
     private bool oneTimeFlag = false;
 
+    private bool effectFlag = true;
+    private bool effectFlag2 = false;
+
+    private int effectNum = 0;
+    private int effectNum2 = 0;
+
     GameObject cloneEffect;
     GameObject cloneEffect2;
+    GameObject cloneEffect3;
     private Rigidbody2D rbody2D;
 
     // Start is called before the first frame update
@@ -71,19 +85,18 @@ public class PlayerKey : MonoBehaviour
         rbody2D = GetComponent<Rigidbody2D>();
 
         GameObject effect = (GameObject)Resources.Load("nannkaEffect");
-        cloneEffect = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
         cloneEffect2 = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
+        cloneEffect = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
+        cloneEffect3 = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
+        cloneEffect2.transform.localScale = new Vector3(1.4f, 1.4f, 0.0f);
+        cloneEffect.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
+        cloneEffect3.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
     }
 
     void FixedUpdate()
     {
         if (!this.GetComponent<PlayerStatus>().isDamaged)
         {
-            if (cloneEffect.transform.localScale.x > 0.0f)
-            {
-                cloneEffect.transform.localScale += new Vector3(0.03f, 0.03f, 0.0f);
-            }
-
             if (Input.GetKey(KeyCode.LeftArrow) && !colFlagLeft)
             {
                 //animator.SetBool("PlayerEvolveBool", true);
@@ -115,6 +128,48 @@ public class PlayerKey : MonoBehaviour
             {
                 //animator.SetBool("PlayerEvolveBool", false);
             }
+        }
+
+        {
+            if (GearNum == 0)
+            {
+                if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
+                {
+                    cloneEffect.transform.localScale += new Vector3(0.063f, 0.063f, 0.0f);
+                }
+
+                if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
+                {
+                    cloneEffect3.transform.localScale += new Vector3(0.063f, 0.063f, 0.0f);
+                }
+            }
+
+            if (GearNum == 1)
+            {
+                if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
+                {
+                    cloneEffect.transform.localScale += new Vector3(0.038f, 0.038f, 0.0f);
+                }
+
+                if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
+                {
+                    cloneEffect3.transform.localScale += new Vector3(0.038f, 0.038f, 0.0f);
+                }
+            }
+
+            if (GearNum == 2)
+            {
+                if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
+                {
+                    cloneEffect.transform.localScale += new Vector3(0.025f, 0.025f, 0.0f);
+                }
+
+                if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
+                {
+                    cloneEffect3.transform.localScale += new Vector3(0.025f, 0.025f, 0.0f);
+                }
+            }
+
 
             if (tempoFlag && !this.GetComponent<PlayerStatus>().intervalFlag)
             {
@@ -168,45 +223,75 @@ public class PlayerKey : MonoBehaviour
         cloneEffect.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
         cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
 
+        cloneEffect3.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
+        cloneEffect3.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
+
         cloneEffect2.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
         cloneEffect2.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, (byte)AlphaE);
 
         if (this.GetComponent<PlayerStatus>().isDamaged)
         {
-            this.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            this.GetComponent<PlayerStatus>().rotateFlag = false;
+            //    this.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            //    this.GetComponent<PlayerStatus>().rotateFlag = false;
 
-            shakeFlag = false;
-            shakeAmount = 0.0f;
-            this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            //    shakeFlag = false;
+            //    shakeAmount = 0.0f;
+            //    this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-            this.GetComponent<PlayerStatus>().TempoTime = 0.0f;
-            tempoFlag = false;
-            intervalTime = 0.0f;
-            this.GetComponent<PlayerStatus>().intervalFlag = false;
+            //    this.GetComponent<PlayerStatus>().TempoTime = 0.0f;
+            //    tempoFlag = false;
+            //    intervalTime = 0.0f;
+            //    this.GetComponent<PlayerStatus>().intervalFlag = false;
 
             this.GetComponent<PlayerStatus>().Power = this.GetComponent<PlayerStatus>().InitialPower;
 
             this.GetComponent<PlayerStatus>().Green = 255;
             this.GetComponent<PlayerStatus>().Blue = 255;
 
-            AlphaE = 0;
-            RedE = 255;
+            //    AlphaE = 0;
+            //    RedE = 255;
 
-            tempoNum = 0;
-            SnareNum = 0;
+            //    tempoNum = 0;
+            //    SnareNum = 0;
 
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, this.GetComponent<Rigidbody2D>().velocity.y);
         }
         else
         {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
-
+        }
+        {
             // 上下の揺れ
             if (Input.GetKeyDown(KeyCode.Space)
             && attackFlag)
             {
-                shakeFlag = true;
+                //shakeFlag = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                if (GearNum == 1)
+                {
+                    GearNum = 0;
+                }
+
+                if (GearNum == 2)
+                {
+                    GearNum = 1;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                if (GearNum == 1)
+                {
+                    GearNum = 2;
+                }
+
+                if (GearNum == 0)
+                {
+                    GearNum = 1;
+                }
             }
 
             // ジャンプ
@@ -236,6 +321,7 @@ public class PlayerKey : MonoBehaviour
             if (this.GetComponent<PlayerStatus>().intervalFlag)
             {
                 intervalTime += Time.deltaTime;
+                intervalTime2 += Time.deltaTime;
 
                 // 上限を超えたらなかったことになる
                 if (intervalTime > MaxTempoTime)
@@ -262,24 +348,24 @@ public class PlayerKey : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space)
                 && !attackFlag)
             {
-                if (this.GetComponent<PlayerStatus>().intervalFlag)
-                {
-                    this.GetComponent<PlayerStatus>().TempoTime = 0.0f;
-                    tempoFlag = false;
-                    intervalTime = 0.0f;
-                    this.GetComponent<PlayerStatus>().intervalFlag = false;
+                //if (this.GetComponent<PlayerStatus>().intervalFlag)
+                //{
+                //    this.GetComponent<PlayerStatus>().TempoTime = 0.0f;
+                //    tempoFlag = false;
+                //    intervalTime = 0.0f;
+                //    this.GetComponent<PlayerStatus>().intervalFlag = false;
 
-                    this.GetComponent<PlayerStatus>().Power = this.GetComponent<PlayerStatus>().InitialPower;
+                //    this.GetComponent<PlayerStatus>().Power = this.GetComponent<PlayerStatus>().InitialPower;
 
-                    this.GetComponent<PlayerStatus>().Green = 255;
-                    this.GetComponent<PlayerStatus>().Blue = 255;
+                //    this.GetComponent<PlayerStatus>().Green = 255;
+                //    this.GetComponent<PlayerStatus>().Blue = 255;
 
-                    AlphaE = 0;
-                    RedE = 255;
-                }
+                //    AlphaE = 0;
+                //    RedE = 255;
+                //}
 
-                tempoNum = 0;
-                SnareNum = 0;
+                //tempoNum = 0;
+                //SnareNum = 0;
             }
 
             if (attackFlag && tempoFlag)
@@ -297,20 +383,83 @@ public class PlayerKey : MonoBehaviour
                 this.GetComponent<PlayerStatus>().isAttacked = false;
             }
 
-            if(tempoFlag)
+            tempoFlag = true;
+
+            if (GearNum == 0)
             {
-                if(this.GetComponent<PlayerStatus>().TempoTime * 0.5f < intervalTime && !oneTimeFlag)
+                this.GetComponent<PlayerStatus>().TempoTime = GearFast;
+            }
+
+            if (GearNum == 1)
+            {
+                this.GetComponent<PlayerStatus>().TempoTime = GearMiddle;
+            }
+
+            if (GearNum == 2)
+            {
+                this.GetComponent<PlayerStatus>().TempoTime = GearLow;
+            }
+
+            this.GetComponent<PlayerStatus>().intervalFlag = true;
+
+            if (tempoFlag)
+            {
+                if (this.GetComponent<PlayerStatus>().TempoTime < intervalTime && !oneTimeFlag)
                 {
+                    intervalTime = 0.0f;
                     oneTimeFlag = true;
                     GameObject SE2 = (GameObject)Resources.Load("SE02");
                     GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+
+                    if (effectFlag && effectNum == 0)
+                    {
+                        effectFlag2 = true;
+                        effectNum2 = 0;
+                    }
+
+                    if (effectFlag2 && effectNum == 1)
+                    {
+                        effectFlag = true;
+                        effectNum2 = 1;
+                    }
+
                 }
+
+                if (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError < intervalTime2)
+                {
+                    intervalTime2 = intervalTime;
+                    oneTimeFlag = false;
+
+                    if (effectFlag && effectNum2 == 0)
+                    {
+                        effectFlag = false;
+                        effectNum = 1;
+                    }
+
+                    if (effectFlag2 && effectNum2 == 1)
+                    {
+                        effectFlag2 = false;
+                        effectNum = 0;
+                    }
+                }
+            }
+
+            if (!effectFlag)
+            {
+                cloneEffect.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
+            }
+
+            if (!effectFlag2)
+            {
+                cloneEffect3.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
             }
 
             // 攻撃
             if (Input.GetKeyDown(KeyCode.Space)
-                && attackFlag)
+                && attackFlag && (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError >= intervalTime2 && this.GetComponent<PlayerStatus>().TempoTime - TempoTimeError <= intervalTime2))
             {
+                shakeFlag = true;
+
                 this.GetComponent<PlayerStatus>().isAttacked = true;
 
                 oneTimeFlag = false;
@@ -321,9 +470,9 @@ public class PlayerKey : MonoBehaviour
                 // 同一テンポによる火力上昇
                 if (this.GetComponent<PlayerStatus>().intervalFlag)
                 {
-                    if (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError >= intervalTime && this.GetComponent<PlayerStatus>().TempoTime - TempoTimeError <= intervalTime)
+                    
                     {
-                        intervalTime = 0.0f;
+                        //intervalTime = 0.0f;
 
                         // ココの計算式は後々変更の可能性あり
                         this.GetComponent<PlayerStatus>().Power += (PowerMag * this.GetComponent<PlayerStatus>().TempoTime);
@@ -349,30 +498,30 @@ public class PlayerKey : MonoBehaviour
 
                         tempoNum += 1;
                     }
-                    else  // 途中でのテンポ変更処理
+                    // 途中でのテンポ変更処理
                     {
-                        this.GetComponent<PlayerStatus>().TempoTime = intervalTime;
+                        //this.GetComponent<PlayerStatus>().TempoTime = intervalTime;
 
-                        intervalTime = 0.0f;
+                        //intervalTime = 0.0f;
 
-                        this.GetComponent<PlayerStatus>().Power = this.GetComponent<PlayerStatus>().InitialPower;
+                        //this.GetComponent<PlayerStatus>().Power = this.GetComponent<PlayerStatus>().InitialPower;
 
-                        this.GetComponent<PlayerStatus>().Green = 255;
-                        this.GetComponent<PlayerStatus>().Blue = 255;
+                        //this.GetComponent<PlayerStatus>().Green = 255;
+                        //this.GetComponent<PlayerStatus>().Blue = 255;
 
-                        cloneEffect2.transform.localScale = cloneEffect.transform.localScale;
+                        //cloneEffect2.transform.localScale = cloneEffect.transform.localScale;
 
-                        tempoNum = -2;
-                        SnareNum = 0;
+                        //tempoNum = -2;
+                        //SnareNum = 0;
 
-                        GameObject SE = (GameObject)Resources.Load("SE03");
-                        GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+                        //GameObject SE = (GameObject)Resources.Load("SE03");
+                        //GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
 
-                        this.GetComponent<PlayerStatus>().rotateFlag = true;
+                        //this.GetComponent<PlayerStatus>().rotateFlag = true;
                     }
                 }
 
-                cloneEffect.transform.localScale = new Vector3(0.3f, 0.3f, 0.0f);
+                //cloneEffect.transform.localScale = new Vector3(0.3f, 0.3f, 0.0f);
 
                 if (this.GetComponent<PlayerStatus>().isRight)
                 {
@@ -426,7 +575,7 @@ public class PlayerKey : MonoBehaviour
                 {
                     tempoFlag = true;
 
-                    cloneEffect2.transform.localScale = new Vector3(0.3f, 0.3f, 0.0f);
+                    cloneEffect2.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
                 }
             }
 
