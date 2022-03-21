@@ -21,6 +21,10 @@ public class PlayerStatus : MonoBehaviour
 
     public bool rotateFlag = false;
 
+    public bool moveFlag = false;
+
+    public float moveTime = 0.0f;
+
     public float Green = 255;
     public float Blue = 255;
 

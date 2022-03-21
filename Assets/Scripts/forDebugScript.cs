@@ -23,7 +23,7 @@ public class forDebugScript : MonoBehaviour
         if(refObj.transform.position.x > 140.0f && !oneTimeFlag)
         {
             oneTimeFlag = true;
-            GameObject gool = (GameObject)Resources.Load("Gool");
+            GameObject gool = (GameObject)Resources.Load("Goal");
             GameObject cloneGool = Instantiate(gool, new Vector3(refObj2.transform.position.x, refObj2.transform.position.y, 0.0f), Quaternion.identity);
         }
 

@@ -16,7 +16,7 @@ public class PlayerKey : MonoBehaviour
     public float TempoTimeError = 0.1f;
     public float PowerMax = 15.0f;
 
-    public float upForce = 1000.0f;
+    public float upForce = 750.0f;
 
     public float DeadZone = 0.5f;
 
@@ -27,6 +27,8 @@ public class PlayerKey : MonoBehaviour
     private float intervalTime;
     private bool attackFlag;
     private bool tempoFlag;
+    private bool oneTimeMoveFlag = false;
+
     [Header("Å´Å´Å´Ç±Ç±Ç©ÇÁâ∫ÇÃïœêîÇÕêGÇÁÇ»Ç¢Å´Å´Å´")] public float AlphaE = 0;
     public float RedE = 255;
     public float GreenE = 255;
@@ -84,32 +86,14 @@ public class PlayerKey : MonoBehaviour
                 cloneEffect.transform.localScale += new Vector3(0.03f, 0.03f, 0.0f);
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow) && !colFlagLeft)
-            {
-                //animator.SetBool("PlayerEvolveBool", true);
-
-                this.GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
-
-                MainSpriteRenderer.flipX = false;
-
-                this.GetComponent<PlayerStatus>().isRight = false;
-            }
+           
 
             if (Input.GetKeyUp(KeyCode.LeftArrow))
             {
                 // animator.SetBool("PlayerEvolveBool", false);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) && !colFlagRight)
-            {
-                //animator.SetBool("PlayerEvolveBool", true);
-
-                this.GetComponent<Rigidbody2D>().velocity = new Vector2(MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
-
-                MainSpriteRenderer.flipX = true;
-
-                this.GetComponent<PlayerStatus>().isRight = true;
-            }
+            
 
             if (Input.GetKeyUp(KeyCode.RightArrow))
             {
@@ -196,11 +180,110 @@ public class PlayerKey : MonoBehaviour
             tempoNum = 0;
             SnareNum = 0;
 
+            this.GetComponent<PlayerStatus>().moveTime = 0.0f;
+            this.GetComponent<PlayerStatus>().moveFlag = false;
+
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, this.GetComponent<Rigidbody2D>().velocity.y);
         }
         else
         {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
+            if (this.GetComponent<PlayerStatus>().moveFlag)
+            {
+                oneTimeMoveFlag = false;
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, this.GetComponent<Rigidbody2D>().velocity.y);
+                this.GetComponent<PlayerStatus>().moveTime += Time.deltaTime;
+                if(this.GetComponent<PlayerStatus>().moveTime > 0.3f)
+                {
+                    this.GetComponent<PlayerStatus>().moveTime = 0.0f;
+                    this.GetComponent<PlayerStatus>().moveFlag = false;
+                }
+            }
+            else
+            {
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                MainSpriteRenderer.flipX = true;
+
+                this.GetComponent<PlayerStatus>().isRight = true;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                MainSpriteRenderer.flipX = false;
+
+                this.GetComponent<PlayerStatus>().isRight = false;
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.C) && !this.GetComponent<PlayerStatus>().moveFlag && jumpFlag)
+            {
+                //this.rbody2D.AddForce(transform.up * upForce);
+
+                this.GetComponent<PlayerStatus>().moveFlag = true;
+
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(upForce * 2 * this.GetComponent<PlayerStatus>().TempoTime, upForce * this.GetComponent<PlayerStatus>().TempoTime * 2));
+
+                jumpFlag = false;
+
+                MainSpriteRenderer.flipX = true;
+
+                this.GetComponent<PlayerStatus>().isRight = true;
+
+                oneTimeMoveFlag = true;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.C) && !this.GetComponent<PlayerStatus>().moveFlag && jumpFlag)
+            {
+                //this.rbody2D.AddForce(transform.up * upForce);
+
+                this.GetComponent<PlayerStatus>().moveFlag = true;
+
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-upForce * 2 * this.GetComponent<PlayerStatus>().TempoTime, upForce * this.GetComponent<PlayerStatus>().TempoTime * 2));
+
+                jumpFlag = false;
+
+                MainSpriteRenderer.flipX = false;
+
+                this.GetComponent<PlayerStatus>().isRight = false;
+
+                oneTimeMoveFlag = true;
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.C) && !this.GetComponent<PlayerStatus>().moveFlag && !colFlagRight)
+            {
+                //animator.SetBool("PlayerEvolveBool", true);
+
+                //this.GetComponent<Rigidbody2D>().velocity = new Vector2(MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
+
+                this.GetComponent<PlayerStatus>().moveFlag = true;
+
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(upForce * 2 * this.GetComponent<PlayerStatus>().TempoTime, 0.0f));
+
+                MainSpriteRenderer.flipX = true;
+
+                this.GetComponent<PlayerStatus>().isRight = true;
+
+                oneTimeMoveFlag = true;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.C) && !this.GetComponent<PlayerStatus>().moveFlag && !colFlagLeft)
+            {
+                //animator.SetBool("PlayerEvolveBool", true);
+
+                //this.GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
+
+                this.GetComponent<PlayerStatus>().moveFlag = true;
+
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-upForce * 2 * this.GetComponent<PlayerStatus>().TempoTime, 0.0f));
+
+                MainSpriteRenderer.flipX = false;
+
+                this.GetComponent<PlayerStatus>().isRight = false;
+
+                oneTimeMoveFlag = true;
+            }
 
             // è„â∫ÇÃóhÇÍ
             if (Input.GetKeyDown(KeyCode.Space)
@@ -210,10 +293,28 @@ public class PlayerKey : MonoBehaviour
             }
 
             // ÉWÉÉÉìÉv
-            if (Input.GetKeyDown(KeyCode.UpArrow) && jumpFlag)
+            if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.C) && !this.GetComponent<PlayerStatus>().moveFlag && jumpFlag)
             {
-                this.rbody2D.AddForce(transform.up * upForce);
+                //this.rbody2D.AddForce(transform.up * upForce);
+
+                this.GetComponent<PlayerStatus>().moveFlag = true;
+
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, upForce * this.GetComponent<PlayerStatus>().TempoTime * 2));
+
                 jumpFlag = false;
+
+                oneTimeMoveFlag = true;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.C) && !this.GetComponent<PlayerStatus>().moveFlag)
+            {
+                //this.rbody2D.AddForce(transform.up * upForce);
+
+                this.GetComponent<PlayerStatus>().moveFlag = true;
+
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, -upForce * this.GetComponent<PlayerStatus>().TempoTime * 2));
+
+                oneTimeMoveFlag = true;
             }
 
             // ç≈èâÇÃÉeÉìÉ|ÇíËÇﬂÇÈ
@@ -308,7 +409,7 @@ public class PlayerKey : MonoBehaviour
             }
 
             // çUåÇ
-            if (Input.GetKeyDown(KeyCode.Space)
+            if ((Input.GetKeyDown(KeyCode.Space) || oneTimeMoveFlag)
                 && attackFlag)
             {
                 this.GetComponent<PlayerStatus>().isAttacked = true;
@@ -374,17 +475,21 @@ public class PlayerKey : MonoBehaviour
 
                 cloneEffect.transform.localScale = new Vector3(0.3f, 0.3f, 0.0f);
 
-                if (this.GetComponent<PlayerStatus>().isRight)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    GameObject Slush = (GameObject)Resources.Load("Slush");
-                    GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
-                    cloneSlush.GetComponent<ParticleSystem>().startColor = new Color32(255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, 255);
-                }
-                if (!this.GetComponent<PlayerStatus>().isRight)
-                {
-                    GameObject Slush = (GameObject)Resources.Load("SlushLeft");
-                    GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
-                    cloneSlush.GetComponent<ParticleSystem>().startColor = new Color32(255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, 255);
+                    if (this.GetComponent<PlayerStatus>().isRight)
+                    {
+                        GameObject Slush = (GameObject)Resources.Load("Slush");
+                        GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
+                        cloneSlush.GetComponent<ParticleSystem>().startColor = new Color32(255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, 255);
+                    }
+
+                    if (!this.GetComponent<PlayerStatus>().isRight)
+                    {
+                        GameObject Slush = (GameObject)Resources.Load("SlushLeft");
+                        GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
+                        cloneSlush.GetComponent<ParticleSystem>().startColor = new Color32(255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, 255);
+                    }
                 }
 
                 if (tempoNum > -2)
@@ -467,7 +572,7 @@ public class PlayerKey : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "Floor")
         {
