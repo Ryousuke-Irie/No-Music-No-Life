@@ -32,8 +32,6 @@ public class PlayerController : MonoBehaviour
     private float intervalTime;
     private float intervalTime2;
 
-    private bool resetFlag = false;
-
     private bool attackFlag;
     private bool tempoFlag;
 
@@ -79,7 +77,6 @@ public class PlayerController : MonoBehaviour
         this.GetComponent<PlayerStatus>().TempoTime = 0.0f;
         intervalTime = 0.0f;
         intervalTime2 = 0.0f;
-        this.GetComponent<PlayerStatus>().intervalTime3 = 0.0f;
         attackFlag = true;
         tempoFlag = false;
         this.GetComponent<PlayerStatus>().intervalFlag = false;
@@ -280,31 +277,31 @@ public class PlayerController : MonoBehaviour
                 //shakeFlag = true;
             }
 
-            //if (Gamepad.current.leftTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Z))
-            //{
-            //    if(GearNum == 1)
-            //    {
-            //        GearNum = 0;
-            //    }
+            if (Gamepad.current.leftTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Z))
+            {
+                if(GearNum == 1)
+                {
+                    GearNum = 0;
+                }
 
-            //    if (GearNum == 2)
-            //    {
-            //        GearNum = 1;
-            //    }
-            //}
+                if (GearNum == 2)
+                {
+                    GearNum = 1;
+                }
+            }
 
-            //if (Gamepad.current.rightTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.X))
-            //{
-            //    if (GearNum == 1)
-            //    {
-            //        GearNum = 2;
-            //    }
+            if (Gamepad.current.rightTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.X))
+            {
+                if (GearNum == 1)
+                {
+                    GearNum = 2;
+                }
 
-            //    if (GearNum == 0)
-            //    {
-            //        GearNum = 1;
-            //    }
-            //}
+                if (GearNum == 0)
+                {
+                    GearNum = 1;
+                }
+            }
 
             // ジャンプ
             if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.buttonSouth.wasPressedThisFrame) && jumpFlag)
@@ -337,30 +334,25 @@ public class PlayerController : MonoBehaviour
                 intervalTime += Time.deltaTime;
                 intervalTime2 += Time.deltaTime;
 
-                if (resetFlag)
-                {
-                    this.GetComponent<PlayerStatus>().intervalTime3 += Time.deltaTime;
-                }
-
                 // 上限を超えたらなかったことになる
-                //if (intervalTime > MaxTempoTime)
-                //{
-                //    this.GetComponent<PlayerStatus>().TempoTime = 0.0f;
-                //    tempoFlag = false;
-                //    intervalTime = 0.0f;
-                //    this.GetComponent<PlayerStatus>().intervalFlag = false;
+                if (intervalTime > MaxTempoTime)
+                {
+                    this.GetComponent<PlayerStatus>().TempoTime = 0.0f;
+                    tempoFlag = false;
+                    intervalTime = 0.0f;
+                    this.GetComponent<PlayerStatus>().intervalFlag = false;
 
-                //    this.GetComponent<PlayerStatus>().Power = this.GetComponent<PlayerStatus>().InitialPower;
+                    this.GetComponent<PlayerStatus>().Power = this.GetComponent<PlayerStatus>().InitialPower;
 
-                //    this.GetComponent<PlayerStatus>().Green = 255;
-                //    this.GetComponent<PlayerStatus>().Blue = 255;
+                    this.GetComponent<PlayerStatus>().Green = 255;
+                    this.GetComponent<PlayerStatus>().Blue = 255;
 
-                //    AlphaE = 0;
-                //    RedE = 255;
+                    AlphaE = 0;
+                    RedE = 255;
 
-                //    tempoNum = 0;
-                //    SnareNum = 0;
-                //}
+                    tempoNum = 0;
+                    SnareNum = 0;
+                }
             }
 
             // 連打でテンポを刻めるのを禁止する処理
@@ -427,12 +419,6 @@ public class PlayerController : MonoBehaviour
 
             if (tempoFlag)
             {
-                if (this.GetComponent<PlayerStatus>().TempoTime * 3 + TempoTimeError < this.GetComponent<PlayerStatus>().intervalTime3)
-                {
-                    this.GetComponent<PlayerStatus>().intervalTime3 = 0.0f;
-                    resetFlag = false;
-                }
-
                 if (this.GetComponent<PlayerStatus>().TempoTime < intervalTime && !oneTimeFlag)
                 {
                     intervalTime = 0.0f;
@@ -457,7 +443,6 @@ public class PlayerController : MonoBehaviour
                 if (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError < intervalTime2)
                 {
                     intervalTime2 = intervalTime;
-
                     oneTimeFlag = false;
 
                     if (effectFlag && effectNum2 == 0)
@@ -495,8 +480,6 @@ public class PlayerController : MonoBehaviour
                 shakeFlag = true;
 
                 this.GetComponent<PlayerStatus>().isAttacked = true;
-
-                resetFlag = true;
 
                 oneTimeFlag = false;
 

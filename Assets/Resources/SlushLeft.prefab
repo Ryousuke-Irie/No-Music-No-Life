@@ -4818,7 +4818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a40bd32e05d1f4fb223be8a7e99157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ZangekiTime: 0.8
+  ZangekiTime: 0.5
 --- !u!61 &5019230097256106693
 BoxCollider2D:
   m_ObjectHideFlags: 0
