@@ -99,40 +99,46 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!this.GetComponent<PlayerStatus>().isDamaged)
+
+        if (this.transform.position.x < 140.0f)
         {
-            if ((Input.GetKey(KeyCode.LeftArrow) || Gamepad.current.leftStick.ReadValue().x < -DeadZone) && !colFlagLeft)
-            {
-                //animator.SetBool("PlayerEvolveBool", true);
-
-                this.GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
-
-                MainSpriteRenderer.flipX = false;
-
-                this.GetComponent<PlayerStatus>().isRight = false;
-            }
-
-            if (Input.GetKeyUp(KeyCode.LeftArrow) || Gamepad.current.leftStick.ReadValue().x < -DeadZone)
-            {
-                // animator.SetBool("PlayerEvolveBool", false);
-            }
-
-            if ((Input.GetKey(KeyCode.RightArrow) || Gamepad.current.leftStick.ReadValue().x > DeadZone) && !colFlagRight)
-            {
-                //animator.SetBool("PlayerEvolveBool", true);
-
-                this.GetComponent<Rigidbody2D>().velocity = new Vector2(MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
-
-                MainSpriteRenderer.flipX = true;
-
-                this.GetComponent<PlayerStatus>().isRight = true;
-            }
-
-            if (Input.GetKeyUp(KeyCode.RightArrow) || Gamepad.current.leftStick.ReadValue().x > DeadZone)
-            {
-                //animator.SetBool("PlayerEvolveBool", false);
-            }
+            //this.GetComponent<Rigidbody2D>().velocity = new Vector2(MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
         }
+
+        //if (!this.GetComponent<PlayerStatus>().isDamaged)
+        //{
+        //    if ((Input.GetKey(KeyCode.LeftArrow) || Gamepad.current.leftStick.ReadValue().x < -DeadZone) && !colFlagLeft)
+        //    {
+        //        //animator.SetBool("PlayerEvolveBool", true);
+
+        //        this.GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
+
+        //        MainSpriteRenderer.flipX = false;
+
+        //        this.GetComponent<PlayerStatus>().isRight = false;
+        //    }
+
+        //    if (Input.GetKeyUp(KeyCode.LeftArrow) || Gamepad.current.leftStick.ReadValue().x < -DeadZone)
+        //    {
+        //        // animator.SetBool("PlayerEvolveBool", false);
+        //    }
+
+        //    if ((Input.GetKey(KeyCode.RightArrow) || Gamepad.current.leftStick.ReadValue().x > DeadZone) && !colFlagRight)
+        //    {
+        //        //animator.SetBool("PlayerEvolveBool", true);
+
+        //        this.GetComponent<Rigidbody2D>().velocity = new Vector2(MoveVel, this.GetComponent<Rigidbody2D>().velocity.y);
+
+        //        MainSpriteRenderer.flipX = true;
+
+        //        this.GetComponent<PlayerStatus>().isRight = true;
+        //    }
+
+        //    if (Input.GetKeyUp(KeyCode.RightArrow) || Gamepad.current.leftStick.ReadValue().x > DeadZone)
+        //    {
+        //        //animator.SetBool("PlayerEvolveBool", false);
+        //    }
+        //}
 
         {
             if (GearNum == 0)
@@ -224,6 +230,35 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<PlayerKey>().enabled = true;
         }
 
+        if (this.transform.position.x < 140.0f)
+        {
+            this.transform.position += new Vector3(9.9f * Time.deltaTime, 0.0f, 0.0f);
+        }
+
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.leftStick.ReadValue().y > DeadZone) && attackFlag && (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError >= intervalTime2 && this.GetComponent<PlayerStatus>().TempoTime - TempoTimeError <= intervalTime2))
+        {
+            if (this.transform.localPosition.y < 4)
+            {
+                this.transform.position += new Vector3(0.0f, 4.0f, 0.0f);
+                GameObject SE = (GameObject)Resources.Load("SE01");
+                GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                attackFlag = false;
+                time = AttackCoolTime;
+            }
+        }
+
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && attackFlag && (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError >= intervalTime2 && this.GetComponent<PlayerStatus>().TempoTime - TempoTimeError <= intervalTime2))
+        {
+            if (this.transform.localPosition.y > -4)
+            {
+                this.transform.position -= new Vector3(0.0f, 4.0f, 0.0f);
+                GameObject SE = (GameObject)Resources.Load("SE01");
+                GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                attackFlag = false;
+                time = AttackCoolTime;
+            }
+        }
+
         // エフェクト用
         cloneEffect.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
         cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
@@ -263,7 +298,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
+           // this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
         }
         {
             // 上下の揺れ
@@ -277,31 +312,31 @@ public class PlayerController : MonoBehaviour
                 //shakeFlag = true;
             }
 
-            if (Gamepad.current.leftTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Z))
-            {
-                if(GearNum == 1)
-                {
-                    GearNum = 0;
-                }
+            //if (Gamepad.current.leftTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Z))
+            //{
+            //    if(GearNum == 1)
+            //    {
+            //        GearNum = 0;
+            //    }
 
-                if (GearNum == 2)
-                {
-                    GearNum = 1;
-                }
-            }
+            //    if (GearNum == 2)
+            //    {
+            //        GearNum = 1;
+            //    }
+            //}
 
-            if (Gamepad.current.rightTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.X))
-            {
-                if (GearNum == 1)
-                {
-                    GearNum = 2;
-                }
+            //if (Gamepad.current.rightTrigger.wasPressedThisFrame || Input.GetKeyDown(KeyCode.X))
+            //{
+            //    if (GearNum == 1)
+            //    {
+            //        GearNum = 2;
+            //    }
 
-                if (GearNum == 0)
-                {
-                    GearNum = 1;
-                }
-            }
+            //    if (GearNum == 0)
+            //    {
+            //        GearNum = 1;
+            //    }
+            //}
 
             // ジャンプ
             if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.buttonSouth.wasPressedThisFrame) && jumpFlag)

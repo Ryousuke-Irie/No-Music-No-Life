@@ -39,67 +39,67 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (this.transform.localPosition.x >= StartLineX + CameraWidth && this.transform.localPosition.x <= EndLineX - CameraWidth)
-        {
-            if (refObj.GetComponent<PlayerStatus>().isRight)
-            {
-                if (playerPosX < refObj.GetComponent<Transform>().localPosition.x)
-                {
-                    if (PtoClengthOriginal > PToCLength)
-                    {
-                        PToCLength += PtoClengthPlus;
-                    }
+        //if (this.transform.localPosition.x >= StartLineX + CameraWidth && this.transform.localPosition.x <= EndLineX - CameraWidth)
+        //{
+        //    if (refObj.GetComponent<PlayerStatus>().isRight)
+        //    {
+        //        if (playerPosX < refObj.GetComponent<Transform>().localPosition.x)
+        //        {
+        //            if (PtoClengthOriginal > PToCLength)
+        //            {
+        //                PToCLength += PtoClengthPlus;
+        //            }
 
-                    if (PtoClengthAfterOriginal > PToCLengthAfter)
-                    {
-                        PToCLengthAfter += PtoClengthAfterPlus;
-                    }
+        //            if (PtoClengthAfterOriginal > PToCLengthAfter)
+        //            {
+        //                PToCLengthAfter += PtoClengthAfterPlus;
+        //            }
 
-                    PtoClengthAfterback = PToCLengthAfter;
+        //            PtoClengthAfterback = PToCLengthAfter;
 
-                    playerPosX = refObj.GetComponent<Transform>().localPosition.x;
-                }
-                else
-                {
-                    if (0.0f < PToCLengthAfter)
-                    {
-                        PToCLengthAfter -= PtoClengthAfterReturn * PtoClengthAfterback;
-                    }
-                }
-            }
+        //            playerPosX = refObj.GetComponent<Transform>().localPosition.x;
+        //        }
+        //        else
+        //        {
+        //            if (0.0f < PToCLengthAfter)
+        //            {
+        //                PToCLengthAfter -= PtoClengthAfterReturn * PtoClengthAfterback;
+        //            }
+        //        }
+        //    }
 
-            if (!refObj.GetComponent<PlayerStatus>().isRight)
-            {
-                if (playerPosX > refObj.GetComponent<Transform>().localPosition.x)
-                {
-                    if (-PtoClengthOriginal < PToCLength)
-                    {
-                        PToCLength -= PtoClengthPlus;
-                    }
+        //    if (!refObj.GetComponent<PlayerStatus>().isRight)
+        //    {
+        //        if (playerPosX > refObj.GetComponent<Transform>().localPosition.x)
+        //        {
+        //            if (-PtoClengthOriginal < PToCLength)
+        //            {
+        //                PToCLength -= PtoClengthPlus;
+        //            }
 
-                    if (-PtoClengthAfterOriginal < PToCLengthAfter)
-                    {
-                        PToCLengthAfter -= PtoClengthAfterPlus;
-                    }
+        //            if (-PtoClengthAfterOriginal < PToCLengthAfter)
+        //            {
+        //                PToCLengthAfter -= PtoClengthAfterPlus;
+        //            }
 
-                    PtoClengthAfterback = PToCLengthAfter;
+        //            PtoClengthAfterback = PToCLengthAfter;
 
-                    if (PtoClengthAfterback < 0.0f)
-                    {
-                        PtoClengthAfterback *= -1.0f;
-                    }
+        //            if (PtoClengthAfterback < 0.0f)
+        //            {
+        //                PtoClengthAfterback *= -1.0f;
+        //            }
 
-                    playerPosX = refObj.GetComponent<Transform>().localPosition.x;
-                }
-                else
-                {
-                    if (0.0f > PToCLengthAfter)
-                    {
-                        PToCLengthAfter += PtoClengthAfterReturn * PtoClengthAfterback;
-                    }
-                }
-            }
-        }
+        //            playerPosX = refObj.GetComponent<Transform>().localPosition.x;
+        //        }
+        //        else
+        //        {
+        //            if (0.0f > PToCLengthAfter)
+        //            {
+        //                PToCLengthAfter += PtoClengthAfterReturn * PtoClengthAfterback;
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     void Update()
@@ -120,23 +120,23 @@ public class CameraScript : MonoBehaviour
         }
 
         // PlayerÇÃHP(âπïÑ)Çê›íu
-        for (int i = 0; i < refObj.GetComponent<PlayerStatus>().HP; i++)
-        {
-            if (cloneOnpu[i] == null)
-            {
-                GameObject Onpu = (GameObject)Resources.Load("Onpu");
-                cloneOnpu[i] = Instantiate(Onpu, new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f), Quaternion.identity);
-            }
+        //for (int i = 0; i < refObj.GetComponent<PlayerStatus>().HP; i++)
+        //{
+        //    if (cloneOnpu[i] == null)
+        //    {
+        //        GameObject Onpu = (GameObject)Resources.Load("Onpu");
+        //        cloneOnpu[i] = Instantiate(Onpu, new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f), Quaternion.identity);
+        //    }
 
-            cloneOnpu[i].transform.position = new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f);
-        }
+        //    cloneOnpu[i].transform.position = new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f);
+        //}
 
-        for (int i = refObj.GetComponent<PlayerStatus>().HP; i < ONPU_MAX; i++)
-        {
-            if(cloneOnpu[i])
-            {
-                Destroy(cloneOnpu[i]);
-            }
-        }
+        //for (int i = refObj.GetComponent<PlayerStatus>().HP; i < ONPU_MAX; i++)
+        //{
+        //    if(cloneOnpu[i])
+        //    {
+        //        Destroy(cloneOnpu[i]);
+        //    }
+        //}
     }
 }

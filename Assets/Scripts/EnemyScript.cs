@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -28,30 +29,30 @@ public class EnemyScript : MonoBehaviour
     {
         refObj = GameObject.Find("Player");
         playerStatus = refObj.GetComponent<PlayerStatus>();
-        GameObject bar = (GameObject)Resources.Load("EnemyHPbar");
-        cloneBar = Instantiate(bar, this.transform.position + new Vector3(0.0f, EnemyToBar, 0.0f), Quaternion.identity);
-        slider = cloneBar.GetComponentInChildren<Slider>();
-        slider.maxValue = HP;
-        slider.value = HP;
+        //GameObject bar = (GameObject)Resources.Load("EnemyHPbar");
+        //cloneBar = Instantiate(bar, this.transform.position + new Vector3(0.0f, EnemyToBar, 0.0f), Quaternion.identity);
+        //slider = cloneBar.GetComponentInChildren<Slider>();
+        //slider.maxValue = HP;
+        //slider.value = HP;
     }
 
     void FixedUpdate()
     {
-        if (!floorFlag)
-        {
-            this.transform.position -= new Vector3(0.0f, 0.1f, 0.0f);
-        }
+        //if (!floorFlag)
+        //{
+        //    this.transform.position -= new Vector3(0.0f, 0.1f, 0.0f);
+        //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        cloneBar.transform.position = this.transform.position + new Vector3(0.0f, EnemyToBar, 0.0f);
+        //cloneBar.transform.position = this.transform.position + new Vector3(0.0f, EnemyToBar, 0.0f);
 
         if (HP <= 0.0f)
         {
             Destroy(gameObject, 0.0f);
-            Destroy(cloneBar);
+            //Destroy(cloneBar);
         }
 
         if(!damageFlag && damageFlag2)
@@ -99,7 +100,7 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.tag == "Attack")
         {
             HP -= playerStatus.Power;
-            slider.value = HP; 
+            //slider.value = HP; 
             damageFlag = true;
 
             col.gameObject.tag = "Untagged";
@@ -108,7 +109,7 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.tag == "Zangeki")
         {
             HP -= col.GetComponent<ZangekiScript>().Power;
-            slider.value = HP;
+            //slider.value = HP;
             damageFlag = true;
 
             col.gameObject.tag = "Untagged";
@@ -116,6 +117,8 @@ public class EnemyScript : MonoBehaviour
 
         if (col.gameObject.tag == "Player")
         {
+            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+
             if (!refObj.GetComponent<PlayerStatus>().isDamaged && !refObj.GetComponent<PlayerStatus>().rotateFlag && !damageFlag && !damageFlag2)
             {
                 if (this.GetComponent<EnemyMove>().isMove && floorFlag)

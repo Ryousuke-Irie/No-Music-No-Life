@@ -40,6 +40,8 @@ public class SlushScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.transform.position = refObj.transform.position + new Vector3(3.0f, 0.0f, 0.0f);
+
         if (!oneTimeFlag)
         {
             if (time > 0.05f)
