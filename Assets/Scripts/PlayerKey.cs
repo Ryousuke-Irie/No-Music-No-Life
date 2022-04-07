@@ -291,7 +291,7 @@ public class PlayerKey : MonoBehaviour
             //    tempoNum = 0;
             //    SnareNum = 0;
 
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, this.GetComponent<Rigidbody2D>().velocity.y);
+            //this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, this.GetComponent<Rigidbody2D>().velocity.y);
         }
         else
         {
