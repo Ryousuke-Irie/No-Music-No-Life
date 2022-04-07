@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour
     GameObject cloneEffect3;
     private Rigidbody2D rbody2D;
 
+    private float dist;
+    private float barDist = 6.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,13 +91,15 @@ public class PlayerController : MonoBehaviour
 
         rbody2D = GetComponent<Rigidbody2D>();
 
-        GameObject effect = (GameObject)Resources.Load("nannkaEffect");
-        cloneEffect2 = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
-        cloneEffect = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
-        cloneEffect3 = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
-        cloneEffect2.transform.localScale = new Vector3(1.4f, 1.4f, 0.0f);
-        cloneEffect.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
-        cloneEffect3.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
+        //GameObject effect = (GameObject)Resources.Load("nannkaEffect");
+        //cloneEffect2 = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
+        //cloneEffect = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
+        //cloneEffect3 = Instantiate(effect, this.transform.position + new Vector3(0.0f, 0.2f, 0.0f), Quaternion.identity);
+        //cloneEffect2.transform.localScale = new Vector3(1.4f, 1.4f, 0.0f);
+        //cloneEffect.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
+        //cloneEffect3.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
+
+        dist = 5.5f;
     }
 
     void FixedUpdate()
@@ -141,51 +146,51 @@ public class PlayerController : MonoBehaviour
         //}
 
         {
-            if (GearNum == 0)
-            {
-                if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
-                {
-                    cloneEffect.transform.localScale += new Vector3(0.063f, 0.063f, 0.0f);
-                }
+            //if (GearNum == 0)
+            //{
+            //    if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
+            //    {
+            //        cloneEffect.transform.localScale += new Vector3(0.063f, 0.063f, 0.0f);
+            //    }
 
-                if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
-                {
-                    cloneEffect3.transform.localScale += new Vector3(0.063f, 0.063f, 0.0f);
-                }
-            }
+            //    if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
+            //    {
+            //        cloneEffect3.transform.localScale += new Vector3(0.063f, 0.063f, 0.0f);
+            //    }
+            //}
 
-            if (GearNum == 1)
-            {
-                if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
-                {
-                    cloneEffect.transform.localScale += new Vector3(0.038f, 0.038f, 0.0f);
-                }
+            //if (GearNum == 1)
+            //{
+            //    if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
+            //    {
+            //        cloneEffect.transform.localScale += new Vector3(0.038f, 0.038f, 0.0f);
+            //    }
 
-                if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
-                {
-                    cloneEffect3.transform.localScale += new Vector3(0.038f, 0.038f, 0.0f);
-                }
-            }
+            //    if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
+            //    {
+            //        cloneEffect3.transform.localScale += new Vector3(0.038f, 0.038f, 0.0f);
+            //    }
+            //}
 
-            if (GearNum == 2)
-            {
-                if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
-                {
-                    cloneEffect.transform.localScale += new Vector3(0.025f, 0.025f, 0.0f);
-                }
+            //if (GearNum == 2)
+            //{
+            //    if (cloneEffect.transform.localScale.x > 0.0f && effectFlag)
+            //    {
+            //        cloneEffect.transform.localScale += new Vector3(0.025f, 0.025f, 0.0f);
+            //    }
 
-                if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
-                {
-                    cloneEffect3.transform.localScale += new Vector3(0.025f, 0.025f, 0.0f);
-                }
-            }
+            //    if (cloneEffect3.transform.localScale.x > 0.0f && effectFlag2)
+            //    {
+            //        cloneEffect3.transform.localScale += new Vector3(0.025f, 0.025f, 0.0f);
+            //    }
+            //}
 
 
 
-            if (tempoFlag && !this.GetComponent<PlayerStatus>().intervalFlag)
-            {
-                cloneEffect2.transform.localScale += new Vector3(0.03f, 0.03f, 0.0f);
-            }
+            ////if (tempoFlag && !this.GetComponent<PlayerStatus>().intervalFlag)
+            ////{
+            ////    //cloneEffect2.transform.localScale += new Vector3(0.03f, 0.03f, 0.0f);
+            ////}
 
             // 上下の揺れ
             if (shakeFlag && shakeAmount < 0.2f)
@@ -232,10 +237,10 @@ public class PlayerController : MonoBehaviour
 
         if (this.transform.position.x < 140.0f)
         {
-            this.transform.position += new Vector3(9.9f * Time.deltaTime, 0.0f, 0.0f);
+            this.transform.position += new Vector3(9.9f, 0.0f, 0.0f) * Time.deltaTime;
         }
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.leftStick.ReadValue().y > DeadZone) && attackFlag && (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError >= intervalTime2 && this.GetComponent<PlayerStatus>().TempoTime - TempoTimeError <= intervalTime2))
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.leftStick.ReadValue().y > DeadZone) && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y < 4)
             {
@@ -247,7 +252,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && attackFlag && (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError >= intervalTime2 && this.GetComponent<PlayerStatus>().TempoTime - TempoTimeError <= intervalTime2))
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y > -4)
             {
@@ -260,14 +265,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // エフェクト用
-        cloneEffect.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
-        cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
+        //cloneEffect.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
+        //cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
 
-        cloneEffect3.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
-        cloneEffect3.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
+        //cloneEffect3.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
+        //cloneEffect3.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)this.GetComponent<PlayerStatus>().Green, (byte)this.GetComponent<PlayerStatus>().Blue, (byte)AlphaE);
 
-        cloneEffect2.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
-        cloneEffect2.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, (byte)AlphaE);
+        //cloneEffect2.transform.position = this.transform.position + new Vector3(0.1f, 0.2f, 0.0f);
+        //cloneEffect2.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, (byte)AlphaE);
 
         if (this.GetComponent<PlayerStatus>().isDamaged)
         {
@@ -454,7 +459,7 @@ public class PlayerController : MonoBehaviour
 
             if (tempoFlag)
             {
-                if (this.GetComponent<PlayerStatus>().TempoTime < intervalTime && !oneTimeFlag)
+                if (this.transform.position.x > dist && !oneTimeFlag)
                 {
                     intervalTime = 0.0f;
                     oneTimeFlag = true;
@@ -475,8 +480,10 @@ public class PlayerController : MonoBehaviour
 
                 }
 
-                if (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError < intervalTime2)
+                if (this.transform.position.x > dist + TempoTimeError)
                 {
+                    dist += barDist;
+
                     intervalTime2 = intervalTime;
                     oneTimeFlag = false;
 
@@ -496,12 +503,12 @@ public class PlayerController : MonoBehaviour
 
             if (!effectFlag)
             {
-                cloneEffect.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
+                //cloneEffect.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
             }
 
             if (!effectFlag2)
             {
-                cloneEffect3.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
+                //cloneEffect3.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
             }
 
             // 攻撃
@@ -510,7 +517,7 @@ public class PlayerController : MonoBehaviour
                 || Gamepad.current.buttonEast.wasPressedThisFrame
                 || Gamepad.current.buttonWest.wasPressedThisFrame
                 || Gamepad.current.rightShoulder.wasPressedThisFrame)
-                && attackFlag && (this.GetComponent<PlayerStatus>().TempoTime + TempoTimeError >= intervalTime2 && this.GetComponent<PlayerStatus>().TempoTime - TempoTimeError <= intervalTime2))
+                && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
             {
                 shakeFlag = true;
 
@@ -629,7 +636,7 @@ public class PlayerController : MonoBehaviour
                 {
                     tempoFlag = true;
 
-                    cloneEffect2.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+                    //cloneEffect2.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
                 }
             }
 
