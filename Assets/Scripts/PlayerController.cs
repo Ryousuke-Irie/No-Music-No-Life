@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
     private float dist;
     private float barDist = 6.0f;
 
+    private bool moveFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -240,27 +242,25 @@ public class PlayerController : MonoBehaviour
             this.transform.position += new Vector3(9.9f, 0.0f, 0.0f) * Time.deltaTime;
         }
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.leftStick.ReadValue().y > DeadZone) && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.leftStick.ReadValue().y > DeadZone) && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y < 4)
             {
                 this.transform.position += new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-                attackFlag = false;
-                time = AttackCoolTime;
+                moveFlag = true;
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y > -4)
             {
                 this.transform.position -= new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-                attackFlag = false;
-                time = AttackCoolTime;
+                moveFlag = true;
             }
         }
 
@@ -487,6 +487,8 @@ public class PlayerController : MonoBehaviour
                     intervalTime2 = intervalTime;
                     oneTimeFlag = false;
 
+                    moveFlag = false;
+
                     if (effectFlag && effectNum2 == 0)
                     {
                         effectFlag = false;
@@ -517,7 +519,7 @@ public class PlayerController : MonoBehaviour
                 || Gamepad.current.buttonEast.wasPressedThisFrame
                 || Gamepad.current.buttonWest.wasPressedThisFrame
                 || Gamepad.current.rightShoulder.wasPressedThisFrame)
-                && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+                && attackFlag)
             {
                 shakeFlag = true;
 

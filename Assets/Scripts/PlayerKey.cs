@@ -67,6 +67,8 @@ public class PlayerKey : MonoBehaviour
     private float dist;
     private float barDist = 6.0f;
 
+    private bool moveFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -236,27 +238,25 @@ public class PlayerKey : MonoBehaviour
             this.transform.position += new Vector3(9.9f, 0.0f, 0.0f) * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y < 4)
             {
                 this.transform.position += new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-                attackFlag = false;
-                time = AttackCoolTime;
+                moveFlag = true;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y > -4)
             {
                 this.transform.position -= new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-                attackFlag = false;
-                time = AttackCoolTime;
+                moveFlag = true;
             }
         }
         //
@@ -474,6 +474,8 @@ public class PlayerKey : MonoBehaviour
                     intervalTime2 = intervalTime;
                     oneTimeFlag = false;
 
+                    moveFlag = false;
+
                     if (effectFlag && effectNum2 == 0)
                     {
                         effectFlag = false;
@@ -500,8 +502,7 @@ public class PlayerKey : MonoBehaviour
 
             // UŒ‚
             if (Input.GetKeyDown(KeyCode.Space)
-                && attackFlag && 
-                (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+                && attackFlag)
             {
                 shakeFlag = true;
 
