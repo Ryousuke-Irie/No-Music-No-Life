@@ -530,6 +530,11 @@ public class PlayerController : MonoBehaviour
                 RedE = 255;
                 BlueE = 0;
 
+                if (!moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+                {
+                    this.GetComponent<PlayerStatus>().rotateFlag = true;
+                }
+
                 // “¯ˆêƒeƒ“ƒ|‚É‚æ‚é‰Î—Íã¸
                 if (this.GetComponent<PlayerStatus>().intervalFlag)
                 {
