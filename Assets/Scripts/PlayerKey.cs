@@ -238,7 +238,7 @@ public class PlayerKey : MonoBehaviour
             this.transform.position += new Vector3(9.9f, 0.0f, 0.0f) * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && attackFlag && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y < 4)
             {
@@ -249,7 +249,7 @@ public class PlayerKey : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && attackFlag && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y > -4)
             {
