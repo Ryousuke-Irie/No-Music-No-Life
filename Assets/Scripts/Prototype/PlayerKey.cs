@@ -242,6 +242,7 @@ public class PlayerKey : MonoBehaviour
         {
             if (this.transform.localPosition.y < 4)
             {
+                this.GetComponent<PlayerStatus>().rotateFlag = true;
                 this.transform.position += new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -253,6 +254,7 @@ public class PlayerKey : MonoBehaviour
         {
             if (this.transform.localPosition.y > -4)
             {
+                this.GetComponent<PlayerStatus>().rotateFlag = true;
                 this.transform.position -= new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -502,7 +504,7 @@ public class PlayerKey : MonoBehaviour
 
             // UŒ‚
             if (Input.GetKeyDown(KeyCode.Space)
-                && attackFlag)
+                && attackFlag && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
             {
                 shakeFlag = true;
 

@@ -242,10 +242,11 @@ public class PlayerController : MonoBehaviour
             this.transform.position += new Vector3(9.9f, 0.0f, 0.0f) * Time.deltaTime;
         }
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.leftStick.ReadValue().y > DeadZone) && attackFlag && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.dpad.up.wasPressedThisFrame || Gamepad.current.leftStick.ReadValue().y > DeadZone) && attackFlag && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y < 4)
             {
+                this.GetComponent<PlayerStatus>().rotateFlag = true;
                 this.transform.position += new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -253,10 +254,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && attackFlag && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.dpad.down.wasPressedThisFrame || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && attackFlag && !moveFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
         {
             if (this.transform.localPosition.y > -4)
             {
+                this.GetComponent<PlayerStatus>().rotateFlag = true;
                 this.transform.position -= new Vector3(0.0f, 4.0f, 0.0f);
                 GameObject SE = (GameObject)Resources.Load("SE01");
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -519,7 +521,7 @@ public class PlayerController : MonoBehaviour
                 || Gamepad.current.buttonEast.wasPressedThisFrame
                 || Gamepad.current.buttonWest.wasPressedThisFrame
                 || Gamepad.current.rightShoulder.wasPressedThisFrame)
-                && attackFlag)
+                && !moveFlag && attackFlag && (this.transform.position.x > dist - TempoTimeError && this.transform.position.x < dist + TempoTimeError))
             {
                 shakeFlag = true;
 
