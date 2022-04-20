@@ -16,10 +16,12 @@ public class EnemyScript : MonoBehaviour
 
     private float time = 0;
 
+    private bool oneTimeFlag = false;
+
     [Header("Å´Å´Å´êGÇÁÇ»Ç¢ÅIÅIÅ´Å´Å´")] public bool floorFlag = false;
 
     GameObject refObj;
-    PlayerStatus playerStatus;
+    //PlayerStatus playerStatus;
 
     GameObject cloneBar;
     Slider slider;
@@ -28,7 +30,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         refObj = GameObject.Find("Player");
-        playerStatus = refObj.GetComponent<PlayerStatus>();
+        //playerStatus = refObj.GetComponent<PlayerStatus>();
         //GameObject bar = (GameObject)Resources.Load("EnemyHPbar");
         //cloneBar = Instantiate(bar, this.transform.position + new Vector3(0.0f, EnemyToBar, 0.0f), Quaternion.identity);
         //slider = cloneBar.GetComponentInChildren<Slider>();
@@ -99,63 +101,72 @@ public class EnemyScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Attack")
         {
-            HP -= playerStatus.Power;
+            //HP -= playerStatus.Power;
             //slider.value = HP; 
             damageFlag = true;
 
-            col.gameObject.tag = "Untagged";
-        }
-
-        if (col.gameObject.tag == "Zangeki")
-        {
-            HP -= col.GetComponent<ZangekiScript>().Power;
-            //slider.value = HP;
-            damageFlag = true;
+            Destroy(gameObject);
 
             col.gameObject.tag = "Untagged";
         }
+
+        //if (col.gameObject.tag == "Zangeki")
+        //{
+        //    HP -= col.GetComponent<ZangekiScript>().Power;
+        //    //slider.value = HP;
+        //    damageFlag = true;
+
+        //    col.gameObject.tag = "Untagged";
+        //}
 
         if (col.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-
-            if (!refObj.GetComponent<PlayerStatus>().isDamaged && !refObj.GetComponent<PlayerStatus>().rotateFlag && !damageFlag && !damageFlag2)
+            if (!oneTimeFlag)
             {
-                if (this.GetComponent<EnemyMove>().isMove && floorFlag)
-                {
-                    if (refObj.transform.position.x > this.transform.position.x)
-                    {
-                        if (this.GetComponent<EnemyMove>().rightTleftF)
-                        {
-                            this.GetComponent<EnemyMove>().rightTleftF = false;
-                            transform.localScale = new Vector3(-1 * transform.localScale.x, 1 * transform.localScale.y, 1);
-                        }
-                    }
-                    else
-                    {
-                        if (!this.GetComponent<EnemyMove>().rightTleftF)
-                        {
-                            this.GetComponent<EnemyMove>().rightTleftF = true;
-                            transform.localScale = new Vector3(-1 * transform.localScale.x, 1 * transform.localScale.y, 1);
-                        }
-                    }
-                }
-
-                refObj.GetComponent<PlayerStatus>().HP -= 1;
-
-                refObj.GetComponent<PlayerStatus>().isDamaged = true;
-
-                refObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-
-                if (refObj.transform.position.x < this.transform.position.x)
-                {
-                    refObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(-300.0f, 500.0f));
-                }
-                else
-                {
-                    refObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(300.0f, 500.0f));
-                }
+                refObj.GetComponent<PlayerScript>().HP -= 1;
+                oneTimeFlag = true;
+                refObj.GetComponent<PlayerScript>().blinkingFlag = true;
             }
+
+            //SceneManager.LoadScene("FirstStageScene", LoadSceneMode.Single);
+
+            //if (!refObj.GetComponent<PlayerStatus>().isDamaged && !refObj.GetComponent<PlayerStatus>().rotateFlag && !damageFlag && !damageFlag2)
+            //{
+            //    if (this.GetComponent<EnemyMove>().isMove && floorFlag)
+            //    {
+            //        if (refObj.transform.position.x > this.transform.position.x)
+            //        {
+            //            if (this.GetComponent<EnemyMove>().rightTleftF)
+            //            {
+            //                this.GetComponent<EnemyMove>().rightTleftF = false;
+            //                transform.localScale = new Vector3(-1 * transform.localScale.x, 1 * transform.localScale.y, 1);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if (!this.GetComponent<EnemyMove>().rightTleftF)
+            //            {
+            //                this.GetComponent<EnemyMove>().rightTleftF = true;
+            //                transform.localScale = new Vector3(-1 * transform.localScale.x, 1 * transform.localScale.y, 1);
+            //            }
+            //        }
+            //    }
+
+            //    refObj.GetComponent<PlayerStatus>().HP -= 1;
+
+            //    refObj.GetComponent<PlayerStatus>().isDamaged = true;
+
+            //    refObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+            //    if (refObj.transform.position.x < this.transform.position.x)
+            //    {
+            //        refObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(-300.0f, 500.0f));
+            //    }
+            //    else
+            //    {
+            //        refObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(300.0f, 500.0f));
+            //    }
+            //}
         }
     }
 

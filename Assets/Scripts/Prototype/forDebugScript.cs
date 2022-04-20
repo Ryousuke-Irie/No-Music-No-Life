@@ -20,17 +20,18 @@ public class forDebugScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(refObj.transform.position.x > 140.0f && !oneTimeFlag)
-        {
-            oneTimeFlag = true;
-            GameObject gool = (GameObject)Resources.Load("Goal");
-            GameObject cloneGool = Instantiate(gool, new Vector3(refObj2.transform.position.x, refObj2.transform.position.y, 0.0f), Quaternion.identity);
-        }
+        //if(refObj.transform.position.x > 140.0f && !oneTimeFlag)
+        //{
+        //    oneTimeFlag = true;
+        //    GameObject gool = (GameObject)Resources.Load("Goal");
+        //    GameObject cloneGool = Instantiate(gool, new Vector3(refObj2.transform.position.x, refObj2.transform.position.y, 0.0f), Quaternion.identity);
+        //}
 
-        if ((Input.GetKeyDown(KeyCode.R)) || (refObj.GetComponent<PlayerStatus>().HP <= 0))
-        {
-            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-        }
+        //if ((Input.GetKeyDown(KeyCode.R)) || (refObj.GetComponent<PlayerStatus>().HP <= 0))
+        //{
+        //    SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        //}
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 #if UNITY_EDITOR

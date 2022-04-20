@@ -102,7 +102,7 @@ Transform:
   m_GameObject: {fileID: 8371625418766222388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.56, y: -1.51, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 8267831107365510158}
   m_Father: {fileID: 0}
@@ -221,6 +221,7 @@ MonoBehaviour:
   HP: 30
   MaxHP: 10
   EnemyToBar: 3
+  floorFlag: 0
 --- !u!114 &5853663607059098487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8371625418766222388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f24be6b8bf9e80744be03208c68f1ed9, type: 3}
   m_Name: 
@@ -237,6 +238,9 @@ MonoBehaviour:
   gravity: 0
   nonVisibleAct: 0
   checkCollision: {fileID: 2940986044022142995}
+  isMove: 0
+  PlayerToEnemy: 0
+  rightTleftF: 0
 --- !u!114 &-8223286318120912331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +248,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8371625418766222388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58ffe5b303ae81e4495feb720ed1c786, type: 3}
   m_Name: 
