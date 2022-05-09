@@ -35,6 +35,7 @@ public class NomalEnemyScript : MonoBehaviour
         if(tempHP > HP)
         {
             tempHP = HP;
+            refObj.GetComponent<PlayerScript>().score += 500;
             this.transform.position = new Vector3(refObj.GetComponent<PlayerScript>().Nextdist, this.transform.position.y, this.transform.position.z);
         }
 
@@ -61,13 +62,22 @@ public class NomalEnemyScript : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        for (int i = 0; i < HEART_MAX; i++)
+        {
+            if (cloneHeart[i])
+            {
+                Destroy(cloneHeart[i]);
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Attack")
         {
             HP -= 1;
-
-            refObj.GetComponent<PlayerScript>().score += 500;
 
             col.gameObject.tag = "Untagged";
         }

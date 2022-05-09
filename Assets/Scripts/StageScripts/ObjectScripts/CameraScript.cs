@@ -18,16 +18,27 @@ public class CameraScript : MonoBehaviour
     public float EndLineX = 0.0f;
     private float CameraWidth;
 
-    private static int ONPU_MAX = 10;
-    GameObject[] cloneOnpu = new GameObject[ONPU_MAX];
-    private float onpuSpaceX = 2.0f;
-    private float onpuSpaceY = 1.0f;
-    private float onpuToOnpuSpace = 1.2f;
+    private GameObject bar;
+    private GameObject barUpper;
+    private GameObject barBack;
+    public float barSpaceX = -13.5f;
+    public float barSpaceY = 8.7f;
+    private int HP;
+    private float barScale;
+
+    //private static int ONPU_MAX = 10;
+    //GameObject[] cloneOnpu = new GameObject[ONPU_MAX];
+    //private float onpuSpaceX = 2.0f;
+    //private float onpuSpaceY = 1.0f;
+    //private float onpuToOnpuSpace = 1.2f;
 
     // Start is called before the first frame update
     void Start()
     {
         refObj = GameObject.Find("Player");
+
+        HP = refObj.GetComponent<PlayerScript>().HP;
+
         playerPosX = 0.0f;
         PtoClengthOriginal = PToCLength;
         PtoClengthAfterOriginal = PToCLengthAfter;
@@ -119,24 +130,54 @@ public class CameraScript : MonoBehaviour
             this.transform.localPosition = new Vector3(EndLineX - CameraWidth, 0.0f, this.transform.localPosition.z);
         }
 
+        // HPÉoÅ[ÇÃê∂ê¨
+        if (bar == null)
+        {
+            GameObject BarR = (GameObject)Resources.Load("Bar");
+            bar = Instantiate(BarR, this.transform.position + new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f), Quaternion.identity);
+        }
+
+        if (barUpper == null)
+        {
+            GameObject BarUpperR = (GameObject)Resources.Load("BarUpper");
+            barUpper = Instantiate(BarUpperR, new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f), Quaternion.identity);
+            barScale = barUpper.transform.localScale.x;
+        }
+
+        if(barBack == null)
+        {
+            GameObject BarBackR = (GameObject)Resources.Load("BarBack");
+            barBack = Instantiate(BarBackR, this.transform.position + new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f), Quaternion.identity);
+        }
+
+        bar.transform.position = new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f);
+        barBack.transform.position = new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f);
+
+        float tempX = (barScale / HP) * refObj.GetComponent<PlayerScript>().HP;
+        float tempXupper = (barScale - (barScale / HP) * refObj.GetComponent<PlayerScript>().HP) * 2;
+        float tempPlus = (HP - refObj.GetComponent<PlayerScript>().HP) * 0.05f;
+
+        barUpper.transform.localScale = new Vector3(tempX, barUpper.transform.localScale.y, barUpper.transform.localScale.z);
+        barUpper.transform.position = new Vector3(barSpaceX + this.transform.position.x - tempXupper - tempPlus, barSpaceY + this.transform.position.y, 0.0f);
+
         // PlayerÇÃHP(âπïÑ)Çê›íu
-        for (int i = 0; i < refObj.GetComponent<PlayerScript>().HP; i++)
-        {
-            if (cloneOnpu[i] == null)
-            {
-                GameObject Onpu = (GameObject)Resources.Load("Onpu");
-                cloneOnpu[i] = Instantiate(Onpu, new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f), Quaternion.identity);
-            }
+        //for (int i = 0; i < refObj.GetComponent<PlayerScript>().HP; i++)
+        //{
+        //    if (cloneOnpu[i] == null)
+        //    {
+        //        GameObject Onpu = (GameObject)Resources.Load("Onpu");
+        //        cloneOnpu[i] = Instantiate(Onpu, new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f), Quaternion.identity);
+        //    }
 
-            cloneOnpu[i].transform.position = new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f);
-        }
+        //    cloneOnpu[i].transform.position = new Vector3(this.transform.position.x - CameraWidth + onpuSpaceX + (onpuToOnpuSpace * i), this.transform.position.y + this.GetComponent<Camera>().orthographicSize - onpuSpaceY, 0.0f);
+        //}
 
-        for (int i = refObj.GetComponent<PlayerScript>().HP; i < ONPU_MAX; i++)
-        {
-            if (cloneOnpu[i])
-            {
-                Destroy(cloneOnpu[i]);
-            }
-        }
+        //for (int i = refObj.GetComponent<PlayerScript>().HP; i < ONPU_MAX; i++)
+        //{
+        //    if (cloneOnpu[i])
+        //    {
+        //        Destroy(cloneOnpu[i]);
+        //    }
+        //}
     }
 }

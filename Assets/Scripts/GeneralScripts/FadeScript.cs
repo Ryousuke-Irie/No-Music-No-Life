@@ -11,26 +11,24 @@ public class FadeScript : MonoBehaviour
 
 	float temptime = 0.0f;
 
-	private byte red, green, blue, alfa;
+	private byte alfa;
 
 	public bool isFadeOut = false;  //フェードアウト処理の開始、完了を管理するフラグ
 	public bool isFadeIn = false;   //フェードイン処理の開始、完了を管理するフラグ
+
+	public byte red = 255, green = 255, blue = 255;
+
+	[System.NonSerialized] public bool fadeEndFlag = false;
 
 	void Start()
 	{
 		if (isFadeIn)
 		{
-			red = 255;
-			green = 255;
-			blue = 255;
 			alfa = 255;
 		}
 
 		if (isFadeOut)
 		{
-			red = 255;
-			green = 255;
-			blue = 255;
 			alfa = 0;
 		}
 
@@ -63,6 +61,7 @@ public class FadeScript : MonoBehaviour
 		SetAlpha();                      //b)変更した不透明度パネルに反映する
 		if (alfa <= 0)
 		{                    //c)完全に透明になったら処理を抜ける
+			fadeEndFlag = true;
 			isFadeIn = false;
 			Destroy(gameObject);
 		}
@@ -81,6 +80,7 @@ public class FadeScript : MonoBehaviour
 		SetAlpha();               // c)変更した透明度をパネルに反映する
 		if (alfa >= 255)
 		{             // d)完全に不透明になったら処理を抜ける
+			fadeEndFlag = true;
 			isFadeOut = false;
 		}
 	}

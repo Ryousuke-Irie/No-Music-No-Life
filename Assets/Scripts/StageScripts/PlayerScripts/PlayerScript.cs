@@ -202,6 +202,14 @@ public class PlayerScript : MonoBehaviour
         {
             rotateFlag = true;
 
+            if (Skill < 2)
+            {
+                // 攻撃エフェクト(オブジェクト)生成
+                GameObject Slush = (GameObject)Resources.Load("Slush");
+                GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
+
+            }
+
             if (Skill >= 3)
             {
                 // 攻撃エフェクト(オブジェクト)生成
@@ -225,15 +233,7 @@ public class PlayerScript : MonoBehaviour
                 GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 4.0f, 0.0f), Quaternion.identity);
 
                 Skill = 0;
-            }
-            
-            if(Skill < 2)
-            {
-                // 攻撃エフェクト(オブジェクト)生成
-                GameObject Slush = (GameObject)Resources.Load("Slush");
-                GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
-
-            }
+            }          
 
             GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
 
