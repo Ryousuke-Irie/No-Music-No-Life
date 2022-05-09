@@ -48,6 +48,12 @@ public class ControllerScript : MonoBehaviour
         {
             this.GetComponent<PlayerScript>().attackFlag = true;
         }
+
+        // —­‚ßˆ—
+        if (Input.GetKeyDown(KeyCode.C) && (this.transform.position.x > this.GetComponent<PlayerScript>().dist - this.GetComponent<PlayerScript>().TempoTimeError && this.transform.position.x < this.GetComponent<PlayerScript>().dist + this.GetComponent<PlayerScript>().TempoTimeError) && !this.GetComponent<PlayerScript>().actionFlag)
+        {
+            this.GetComponent<PlayerScript>().chargeFlag = true;
+        }
     }
 
     private void Controller()
@@ -64,11 +70,17 @@ public class ControllerScript : MonoBehaviour
         }
 
         // UŒ‚ˆ—
-        if ((Gamepad.current.buttonNorth.wasPressedThisFrame || Gamepad.current.buttonEast.wasPressedThisFrame
+        if ((Gamepad.current.buttonEast.wasPressedThisFrame
             || Gamepad.current.buttonWest.wasPressedThisFrame || Gamepad.current.rightShoulder.wasPressedThisFrame)
              && (this.transform.position.x > this.GetComponent<PlayerScript>().dist - this.GetComponent<PlayerScript>().TempoTimeError && this.transform.position.x < this.GetComponent<PlayerScript>().dist + this.GetComponent<PlayerScript>().TempoTimeError) && !this.GetComponent<PlayerScript>().actionFlag)
         {
             this.GetComponent<PlayerScript>().attackFlag = true;
+        }
+
+        // —­‚ßˆ—
+        if (Gamepad.current.buttonNorth.wasPressedThisFrame && (this.transform.position.x > this.GetComponent<PlayerScript>().dist - this.GetComponent<PlayerScript>().TempoTimeError && this.transform.position.x < this.GetComponent<PlayerScript>().dist + this.GetComponent<PlayerScript>().TempoTimeError) && !this.GetComponent<PlayerScript>().actionFlag)
+        {
+            this.GetComponent<PlayerScript>().chargeFlag = true;
         }
     }
 }

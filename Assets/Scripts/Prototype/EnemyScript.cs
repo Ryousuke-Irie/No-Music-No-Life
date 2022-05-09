@@ -107,6 +107,8 @@ public class EnemyScript : MonoBehaviour
 
             Destroy(gameObject);
 
+            refObj.GetComponent<PlayerScript>().score += 500;
+
             col.gameObject.tag = "Untagged";
         }
 
