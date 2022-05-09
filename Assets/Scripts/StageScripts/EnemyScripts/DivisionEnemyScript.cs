@@ -15,6 +15,8 @@ public class DivisionEnemyScript : MonoBehaviour
     private static int HEART_MAX = 5;
     GameObject[] cloneHeart = new GameObject[HEART_MAX];
 
+    public float error = -5.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +33,9 @@ public class DivisionEnemyScript : MonoBehaviour
             GameObject cloneEnemy;
             GameObject cloneEnemyUpper;
             GameObject cloneEnemyLower;
-            cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist, 0.0f, 0.0f), Quaternion.identity);
-            cloneEnemyUpper = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist, 4.0f, 0.0f), Quaternion.identity);
-            cloneEnemyLower = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist, -4.0f, 0.0f), Quaternion.identity);
+            cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist - error, 0.0f, 0.0f), Quaternion.identity);
+            cloneEnemyUpper = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist - error, 4.0f, 0.0f), Quaternion.identity);
+            cloneEnemyLower = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist - error, -4.0f, 0.0f), Quaternion.identity);
 
             Destroy(gameObject);
 
