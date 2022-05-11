@@ -514,7 +514,7 @@ public class TestStage : StageScript
     public override float SetMoveLimit()
     {
         // return ((stickPosDataArray[Max - 1]) + 6.0f);
-        return ((stickPosDataArray[Max - 1]) + 16.0f);
+        return ((stickPosDataArray[Max - 1]) + 36.0f);
     }
 
     public override int GetLastStick()

@@ -51,6 +51,7 @@ public class PlayerScript : MonoBehaviour
 
     [System.NonSerialized] public bool startFlag = false;
     [System.NonSerialized] public bool goalFlag = false;
+    [System.NonSerialized] public bool lastStickFlag = false;
 
     [System.NonSerialized] public bool oneTimeFlag = false;
     private bool oneTimeFlag2 = false;

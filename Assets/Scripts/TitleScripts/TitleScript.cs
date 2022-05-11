@@ -66,7 +66,6 @@ public class TitleScript : MonoBehaviour
 
     void LoadScene()
     {
-        //SceneManager.LoadScene("StageSelectScene");
         SceneManager.LoadScene("StageSelectScene");
     }
 }

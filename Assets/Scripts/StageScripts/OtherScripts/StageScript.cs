@@ -130,6 +130,10 @@ public class StageScript : MonoBehaviour
 
                 refObjp.GetComponent<PlayerScript>().actionFlag = false;
             }
+            else
+            {
+                refObjp.GetComponent<PlayerScript>().lastStickFlag = true;
+            }
         }
 
         // “G

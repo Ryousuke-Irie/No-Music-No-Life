@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -8304394428281975154}
   - component: {fileID: -1858896167153040996}
   - component: {fileID: 1092715306}
+  - component: {fileID: 782676339}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -184,7 +185,7 @@ MonoBehaviour:
   BesideMoveAmount: 10
   PlayerToSlush: 5
   PlayerToReticle: 5
-  BGM: {fileID: 0}
+  BGM: {fileID: 3264962811681207529, guid: 12203b4961d9d3a4b9e3f86ddba83779, type: 3}
 --- !u!114 &1092715306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +201,15 @@ MonoBehaviour:
   PosY: 8.7
   PosX: 15.5
   Between: 1.2
+--- !u!114 &782676339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904612814948962562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d00c15701141414c904bda0fb9641ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

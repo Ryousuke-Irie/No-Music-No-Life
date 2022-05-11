@@ -25,6 +25,7 @@ public class CameraScript : MonoBehaviour
     public float barSpaceY = 8.7f;
     private int HP;
     private float barScale;
+    private float barSize;
 
     //private static int ONPU_MAX = 10;
     //GameObject[] cloneOnpu = new GameObject[ONPU_MAX];
@@ -142,6 +143,7 @@ public class CameraScript : MonoBehaviour
             GameObject BarUpperR = (GameObject)Resources.Load("BarUpper");
             barUpper = Instantiate(BarUpperR, new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f), Quaternion.identity);
             barScale = barUpper.transform.localScale.x;
+            barSize = barUpper.GetComponent<SpriteRenderer>().size.x;
         }
 
         if(barBack == null)
@@ -153,12 +155,13 @@ public class CameraScript : MonoBehaviour
         bar.transform.position = new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f);
         barBack.transform.position = new Vector3(barSpaceX + this.transform.position.x, barSpaceY + this.transform.position.y, 0.0f);
 
-        float tempX = (barScale / HP) * refObj.GetComponent<PlayerScript>().HP;
+        float tempX = (barSize / HP) * refObj.GetComponent<PlayerScript>().HP;
+        
         float tempXupper = (barScale - (barScale / HP) * refObj.GetComponent<PlayerScript>().HP) * 2;
-        float tempPlus = (HP - refObj.GetComponent<PlayerScript>().HP) * 0.05f;
 
-        barUpper.transform.localScale = new Vector3(tempX, barUpper.transform.localScale.y, barUpper.transform.localScale.z);
-        barUpper.transform.position = new Vector3(barSpaceX + this.transform.position.x - tempXupper - tempPlus, barSpaceY + this.transform.position.y, 0.0f);
+        barUpper.GetComponent<SpriteRenderer>().size = new Vector2(tempX, barUpper.GetComponent<SpriteRenderer>().size.y);
+
+        barUpper.transform.position = new Vector3(barSpaceX + this.transform.position.x - tempXupper, barSpaceY + this.transform.position.y, 0.0f);
 
         // PlayerÇÃHP(âπïÑ)Çê›íu
         //for (int i = 0; i < refObj.GetComponent<PlayerScript>().HP; i++)

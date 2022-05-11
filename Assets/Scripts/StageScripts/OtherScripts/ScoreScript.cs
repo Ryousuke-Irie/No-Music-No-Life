@@ -66,7 +66,7 @@ public class ScoreScript : MonoBehaviour
 
 		number = this.GetComponent<PlayerScript>().score;
 
-		if (deleteFlag)
+		if (deleteFlag && !this.GetComponent<PlayerScript>().lastStickFlag)
 		{
 			deleteFlag = false;
 
@@ -146,6 +146,11 @@ public class ScoreScript : MonoBehaviour
 		{
 			deleteFlag = true;
 			scoreTemp = this.GetComponent<PlayerScript>().score;
+		}
+
+		if (this.GetComponent<PlayerScript>().lastStickFlag)
+        {
+			deleteFlag = true;
 		}
 	}
 }
