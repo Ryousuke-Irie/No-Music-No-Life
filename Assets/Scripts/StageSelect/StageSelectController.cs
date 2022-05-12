@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 public class StageSelectController : MonoBehaviour
 {
     [Header("スケールを変えたいオブジェクト1")] public GameObject bar1;
@@ -16,6 +17,16 @@ public class StageSelectController : MonoBehaviour
     [Header("スケールを変えたいオブジェクト8")] public GameObject bar8;
     [Header("スケールを変えたいオブジェクト9")] public GameObject bar9;
     [Header("スケールを変えたいオブジェクト10")] public GameObject bar10;
+    [Header("スケールを変えたいオブジェクト11")] public GameObject bar11;
+    [Header("スケールを変えたいオブジェクト12")] public GameObject bar12;
+    [Header("スケールを変えたいオブジェクト13")] public GameObject bar13;
+    [Header("スケールを変えたいオブジェクト14")] public GameObject bar14;
+    [Header("スケールを変えたいオブジェクト15")] public GameObject bar15;
+    [Header("スケールを変えたいオブジェクト16")] public GameObject bar16;
+    [Header("スケールを変えたいオブジェクト17")] public GameObject bar17;
+    [Header("スケールを変えたいオブジェクト18")] public GameObject bar18;
+    [Header("スケールを変えたいオブジェクト19")] public GameObject bar19;
+    [Header("スケールを変えたいオブジェクト20")] public GameObject bar20;
 
     GameObject[] barBox;
 
@@ -29,6 +40,16 @@ public class StageSelectController : MonoBehaviour
     [Header("イメージオブジェクト8")] public GameObject image8;
     [Header("イメージオブジェクト9")] public GameObject image9;
     [Header("イメージオブジェクト10")] public GameObject image10;
+    [Header("イメージオブジェクト11")] public GameObject image11;
+    [Header("イメージオブジェクト12")] public GameObject image12;
+    [Header("イメージオブジェクト13")] public GameObject image13;
+    [Header("イメージオブジェクト14")] public GameObject image14;
+    [Header("イメージオブジェクト15")] public GameObject image15;
+    [Header("イメージオブジェクト16")] public GameObject image16;
+    [Header("イメージオブジェクト17")] public GameObject image17;
+    [Header("イメージオブジェクト18")] public GameObject image18;
+    [Header("イメージオブジェクト19")] public GameObject image19;
+    [Header("イメージオブジェクト20")] public GameObject image20;
 
     GameObject[] imageBox;
 
@@ -50,6 +71,8 @@ public class StageSelectController : MonoBehaviour
     [Header("スケールスピードX")] public float sclspeedX;
     [Header("スケールスピードY")] public float sclspeedY;
 
+    private int stageNum = 20;
+
     private int barNum = 0;
     private int imageNum = 0;
     private int timeCnt = 0;
@@ -65,31 +88,31 @@ public class StageSelectController : MonoBehaviour
     {
         barBox = new GameObject[]
         {
-            bar1, bar2, bar3, bar4, bar5, bar6, bar7, bar8, bar9, bar10
+            bar1, bar2, bar3, bar4, bar5, bar6, bar7, bar8, bar9, bar10, bar11, bar12, bar13, bar14, bar15, bar16, bar17, bar18, bar19, bar20
         };
 
         imageBox = new GameObject[]
         {
-            image1, image2, image3, image4, image5, image6, image7, image8, image9, image10
+            image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20,
         };
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < stageNum; i++)
 		{
             barBox[i].SetActive(false);
 		}
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < stageNum; i++)
 		{
             imageBox[i].SetActive(false);
 		}
 
-        barBox[8].SetActive(true);
-        barBox[8].transform.position = new Vector3(S1positionX + (float)-2.0, S1positionY + (float)-2.0, 0.0f);
-        barBox[8].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        barBox[18].SetActive(true);
+        barBox[18].transform.position = new Vector3(S1positionX + (float)-2.0, S1positionY + (float)-2.0, 0.0f);
+        barBox[18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
 
-        barBox[9].SetActive(true);
-        barBox[9].transform.position = new Vector3(S2positionX, S2positionY, 0.0f);
-        barBox[9].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        barBox[19].SetActive(true);
+        barBox[19].transform.position = new Vector3(S2positionX, S2positionY, 0.0f);
+        barBox[19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
 
         barBox[0].SetActive(true);
         barBox[0].transform.position = new Vector3(BpositionX, BpositionY, 0.0f);
@@ -110,24 +133,24 @@ public class StageSelectController : MonoBehaviour
             transFlagS = true;
             barNum += 1;
 
-            if (barNum > 9)
+            if (barNum > 19)
             {
                 barNum = 0;
             }
 
             if (barNum == 0 || barNum == 1 || barNum == 2)
             {
-                barBox[barNum + 7].SetActive(false);
+                barBox[barNum + 17].SetActive(false);
                 barBox[barNum + 1].SetActive(true);
                 barBox[barNum + 1].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
                 barBox[barNum + 1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
             }
-            else if (barNum == 9)
+            else if (barNum == 19)
             {
                 barBox[barNum - 3].SetActive(false);
-                barBox[barNum - 9].SetActive(true);
-                barBox[barNum - 9].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
-                barBox[barNum - 9].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+                barBox[barNum - 19].SetActive(true);
+                barBox[barNum - 19].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
+                barBox[barNum - 19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
             }
             else
             {
@@ -137,7 +160,7 @@ public class StageSelectController : MonoBehaviour
                 barBox[barNum + 1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
             }
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < stageNum; i++)
             {
                 imageBox[i].SetActive(false);
             }
@@ -151,12 +174,12 @@ public class StageSelectController : MonoBehaviour
 
             if (barNum < 0)
 			{
-                barNum = 9;
+                barNum = 19;
 			}
 
-            if (barNum == 9 || barNum == 8)
+            if (barNum == 19 || barNum == 18)
 			{
-                barBox[barNum - 8].SetActive(false);
+                barBox[barNum - 18].SetActive(false);
                 barBox[barNum - 2].SetActive(true);
                 barBox[barNum - 2].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
                 barBox[barNum - 2].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
@@ -164,9 +187,9 @@ public class StageSelectController : MonoBehaviour
             else if (barNum == 1 || barNum == 0)
             {
                 barBox[barNum + 2].SetActive(false);
-                barBox[barNum + 8].SetActive(true);
-                barBox[barNum + 8].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
-                barBox[barNum + 8].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+                barBox[barNum + 18].SetActive(true);
+                barBox[barNum + 18].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
+                barBox[barNum + 18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
             }
             else
             {
@@ -177,7 +200,7 @@ public class StageSelectController : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < stageNum; i++)
         {
             imageBox[i].SetActive(false);
         }
@@ -188,7 +211,7 @@ public class StageSelectController : MonoBehaviour
 		{
             if (barNum == 1)
 			{
-                barBox[barNum + 8].transform.position += new Vector3(speedX, speedY, 0);
+                barBox[barNum + 18].transform.position += new Vector3(speedX, speedY, 0);
                 barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
                 barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
                 barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
@@ -201,14 +224,14 @@ public class StageSelectController : MonoBehaviour
                     timeCnt = 0;
                 }
             }
-            else if (barNum == 9)
+            else if (barNum == 19)
             {
                 barBox[barNum - 2].transform.position += new Vector3(speedX, speedY, 0);
                 barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
                 barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
                 barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
                 barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum - 9].transform.position += new Vector3(-speedX, speedY, 0);
+                barBox[barNum - 19].transform.position += new Vector3(-speedX, speedY, 0);
                 timeCnt += 1;
                 if (timeCnt > 40)
                 {
@@ -218,9 +241,9 @@ public class StageSelectController : MonoBehaviour
             }
             else if (barNum == 0)
             {
-                barBox[barNum + 8].transform.position += new Vector3(speedX, speedY, 0);
-                barBox[barNum + 9].transform.position += new Vector3(speedX, speedY, 0);
-                barBox[barNum + 9].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                barBox[barNum + 18].transform.position += new Vector3(speedX, speedY, 0);
+                barBox[barNum + 19].transform.position += new Vector3(speedX, speedY, 0);
+                barBox[barNum + 19].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
                 barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
                 barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
                 barBox[barNum + 1].transform.position += new Vector3(-speedX, speedY, 0);
@@ -249,14 +272,14 @@ public class StageSelectController : MonoBehaviour
         }
         else if (transFlagW == true)
         {
-            if (barNum == 9)
+            if (barNum == 19)
             {
                 barBox[barNum - 2].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum - 9].transform.position += new Vector3(speedX, -speedY, 0);
-                barBox[barNum - 9].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                barBox[barNum - 19].transform.position += new Vector3(speedX, -speedY, 0);
+                barBox[barNum - 19].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
                 timeCnt += 1;
                 if (timeCnt > 40)
                 {
@@ -266,7 +289,7 @@ public class StageSelectController : MonoBehaviour
             }
             else if (barNum == 1)
             {
-                barBox[barNum + 8].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum + 18].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
@@ -281,8 +304,8 @@ public class StageSelectController : MonoBehaviour
             }
             else if (barNum == 0)
             {
-                barBox[barNum + 8].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum + 9].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum + 18].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum + 19].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
                 barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
                 barBox[barNum + 1].transform.position += new Vector3(speedX, -speedY, 0);
@@ -316,34 +339,64 @@ public class StageSelectController : MonoBehaviour
             switch (barNum)
             {
                 case 0:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("1stStageScene");
                     break;
                 case 1:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("2ndStageScene");
                     break;
                 case 2:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("3rdStageScene");
                     break;
                 case 3:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("4thStageScene");
                     break;
                 case 4:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("5thStageScene");
                     break;
                 case 5:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("6thStageScene");
                     break;
                 case 6:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("7thStageScene");
                     break;
                 case 7:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("8thStageScene");
                     break;
                 case 8:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("9thStageScene");
                     break;
                 case 9:
-                    SceneManager.LoadScene("FirstStageScene");
+                    SceneManager.LoadScene("10thStageScene");
+                    break;
+                case 10:
+                    SceneManager.LoadScene("11thStageScene");
+                    break;
+                case 11:
+                    SceneManager.LoadScene("12thStageScene");
+                    break;
+                case 12:
+                    SceneManager.LoadScene("13thStageScene");
+                    break;
+                case 13:
+                    SceneManager.LoadScene("14thStageScene");
+                    break;
+                case 14:
+                    SceneManager.LoadScene("15thStageScene");
+                    break;
+                case 15:
+                    SceneManager.LoadScene("16thStageScene");
+                    break;
+                case 16:
+                    SceneManager.LoadScene("17thStageScene");
+                    break;
+                case 17:
+                    SceneManager.LoadScene("18thStageScene");
+                    break;
+                case 18:
+                    SceneManager.LoadScene("19thStageScene");
+                    break;
+                case 19:
+                    SceneManager.LoadScene("20thStageScene");
                     break;
                 default:
                     break;
