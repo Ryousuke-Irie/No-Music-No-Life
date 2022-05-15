@@ -73,7 +73,7 @@ public class StageSelectController : MonoBehaviour
 
     private int stageNum = 20;
 
-    private int barNum = 0;
+    public static int barNum = 0;
     private int imageNum = 0;
     private int timeCnt = 0;
     private bool transFlagS = false;
@@ -129,7 +129,7 @@ public class StageSelectController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.S) && transFlagS == false)
-		{
+        {
             transFlagS = true;
             barNum += 1;
 
@@ -168,17 +168,17 @@ public class StageSelectController : MonoBehaviour
             imageBox[barNum].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.W) && transFlagW == false)
-		{
+        {
             transFlagW = true;
             barNum -= 1;
 
             if (barNum < 0)
-			{
+            {
                 barNum = 19;
-			}
+            }
 
             if (barNum == 19 || barNum == 18)
-			{
+            {
                 barBox[barNum - 18].SetActive(false);
                 barBox[barNum - 2].SetActive(true);
                 barBox[barNum - 2].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
@@ -208,9 +208,9 @@ public class StageSelectController : MonoBehaviour
         imageBox[barNum].SetActive(true);
 
         if (transFlagS == true)
-		{
+        {
             if (barNum == 1)
-			{
+            {
                 barBox[barNum + 18].transform.position += new Vector3(speedX, speedY, 0);
                 barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
                 barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
@@ -335,7 +335,7 @@ public class StageSelectController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
-		{
+        {
             switch (barNum)
             {
                 case 0:
@@ -402,5 +402,11 @@ public class StageSelectController : MonoBehaviour
                     break;
             }
         }
+    }
+
+    // Œ»Ý‚ÌbarNum‚ðŽæ“¾
+    public static int getBarNum()
+    {
+        return barNum;
     }
 }

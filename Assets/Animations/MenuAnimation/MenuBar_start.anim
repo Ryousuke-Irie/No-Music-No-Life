@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MenuBar
+  m_Name: MenuBar_start
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -34,9 +34,9 @@ AnimationClip:
     - time: 0.2
       value: {fileID: 21300000, guid: 9c9f3f88557ddb840b79aca122f39bba, type: 3}
     - time: 0.23333333
-      value: {fileID: 21300000, guid: d3b2f8671cf25044db107059705638ab, type: 3}
-    - time: 0.26666668
       value: {fileID: 21300000, guid: 38b86d262b04e4e48b22d53470067011, type: 3}
+    - time: 0.26666668
+      value: {fileID: 21300000, guid: 1ed51da04200b844987967de973d5da7, type: 3}
     - time: 0.3
       value: {fileID: 21300000, guid: 1ed51da04200b844987967de973d5da7, type: 3}
     - time: 0.33333334
@@ -105,8 +105,8 @@ AnimationClip:
     - {fileID: 21300000, guid: 0d51f98cf2c0be94da8ebd6190034425, type: 3}
     - {fileID: 21300000, guid: 16e799e7a819c7344ad05e4dac59e7dc, type: 3}
     - {fileID: 21300000, guid: 9c9f3f88557ddb840b79aca122f39bba, type: 3}
-    - {fileID: 21300000, guid: d3b2f8671cf25044db107059705638ab, type: 3}
     - {fileID: 21300000, guid: 38b86d262b04e4e48b22d53470067011, type: 3}
+    - {fileID: 21300000, guid: 1ed51da04200b844987967de973d5da7, type: 3}
     - {fileID: 21300000, guid: 1ed51da04200b844987967de973d5da7, type: 3}
     - {fileID: 21300000, guid: b23578c1371463c4082f84a5e80d714f, type: 3}
     - {fileID: 21300000, guid: b3de504b8f4c2ba48ac740ed58eb0abc, type: 3}
