@@ -12,18 +12,18 @@ public class ResultScript : MonoBehaviour
     private GameObject cloneResult;
 
     private float initialPos = 20.0f;
-    private float move = 10.0f;
+    private float move = 20.0f;
 
     private bool moveEndFlag = false;
     private bool scoreEndFlag = false;
     private bool rankEndFlag = false;
 
-    private float PosY = 10.0f;
-    private float PosX = 10.0f;
+    private float PosY = -0.8f;
+    private float PosX = 0.0f;
 
-    private float Between = 5.0f;
+    private float Between = 1.8f;
 
-    private int plusScore = 10;
+    private int plusScore = 100;
     private int tempScore = 0;
 
     private GameObject Zero;
@@ -36,6 +36,20 @@ public class ResultScript : MonoBehaviour
     private GameObject Seven;
     private GameObject Eight;
     private GameObject Nine;
+
+    private GameObject cloneRank;
+    public int Rank_C   = 5000;
+    public int Rank_B   = 9000;
+    public int Rank_A   = 13000;
+    public int Rank_S   = 17000;
+    public int Rank_SS  = 21000;
+    public int Rank_SSS = 25000;
+
+    private float PosYr = 4.2f;
+    private float PosXr = 1.0f;
+
+    private float MaxScale = 1.5f;
+    private float ScaleAmount = 15.0f;
 
     [System.NonSerialized] public bool deleteFlag = true;
 
@@ -52,16 +66,16 @@ public class ResultScript : MonoBehaviour
 
         fadeObj = GameObject.Find("fade_white2");
 
-        //Zero = (GameObject)Resources.Load("Numeral/Zero2");
-        //One = (GameObject)Resources.Load("Numeral/One2");
-        //Two = (GameObject)Resources.Load("Numeral/Two2");
-        //Three = (GameObject)Resources.Load("Numeral/Three2");
-        //Four = (GameObject)Resources.Load("Numeral/Four2");
-        //Five = (GameObject)Resources.Load("Numeral/Five2");
-        //Six = (GameObject)Resources.Load("Numeral/Six2");
-        //Seven = (GameObject)Resources.Load("Numeral/Seven2");
-        //Eight = (GameObject)Resources.Load("Numeral/Eight2");
-        //Nine = (GameObject)Resources.Load("Numeral/Nine2");
+        Zero = (GameObject)Resources.Load("Numeral/Zero2");
+        One = (GameObject)Resources.Load("Numeral/One2");
+        Two = (GameObject)Resources.Load("Numeral/Two2");
+        Three = (GameObject)Resources.Load("Numeral/Three2");
+        Four = (GameObject)Resources.Load("Numeral/Four2");
+        Five = (GameObject)Resources.Load("Numeral/Five2");
+        Six = (GameObject)Resources.Load("Numeral/Six2");
+        Seven = (GameObject)Resources.Load("Numeral/Seven2");
+        Eight = (GameObject)Resources.Load("Numeral/Eight2");
+        Nine = (GameObject)Resources.Load("Numeral/Nine2");
     }
 
     void FixedUpdate()
@@ -114,108 +128,166 @@ public class ResultScript : MonoBehaviour
 
     private void SetScore()
     {
-        //tempScore += plusScore;
+        tempScore += plusScore;
 
-        //// 桁数計算
-        //int number = tempScore;
+        // 桁数計算
+        int number = tempScore;
 
-        //int digit = 0;
+        int digit = 0;
 
-        //while (number > 0)
-        //{
-        //    number = number / 10;
-        //    digit += 1;
-        //}
+        while (number > 0)
+        {
+            number = number / 10;
+            digit += 1;
+        }
 
-        //if (digit == 0)
-        //{
-        //    digit = 1;
-        //}
+        if (digit == 0)
+        {
+            digit = 1;
+        }
 
-        //number = tempScore;
+        number = tempScore;
 
-        //deleteFlag = false;
+        if (!scoreEndFlag)
+        {
+            if (deleteFlag)
+            {
+                deleteFlag = false;
+            }
+            else
+            {
+                deleteFlag = true;
+            }
 
-        //if (!scoreEndFlag = true)
-        //{
-        //    for (int i = 0; i < digit; i++)
-        //    {
-        //        // 今回表示する桁の数字
-        //        int num = (int)(number % 10);
+            for (int i = 0; i < digit; i++)
+            {
+                // 今回表示する桁の数字
+                int num = (int)(number % 10);
 
-        //        if (num == 0)
-        //        {
-        //            GameObject cloneNum = Instantiate(Zero, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 0)
+                {
+                    GameObject cloneNum = Instantiate(Zero, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 1)
-        //        {
-        //            GameObject cloneNum = Instantiate(One, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 1)
+                {
+                    GameObject cloneNum = Instantiate(One, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 2)
-        //        {
-        //            GameObject cloneNum = Instantiate(Two, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 2)
+                {
+                    GameObject cloneNum = Instantiate(Two, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 3)
-        //        {
-        //            GameObject cloneNum = Instantiate(Three, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 3)
+                {
+                    GameObject cloneNum = Instantiate(Three, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 4)
-        //        {
-        //            GameObject cloneNum = Instantiate(Four, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 4)
+                {
+                    GameObject cloneNum = Instantiate(Four, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 5)
-        //        {
-        //            GameObject cloneNum = Instantiate(Five, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 5)
+                {
+                    GameObject cloneNum = Instantiate(Five, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 6)
-        //        {
-        //            GameObject cloneNum = Instantiate(Six, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 6)
+                {
+                    GameObject cloneNum = Instantiate(Six, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 7)
-        //        {
-        //            GameObject cloneNum = Instantiate(Seven, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 7)
+                {
+                    GameObject cloneNum = Instantiate(Seven, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 8)
-        //        {
-        //            GameObject cloneNum = Instantiate(Eight, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 8)
+                {
+                    GameObject cloneNum = Instantiate(Eight, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        if (num == 9)
-        //        {
-        //            GameObject cloneNum = Instantiate(Nine, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
-        //        }
+                if (num == 9)
+                {
+                    GameObject cloneNum = Instantiate(Nine, new Vector3(refObj2.transform.position.x + PosX - i * Between, PosY, 0.0f), Quaternion.identity);
+                }
 
-        //        // 次の桁へ
-        //        number /= 10;
-        //    }
-        //}
+                // 次の桁へ
+                number /= 10;
+            }
+        }
 
-        //if (tempScore == refObj.GetComponent<PlayerScript>().score)
-        //{
-        //    scoreEndFlag = true;
-        //}
-        //else
-        //{
-        //    deleteFlag = true;
-        //}
-
-        // 仮設置
-        scoreEndFlag = true;
+        if (tempScore == refObj.GetComponent<PlayerScript>().score)
+        {
+            scoreEndFlag = true;
+        }
     }
 
     private void SetRank()
     {
         // スコアランクを表示する
 
-        rankEndFlag = true;
+        if (!cloneRank)
+        {
+            if(Rank_SSS <= refObj.GetComponent<PlayerScript>().score)
+            {
+                GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankSSS");
+                cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
+            }
+
+            if (Rank_SSS > refObj.GetComponent<PlayerScript>().score && refObj.GetComponent<PlayerScript>().score >= Rank_SS)
+            {
+                GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankSS");
+                cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
+            }
+
+            if (Rank_SS > refObj.GetComponent<PlayerScript>().score && refObj.GetComponent<PlayerScript>().score >= Rank_S)
+            {
+                GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankS");
+                cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
+            }
+
+            if (Rank_S > refObj.GetComponent<PlayerScript>().score && refObj.GetComponent<PlayerScript>().score >= Rank_A)
+            {
+                GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankA");
+                cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
+            }
+
+            if (Rank_A > refObj.GetComponent<PlayerScript>().score && refObj.GetComponent<PlayerScript>().score >= Rank_B)
+            {
+                GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankB");
+                cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
+            }
+
+            if (Rank_B > refObj.GetComponent<PlayerScript>().score && refObj.GetComponent<PlayerScript>().score >= Rank_C)
+            {
+                GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankC");
+                cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
+            }
+
+            if (Rank_C > refObj.GetComponent<PlayerScript>().score)
+            {
+                GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankD");
+                cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
+            }
+
+            cloneRank.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+
+        if (cloneRank)
+        {
+            if(cloneRank.transform.localScale.x < MaxScale)
+            {
+                cloneRank.transform.localScale += new Vector3(ScaleAmount * Time.deltaTime, ScaleAmount * Time.deltaTime, 0.0f);
+            }
+            else
+            {
+                rankEndFlag = true;
+            }
+        }
+
     }
 
     private void BackToStageSelectScene()
