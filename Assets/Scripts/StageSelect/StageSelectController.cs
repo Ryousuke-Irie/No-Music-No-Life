@@ -128,7 +128,7 @@ public class StageSelectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && transFlagS == false)
+        if (Input.GetKeyDown(KeyCode.S) && transFlagS == false && transFlagW == false)
         {
             transFlagS = true;
             barNum += 1;
@@ -167,7 +167,8 @@ public class StageSelectController : MonoBehaviour
 
             imageBox[barNum].SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.W) && transFlagW == false)
+
+        if (Input.GetKeyDown(KeyCode.W) && transFlagW == false && transFlagS == false)
         {
             transFlagW = true;
             barNum -= 1;
