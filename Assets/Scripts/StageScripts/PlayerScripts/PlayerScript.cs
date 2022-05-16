@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
+    private Animator animator;
+
     // 変数
     private int Skill = 0;
 
     public int HP = 5;
+    private int tempHP = 5;
 
     public float TempoTimeError = 1.5f;
 
@@ -18,11 +21,12 @@ public class PlayerScript : MonoBehaviour
     [System.NonSerialized] public float Nextdist = 0.0f;
     [System.NonSerialized] public float Next2dist = 0.0f;
     [System.NonSerialized] public float MoveLimit = 140.0f;
+    private float MoveLimitPlus = 10.0f;
     public float BesideMoveAmount = 10.0f;
 
-    private float UpperLimit = 6.0f;
-    private float LowerLimit = -6.0f;
-    private float VerticalMoveAmount = 6.0f;
+    private float UpperLimit = 4.0f;
+    private float LowerLimit = -4.0f;
+    private float VerticalMoveAmount = 4.0f;
 
     public float PlayerToSlush = 2.0f;
     public float PlayerToReticle = 5.0f;
@@ -38,6 +42,8 @@ public class PlayerScript : MonoBehaviour
     private GameObject Effect;
     private GameObject cloneEffect;
     private GameObject cloneEffect2;
+
+    private GameObject refCamera;
 
     // フラグ用変数
     private bool rotateFlag = false;
@@ -59,10 +65,15 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+        tempHP = HP;
+
         SE = (GameObject)Resources.Load("SE01");
         SE2 = (GameObject)Resources.Load("SE02");
 
         Effect = (GameObject)Resources.Load("nannkaEffect");
+
+        refCamera = GameObject.Find("Main Camera");
 
         cloneEffect = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         //cloneEffect2 = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -91,6 +102,9 @@ public class PlayerScript : MonoBehaviour
 
             // 横移動処理
             BesideMove();
+
+            // アニメーション管理
+            AnimationManager();
         }
 
         // 上下移動処理
@@ -109,6 +123,9 @@ public class PlayerScript : MonoBehaviour
 
         // 位置判定による処理
         PosJudge();
+
+        // HPが減った時の処理
+        Damaged();
 
         // HPが0になった時の処理
         Dead();
@@ -152,10 +169,26 @@ public class PlayerScript : MonoBehaviour
     private void BesideMove()
     {
         // 横の移動
-        if (this.transform.position.x < MoveLimit)
+        if (this.transform.position.x < MoveLimit + MoveLimitPlus)
         {
             this.transform.position += new Vector3(BesideMoveAmount, 0.0f, 0.0f) * Time.deltaTime;
             cloneBGM.transform.position = this.transform.position;
+        }
+    }
+
+    private void AnimationManager()
+    {
+        if (this.transform.position.x < MoveLimit)
+        {
+            if (this.transform.position.y <= LowerLimit)
+            {
+                animator.SetBool("PlayerRunBool", true);
+            }
+        }
+
+        if (this.transform.position.y > LowerLimit)
+        {
+            animator.SetBool("PlayerRunBool", false);
         }
     }
 
@@ -295,6 +328,16 @@ public class PlayerScript : MonoBehaviour
             oneTimeFlag = true;
 
             GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        }
+    }
+
+    private void Damaged()
+    {
+        if(HP < tempHP)
+        {
+            refCamera.GetComponent<CameraScript>().Shake(0.25f, 0.1f);
+
+            tempHP = HP;
         }
     }
 

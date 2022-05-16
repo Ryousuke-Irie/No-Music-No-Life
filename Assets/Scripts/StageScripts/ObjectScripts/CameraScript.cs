@@ -21,11 +21,15 @@ public class CameraScript : MonoBehaviour
     private GameObject bar;
     private GameObject barUpper;
     private GameObject barBack;
-    public float barSpaceX = -13.5f;
-    public float barSpaceY = 8.7f;
+    private float barSpaceX = -12.5f;
+    private float barSpaceY = 8.7f;
     private int HP;
+    private int tempHP;
     private float barScale;
     private float barSize;
+
+    private float redTempX;
+    private float redTempSize;
 
     //private static int ONPU_MAX = 10;
     //GameObject[] cloneOnpu = new GameObject[ONPU_MAX];
@@ -39,6 +43,7 @@ public class CameraScript : MonoBehaviour
         refObj = GameObject.Find("Player");
 
         HP = refObj.GetComponent<PlayerScript>().HP;
+        tempHP = refObj.GetComponent<PlayerScript>().HP;
 
         playerPosX = 0.0f;
         PtoClengthOriginal = PToCLength;
@@ -159,6 +164,7 @@ public class CameraScript : MonoBehaviour
         
         float tempXupper = (barScale - (barScale / HP) * refObj.GetComponent<PlayerScript>().HP) * 2;
 
+
         barUpper.GetComponent<SpriteRenderer>().size = new Vector2(tempX, barUpper.GetComponent<SpriteRenderer>().size.y);
 
         barUpper.transform.position = new Vector3(barSpaceX + this.transform.position.x - tempXupper, barSpaceY + this.transform.position.y, 0.0f);
@@ -182,5 +188,31 @@ public class CameraScript : MonoBehaviour
         //        Destroy(cloneOnpu[i]);
         //    }
         //}
+    }
+
+    public void Shake(float duration, float magnitude)
+    {
+        StartCoroutine(DoShake(duration, magnitude));
+    }
+
+    private IEnumerator DoShake(float duration, float magnitude)
+    {
+        var pos = this.transform.position;
+
+        var elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            var x = Random.Range(-1f, 1f) * magnitude;
+            var y = Random.Range(-1f, 1f) * magnitude;
+
+            this.transform.position = new Vector3(this.transform.position.x + x, this.transform.position.y + y, pos.z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.localPosition = pos;
     }
 }

@@ -21,7 +21,7 @@ public class StageScript : MonoBehaviour
     [System.NonSerialized] public bool[] enemyDataArray = new bool[100];
     [System.NonSerialized] public bool[] obstacleDataArray = new bool[100];
 
-    [System.NonSerialized] public float updown = 6.0f;
+    [System.NonSerialized] public float updown = 4.0f;
 
     private GameObject refObj;
     [System.NonSerialized] public GameObject refObjp;
@@ -84,7 +84,7 @@ public class StageScript : MonoBehaviour
                         if (stickArray[j] == null) // 空いているオブジェクト用変数があるか
                         {
                             // 生成
-                            stickArray[j] = Instantiate(stickObj, new Vector3(stickPosDataArray[i], 0.0f, 0.0f), Quaternion.identity);
+                            stickArray[j] = Instantiate(stickObj, new Vector3(stickPosDataArray[i], -2.0f, 0.0f), Quaternion.identity);
                             stickDataArray[i] = false; // 重複して作られないようにこのデータはfalseにする
                             break;
                         }
@@ -118,12 +118,12 @@ public class StageScript : MonoBehaviour
 
                 if(stickNum < GetLastStick() - 1)
                 {
-                    refObjp.GetComponent<PlayerScript>().Nextdist = stickPosDataArray[stickNum + 2];
+                    refObjp.GetComponent<PlayerScript>().Nextdist = stickPosDataArray[stickNum + 1];
                 }
 
                 if(stickNum < GetLastStick() - 2)
                 {
-                    refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[stickNum + 3];
+                    refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[stickNum + 2];
                 }
 
                 refObjp.GetComponent<PlayerScript>().oneTimeFlag = false;
@@ -149,7 +149,7 @@ public class StageScript : MonoBehaviour
                         if (enemyArray[j] == null) // 空いているオブジェクト用変数があるか
                         {
                             // 生成
-                            enemyArray[j] = Instantiate(enemyTypeArray[j], new Vector3(enemyPosXDataArray[i], enemyPosYDataArray[i], 0.0f), Quaternion.identity);
+                            enemyArray[j] = Instantiate(enemyTypeArray[j], new Vector3(enemyPosXDataArray[i], enemyPosYDataArray[i] - 2.0f, 0.0f), Quaternion.identity);
                             enemyDataArray[i] = false; // 重複して作られないようにこのデータはfalseにする
                             break;
                         }
@@ -185,7 +185,7 @@ public class StageScript : MonoBehaviour
                         if (obstacleArray[j] == null) // 空いているオブジェクト用変数があるか
                         {
                             // 生成
-                            obstacleArray[j] = Instantiate(obstacleTypeArray[i], new Vector3(obstaclePosXDataArray[i], obstaclePosYDataArray[i], 0.0f), Quaternion.identity);
+                            obstacleArray[j] = Instantiate(obstacleTypeArray[i], new Vector3(obstaclePosXDataArray[i], obstaclePosYDataArray[i] - 2.0f, 0.0f), Quaternion.identity);
                             obstacleDataArray[i] = false; // 重複して作られないようにこのデータはfalseにする
                             break;
                         }

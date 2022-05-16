@@ -36,7 +36,7 @@ public class NomalEnemyScript : MonoBehaviour
         {
             tempHP = HP;
             refObj.GetComponent<PlayerScript>().score += 500;
-            this.transform.position = new Vector3(refObj.GetComponent<PlayerScript>().Nextdist, this.transform.position.y, this.transform.position.z);
+            this.transform.position = new Vector3(refObj.GetComponent<PlayerScript>().Nextdist + 5.0f, this.transform.position.y, this.transform.position.z);
         }
 
         // HP(ハート)を設置
