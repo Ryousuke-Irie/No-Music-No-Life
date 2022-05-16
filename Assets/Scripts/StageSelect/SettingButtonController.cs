@@ -11,9 +11,13 @@ public class SettingButtonController : MonoBehaviour
     [Header("オブジェクト4")] public GameObject menu4;
     [Header("オブジェクト5")] public GameObject menu5;
 
+    private bool mStatus = false;
+    private Animator anim = null;
+
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,14 +30,36 @@ public class SettingButtonController : MonoBehaviour
         switch (number)
 		{
             case 0:
-                menu1.SetActive(false);
-                menu2.SetActive(false);
-                menu3.SetActive(true);
-                menu4.SetActive(true);
-                menu5.SetActive(false);
+                if(mStatus == false)
+				{
+                    menu1.SetActive(false);
+                    menu2.SetActive(false);
+                    menu3.SetActive(false);
+                    menu4.SetActive(true);
+                    menu5.SetActive(false);
+
+                    anim.SetBool("start", true);
+
+                    mStatus = true;
+                }
+                else if(mStatus == true)
+				{
+                    menu1.SetActive(true);
+                    menu2.SetActive(true);
+                    menu3.SetActive(true);
+                    menu4.SetActive(false);
+                    menu5.SetActive(true);
+
+                    anim.SetBool("start", false);
+
+                    mStatus = false;
+                }
                 break;
             case 1:
-                SceneManager.LoadScene("TitleScene");
+                if(mStatus == false)
+				{
+                    SceneManager.LoadScene("TitleScene");
+                }
                 break;
             default:
                 break;
