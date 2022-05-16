@@ -216,39 +216,44 @@ public class TestStage : StageScript
         SetStick(num++, 38f * vel);
         SetStick(num++, 39.5f * vel);
         SetStick(num++, 41f * vel);
+
         SetStick(num++, 42f * vel);
-        SetStick(num++, 42.5f * vel);
-        SetStick(num++, 43f * vel);
-        SetStick(num++, 43.5f * vel);
-        SetStick(num++, 44f * vel);
-        SetStick(num++, 44.5f * vel);
-        SetStick(num++, 45f * vel);
-        SetStick(num++, 45.5f * vel);
-        SetStick(num++, 46f * vel);
-        SetStick(num++, 46.5f * vel);
-        SetStick(num++, 47f * vel);
-        SetStick(num++, 47.5f * vel);
-        SetStick(num++, 48f * vel);
-        SetStick(num++, 48.5f * vel);
-        SetStick(num++, 49f * vel);
-        SetStick(num++, 49.5f * vel);
-        SetStick(num++, 50f * vel);
-        SetStick(num++, 50.5f * vel);
-        SetStick(num++, 51f * vel);
-        SetStick(num++, 51.5f * vel);
-        SetStick(num++, 52f * vel);
-        SetStick(num++, 52.5f * vel);
-        SetStick(num++, 53f * vel);
-        SetStick(num++, 53.5f * vel);
-        SetStick(num++, 54f * vel);
-        SetStick(num++, 54.5f * vel);
-        SetStick(num++, 55f * vel);
+        SetStick(num++, 42.45f * vel);
+        SetStick(num++, 42.9f * vel);//43
+        SetStick(num++, 43.35f * vel);
+        SetStick(num++, 43.8f * vel);//44
+        SetStick(num++, 44.25f * vel);
+        SetStick(num++, 44.7f * vel);//45
+        SetStick(num++, 45.15f * vel);
+        SetStick(num++, 45.6f * vel);//46
+        SetStick(num++, 46.05f * vel);
+        SetStick(num++, 46.5f * vel);//47
+        SetStick(num++, 46.95f * vel);
+        SetStick(num++, 47.4f * vel);//48
+        SetStick(num++, 47.85f * vel);
+        SetStick(num++, 48.3f * vel);//49
+        SetStick(num++, 48.75f * vel);
+        SetStick(num++, 49.2f * vel);//50
+        SetStick(num++, 49.65f * vel);
+        SetStick(num++, 50.1f * vel);//51
+        SetStick(num++, 50.55f * vel);
+        SetStick(num++, 51f * vel);//52
+        SetStick(num++, 51.45f * vel);
+        SetStick(num++, 51.9f * vel);//53
+        SetStick(num++, 52.35f * vel);
+        SetStick(num++, 52.8f * vel);//54
+        SetStick(num++, 53.25f * vel);
+        SetStick(num++, 53.7f * vel);//55
+        SetStick(num++, 54.15f * vel);
+        SetStick(num++, 54.6f * vel);
+        SetStick(num++, 55.05f * vel);
         SetStick(num++, 55.5f * vel);
-        SetStick(num++, 56f * vel);
-        SetStick(num++, 56.5f * vel);
-        SetStick(num++, 57f * vel);
-        SetStick(num++, 57.5f * vel);
-        SetStick(num++, 58f * vel);
+        SetStick(num++, 55.95f * vel);
+        SetStick(num++, 56.4f * vel);
+        SetStick(num++, 56.85f * vel);
+        SetStick(num++, 57.3f * vel);
+        SetStick(num++, 57.75f * vel);
+
         SetStick(num++, 59f * vel);
         SetStick(num++, 61f * vel);
         SetStick(num++, 62f * vel);
@@ -282,39 +287,44 @@ public class TestStage : StageScript
         SetStick(num++, 96.5f * vel);
         SetStick(num++, 97.5f * vel);
         SetStick(num++, 99f * vel);
+
         SetStick(num++, 100f * vel);
-        SetStick(num++, 100.5f * vel);
-        SetStick(num++, 101f * vel);
-        SetStick(num++, 101.5f * vel);
-        SetStick(num++, 102f * vel);
-        SetStick(num++, 102.5f * vel);
-        SetStick(num++, 103f * vel);
-        SetStick(num++, 103.5f * vel);
-        SetStick(num++, 104f * vel);
-        SetStick(num++, 104.5f * vel);
-        SetStick(num++, 105f * vel);
-        SetStick(num++, 105.5f * vel);
-        SetStick(num++, 106f * vel);
-        SetStick(num++, 106.5f * vel);
-        SetStick(num++, 107f * vel);
-        SetStick(num++, 107.5f * vel);
-        SetStick(num++, 108f * vel);
-        SetStick(num++, 108.5f * vel);
-        SetStick(num++, 109f * vel);
-        SetStick(num++, 109.5f * vel);
-        SetStick(num++, 110f * vel);
-        SetStick(num++, 110.5f * vel);
-        SetStick(num++, 111f * vel);
-        SetStick(num++, 111.5f * vel);
-        SetStick(num++, 112f * vel);
-        SetStick(num++, 112.5f * vel);
-        SetStick(num++, 113f * vel);
-        SetStick(num++, 113.5f * vel);
-        SetStick(num++, 114f * vel);
-        SetStick(num++, 114.5f * vel);
-        SetStick(num++, 115f * vel);
-        SetStick(num++, 115.5f * vel);
-        SetStick(num++, 116f * vel);
+        SetStick(num++, 100.45f * vel);
+        SetStick(num++, 100.9f * vel);//1
+        SetStick(num++, 101.35f * vel);
+        SetStick(num++, 101.8f * vel);//2
+        SetStick(num++, 102.25f * vel);
+        SetStick(num++, 102.7f * vel);//3
+        SetStick(num++, 103.15f * vel);
+        SetStick(num++, 103.6f * vel);//4
+        SetStick(num++, 104.05f * vel);
+        SetStick(num++, 104.5f * vel);//5
+        SetStick(num++, 104.95f * vel);
+        SetStick(num++, 105.4f * vel);//6
+        SetStick(num++, 105.85f * vel);
+        SetStick(num++, 106.3f * vel);//7
+        SetStick(num++, 106.75f * vel);
+        SetStick(num++, 107.2f * vel);//8
+        SetStick(num++, 107.65f * vel);
+        SetStick(num++, 108.1f * vel);//9
+        SetStick(num++, 108.55f * vel);
+        SetStick(num++, 109f * vel);//10
+        SetStick(num++, 109.45f * vel);
+        SetStick(num++, 109.9f * vel);//11
+        SetStick(num++, 110.35f * vel);
+        SetStick(num++, 110.8f * vel);//12
+        SetStick(num++, 111.25f * vel);
+        SetStick(num++, 111.7f * vel);//13
+        SetStick(num++, 112.15f * vel);
+        SetStick(num++, 112.6f * vel);//14
+        SetStick(num++, 113.05f * vel);
+        SetStick(num++, 113.5f * vel);//15
+        SetStick(num++, 113.95f * vel);
+        SetStick(num++, 114.4f * vel);//16
+        SetStick(num++, 114.85f * vel);
+        SetStick(num++, 115.3f * vel);
+        SetStick(num++, 115.75f * vel);
+
         SetStick(num++, 117f * vel);
         SetStick(num++, 118f * vel);
         SetStick(num++, 119f * vel);
@@ -385,14 +395,16 @@ public class TestStage : StageScript
         SetEnemy(num++, 13.7f * vel - error, 1 * updown, enemyTypeB);
         SetEnemy(num++, 35f * vel - error, -1 * updown, enemyTypeA);
         SetEnemy(num++, 41f * vel - error, 0 * updown, enemyTypeA);
-        SetEnemy(num++, 46f * vel - error, -1 * updown, enemyTypeA);
-        SetEnemy(num++, 48f * vel - error, 0 * updown, enemyTypeA);
+
+        SetEnemy(num++, 45.6f * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, 47.4f * vel - error, 0 * updown, enemyTypeA);
         //SetEnemy(num++, 49.5f * vel - error, 1 * updown, enemyTypeA);
-        SetEnemy(num++, 50.5f * vel - error, 1 * updown, enemyTypeA);
-        SetEnemy(num++, 51.5f * vel - error, 1 * updown, enemyTypeA);
-        SetEnemy(num++, 55f * vel - error, 0 * updown, enemyTypeA);
-        SetEnemy(num++, 56f * vel - error, 0 * updown, enemyTypeA);
-        SetEnemy(num++, 57f * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, 49.65f * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, 50.55f * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, 53.7f * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, 54.6f * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, 55.5f * vel - error, 0 * updown, enemyTypeA);
+
         SetEnemy(num++, 65.2f * vel - error, -1 * updown, enemyTypeA);
         SetEnemy(num++, 70.5f * vel - error, 1 * updown, enemyTypeA);
         SetEnemy(num++, 72.4f * vel - error, 1 * updown, enemyTypeB);
@@ -400,13 +412,15 @@ public class TestStage : StageScript
         SetEnemy(num++, 89.3f * vel - error, 1 * updown, enemyTypeA);
         SetEnemy(num++, 91.5f * vel - error, 1 * updown, enemyTypeA);
         SetEnemy(num++, 93f * vel - error, 1 * updown, enemyTypeA);
+
         SetEnemy(num++, 100f * vel - error, 0 * updown, enemyTypeA);
-        SetEnemy(num++, 101f * vel - error, 0 * updown, enemyTypeA);
-        SetEnemy(num++, 102.5f * vel - error, 1 * updown, enemyTypeA);
-        SetEnemy(num++, 103.5f * vel - error, 1 * updown, enemyTypeB);
-        SetEnemy(num++, 106f * vel - error, 1 * updown, enemyTypeB);
-        SetEnemy(num++, 110f * vel - error, 0 * updown, enemyTypeB);
-        SetEnemy(num++, 112.5f * vel - error, -1 * updown, enemyTypeB);
+        SetEnemy(num++, 100.9f * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, 102.25f * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, 103.15f * vel - error, 1 * updown, enemyTypeB);
+        SetEnemy(num++, 105.4f * vel - error, 1 * updown, enemyTypeB);
+        SetEnemy(num++, 109f * vel - error, 0 * updown, enemyTypeB);
+        SetEnemy(num++, 111.25f * vel - error, -1 * updown, enemyTypeB);
+
         SetEnemy(num++, 117f * vel - error, 1 * updown, enemyTypeA);
         SetEnemy(num++, 119f * vel - error, 1 * updown, enemyTypeA);
 
@@ -477,13 +491,15 @@ public class TestStage : StageScript
         SetObstacle(num++, 33.5f * vel - error, 0 * updown, obstacleTypeA);
         SetObstacle(num++, 38f * vel - error, 1 * updown, obstacleTypeA);
         SetObstacle(num++, 39.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 43f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 43.5f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 45f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 45.5f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 47f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 47.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 58f * vel - error, 1 * updown, obstacleTypeA);
+
+        SetObstacle(num++, 42.9f * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, 43.35f * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, 44.7f * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, 45.15f * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, 46.5f * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, 46.95f * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, 56.4f * vel - error, 1 * updown, obstacleTypeA);
+
         SetObstacle(num++, 59f * vel - error, -1 * updown, obstacleTypeA);
         SetObstacle(num++, 62f * vel - error, 1 * updown, obstacleTypeA);
         SetObstacle(num++, 62.5f * vel - error, 0 * updown, obstacleTypeA);
@@ -494,18 +510,20 @@ public class TestStage : StageScript
         SetObstacle(num++, 87.5f * vel - error, 0 * updown, obstacleTypeA);
         SetObstacle(num++, 90.5f * vel - error, -1 * updown, obstacleTypeA);
         SetObstacle(num++, 91.9f * vel - error, 0 * updown, obstacleTypeA);
+
         SetObstacle(num++, 100f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 101f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 102.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 103.5f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 106f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 108f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 108.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 110f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 112.5f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 114f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 115f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 116f * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, 100.9f * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, 102.25f * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, 103.15f * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, 105.4f * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, 107.2f * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, 107.65f * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, 109f * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, 111.25f * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, 112.6f * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, 113.5f * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, 114.4f * vel - error, 0 * updown, obstacleTypeA);
+
         SetObstacle(num++, 118f * vel - error, 0 * updown, obstacleTypeA);
 
         // --------------------------------------

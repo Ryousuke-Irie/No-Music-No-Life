@@ -20,9 +20,9 @@ public class PlayerScript : MonoBehaviour
     [System.NonSerialized] public float MoveLimit = 140.0f;
     public float BesideMoveAmount = 10.0f;
 
-    private float UpperLimit = 4.0f;
-    private float LowerLimit = -4.0f;
-    private float VerticalMoveAmount = 4.0f;
+    private float UpperLimit = 6.0f;
+    private float LowerLimit = -6.0f;
+    private float VerticalMoveAmount = 6.0f;
 
     public float PlayerToSlush = 2.0f;
     public float PlayerToReticle = 5.0f;
@@ -216,11 +216,11 @@ public class PlayerScript : MonoBehaviour
                 // 攻撃エフェクト(オブジェクト)生成
                 GameObject Slush = (GameObject)Resources.Load("Slush");
                 GameObject cloneSlush = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 0.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, -4.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 4.0f, 0.0f), Quaternion.identity);
+                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, LowerLimit, 0.0f), Quaternion.identity);
+                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit, 0.0f), Quaternion.identity);
                 GameObject cloneSlush4 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, 0.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush5 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, -4.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush6 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, 4.0f, 0.0f), Quaternion.identity);
+                GameObject cloneSlush5 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, LowerLimit, 0.0f), Quaternion.identity);
+                GameObject cloneSlush6 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, UpperLimit, 0.0f), Quaternion.identity);
 
                 Skill = 0;
             }
@@ -230,8 +230,8 @@ public class PlayerScript : MonoBehaviour
                 // 攻撃エフェクト(オブジェクト)生成
                 GameObject Slush = (GameObject)Resources.Load("Slush");
                 GameObject cloneSlush = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 0.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, -4.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 4.0f, 0.0f), Quaternion.identity);
+                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, LowerLimit, 0.0f), Quaternion.identity);
+                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit, 0.0f), Quaternion.identity);
 
                 Skill = 0;
             }          

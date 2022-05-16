@@ -21,7 +21,7 @@ public class StageScript : MonoBehaviour
     [System.NonSerialized] public bool[] enemyDataArray = new bool[100];
     [System.NonSerialized] public bool[] obstacleDataArray = new bool[100];
 
-    [System.NonSerialized] public float updown = 4.0f;
+    [System.NonSerialized] public float updown = 6.0f;
 
     private GameObject refObj;
     [System.NonSerialized] public GameObject refObjp;
