@@ -162,7 +162,7 @@ public class CameraScript : MonoBehaviour
 
         float tempX = (barSize / HP) * refObj.GetComponent<PlayerScript>().HP;
         
-        float tempXupper = (barScale - (barScale / HP) * refObj.GetComponent<PlayerScript>().HP) * 2;
+        float tempXupper = (barScale - (barScale / HP) * refObj.GetComponent<PlayerScript>().HP) * 2.15f;
 
 
         barUpper.GetComponent<SpriteRenderer>().size = new Vector2(tempX, barUpper.GetComponent<SpriteRenderer>().size.y);
