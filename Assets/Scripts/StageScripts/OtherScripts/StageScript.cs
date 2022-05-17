@@ -33,9 +33,15 @@ public class StageScript : MonoBehaviour
 
     [System.NonSerialized] public int stickNum = 0;
 
+    private float barPos = -2.0f;
+
     // Start is called before the first frame update
     public void Start()
     {
+        GameObject refBarA = GameObject.Find("BarTypeA");
+
+        refBarA.transform.position = new Vector3(refBarA.transform.position.x, barPos, refBarA.transform.position.z);
+
         refObj = GameObject.Find("Main Camera");
         refObjp = GameObject.Find("Player");
 

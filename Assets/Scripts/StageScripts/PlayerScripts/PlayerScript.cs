@@ -10,10 +10,12 @@ public class PlayerScript : MonoBehaviour
     // ïœêî
     private int Skill = 0;
 
-    public int HP = 5;
+    [System.NonSerialized] public int HP = 10;
     private int tempHP = 5;
 
     public float TempoTimeError = 1.5f;
+
+    private float pPos = -2.0f;
 
     [System.NonSerialized] public int score = 0;
 
@@ -62,9 +64,13 @@ public class PlayerScript : MonoBehaviour
     [System.NonSerialized] public bool oneTimeFlag = false;
     private bool oneTimeFlag2 = false;
 
+    private bool animFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.position = new Vector3(this.transform.position.x, pPos, this.transform.position.z);
+
         animator = GetComponent<Animator>();
         tempHP = HP;
 
@@ -231,10 +237,22 @@ public class PlayerScript : MonoBehaviour
 
     private void AttackAction()
     {
+        animator.SetBool("PlayerAttackBool", false);
+        animator.SetBool("PlayerAttack2Bool", false);
+
         // çUåÇ
         if (!actionFlag && attackFlag)
         {
-            rotateFlag = true;
+            if (!animFlag)
+            {
+                animator.SetBool("PlayerAttackBool", true);
+                animFlag = true;
+            }
+            else
+            {
+                animator.SetBool("PlayerAttack2Bool", true);
+                animFlag = false;
+            }
 
             if (Skill < 2)
             {
