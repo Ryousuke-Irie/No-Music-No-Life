@@ -34,6 +34,8 @@ public class PlayerScript : MonoBehaviour
     public float PlayerToReticle = 5.0f;
 
     private float blinkingTime = 0.0f;
+    private int blinkingMax = 3;
+    private int blinkingNum = 0;
 
     private GameObject SE;
     private GameObject SE2;
@@ -50,6 +52,7 @@ public class PlayerScript : MonoBehaviour
     // フラグ用変数
     private bool rotateFlag = false;
     [System.NonSerialized] public bool blinkingFlag = false;
+    private bool blinkingFlag2 = false;
 
     [System.NonSerialized] public bool actionFlag = false;
     [System.NonSerialized] public bool moveUpFlag = false;
@@ -69,6 +72,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+
         this.transform.position = new Vector3(this.transform.position.x, pPos, this.transform.position.z);
 
         animator = GetComponent<Animator>();
@@ -145,6 +150,18 @@ public class PlayerScript : MonoBehaviour
         // 点滅
         if (blinkingFlag)
         {
+            blinkingNum = blinkingMax;
+            blinkingFlag = false;
+        }
+
+        if (blinkingNum > 0 && !blinkingFlag2)
+        {
+            blinkingFlag2 = true;
+            blinkingNum -= 1;
+        }
+
+        if (blinkingFlag2)
+        {
             this.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 0);
 
             blinkingTime += 0.1f;
@@ -153,7 +170,7 @@ public class PlayerScript : MonoBehaviour
             {
                 this.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
                 blinkingTime = 0.0f;
-                blinkingFlag = false;
+                blinkingFlag2 = false;
             }
         }
     }
@@ -266,12 +283,12 @@ public class PlayerScript : MonoBehaviour
             {
                 // 攻撃エフェクト(オブジェクト)生成
                 GameObject Slush = (GameObject)Resources.Load("Slush");
-                GameObject cloneSlush = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 0.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, LowerLimit, 0.0f), Quaternion.identity);
-                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit, 0.0f), Quaternion.identity);
-                GameObject cloneSlush4 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, 0.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush5 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, LowerLimit, 0.0f), Quaternion.identity);
-                GameObject cloneSlush6 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, UpperLimit, 0.0f), Quaternion.identity);
+                GameObject cloneSlush = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 0.0f + pPos, 0.0f), Quaternion.identity);
+                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, LowerLimit + pPos, 0.0f), Quaternion.identity);
+                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit + pPos, 0.0f), Quaternion.identity);
+                GameObject cloneSlush4 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, 0.0f + pPos, 0.0f), Quaternion.identity);
+                GameObject cloneSlush5 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, LowerLimit + pPos, 0.0f), Quaternion.identity);
+                GameObject cloneSlush6 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, UpperLimit + pPos, 0.0f), Quaternion.identity);
 
                 Skill = 0;
             }
@@ -280,9 +297,9 @@ public class PlayerScript : MonoBehaviour
             {
                 // 攻撃エフェクト(オブジェクト)生成
                 GameObject Slush = (GameObject)Resources.Load("Slush");
-                GameObject cloneSlush = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 0.0f, 0.0f), Quaternion.identity);
-                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, LowerLimit, 0.0f), Quaternion.identity);
-                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit, 0.0f), Quaternion.identity);
+                GameObject cloneSlush = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 0.0f + pPos, 0.0f), Quaternion.identity);
+                GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, LowerLimit + pPos, 0.0f), Quaternion.identity);
+                GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit + pPos, 0.0f), Quaternion.identity);
 
                 Skill = 0;
             }          
@@ -364,7 +381,9 @@ public class PlayerScript : MonoBehaviour
         // ゲームオーバー条件
         if(HP <= 0)
         {
-            SceneManager.LoadScene("FirstStageScene");
+            Cursor.visible = true;
+
+            SceneManager.LoadScene("StageSelectScene");
         }
     }
 
@@ -374,6 +393,7 @@ public class PlayerScript : MonoBehaviour
         if (this.transform.position.x >= MoveLimit)
         {
             goalFlag = true;
+            Cursor.visible = true;
         }
     }
 }
