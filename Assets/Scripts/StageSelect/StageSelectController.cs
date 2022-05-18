@@ -229,22 +229,22 @@ public class StageSelectController : MonoBehaviour
                     soundManager.PlayBgmByName("stage1-2");
                     break;
                 case 2:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage1-3_No.03");
                     break;
                 case 3:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage1-4_No.06");
                     break;
                 case 4:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage1-5_No.01");
                     break;
                 case 5:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage2-1_No.02");
                     break;
                 case 6:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage2-2_No.11");
                     break;
                 case 7:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage2-3_No.16");
                     break;
                 case 8:
                     soundManager.PlayBgmByName("stage1-2");
@@ -253,31 +253,31 @@ public class StageSelectController : MonoBehaviour
                     soundManager.PlayBgmByName("stage1-2");
                     break;
                 case 10:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage3-1_No.07");
                     break;
                 case 11:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage3-2_No.09");
                     break;
                 case 12:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage3-3_No.17");
                     break;
                 case 13:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage3-4_No.05");
                     break;
                 case 14:
                     soundManager.PlayBgmByName("stage1-2");
                     break;
                 case 15:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage4-1_No.04");
                     break;
                 case 16:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage4-2_No.13");
                     break;
                 case 17:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage4-3_No.08");
                     break;
                 case 18:
-                    soundManager.PlayBgmByName("stage1-2");
+                    soundManager.PlayBgmByName("stage4-4_No.15");
                     break;
                 case 19:
                     soundManager.PlayBgmByName("stage1-2");
