@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class SoundController : MonoBehaviour
 {
     public enum VolumeType { MASTER, BGM, SE }
 
-    public static float value_all;
-    public static float value_bgm;
-    public static float value_se;
+    public static float value_all = 0.5f;
+    public static float value_bgm = 0.5f;
+    public static float value_se = 0.5f;
 
     [SerializeField]
     VolumeType volumeType = 0;
 
     Slider slider;
     SoundManager soundManager;
+
+
+
     void Start()
     {
         slider = GetComponent<Slider>();
@@ -27,16 +31,16 @@ public class SoundController : MonoBehaviour
         switch (volumeType)
         {
             case VolumeType.MASTER:
-                soundManager.Volume = slider.value;
-                value_all = slider.value;
+                soundManager.Volume = slider.value * 0.1f;
+                value_all = slider.value * 0.1f;
                 break;
             case VolumeType.BGM:
-                soundManager.BgmVolume = slider.value;
-                value_bgm = slider.value;
+                soundManager.BgmVolume = slider.value * 0.1f;
+                value_bgm = slider.value * 0.1f;
                 break;
             case VolumeType.SE:
-                soundManager.SeVolume = slider.value;
-                value_se = slider.value;
+                soundManager.SeVolume = slider.value * 0.1f;
+                value_se = slider.value * 0.1f;
                 break;
         }
     }

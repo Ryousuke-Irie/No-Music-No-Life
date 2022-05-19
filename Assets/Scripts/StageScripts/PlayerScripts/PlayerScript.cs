@@ -108,6 +108,7 @@ public class PlayerScript : MonoBehaviour
             if(!oneTimeFlag2)
             {
                 cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
                 oneTimeFlag2 = true;
             }
 
@@ -220,13 +221,14 @@ public class PlayerScript : MonoBehaviour
         // è„Ç÷à⁄ìÆ
         if (!actionFlag && moveUpFlag)
         {
-            if (this.transform.localPosition.y < UpperLimit)
+            if (this.transform.localPosition.y < UpperLimit + pPos)
             {
                 rotateFlag = true;
 
                 this.transform.position += new Vector3(0.0f, VerticalMoveAmount, 0.0f);
 
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
                 actionFlag = true;
             }
@@ -237,13 +239,14 @@ public class PlayerScript : MonoBehaviour
         // â∫Ç÷à⁄ìÆ
         if (!actionFlag && moveDownFlag)
         {
-            if (this.transform.localPosition.y > LowerLimit)
+            if (this.transform.localPosition.y > LowerLimit + pPos)
             {
                 rotateFlag = true;
 
                 this.transform.position -= new Vector3(0.0f, VerticalMoveAmount, 0.0f);
 
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
                 actionFlag = true;
             }
@@ -305,6 +308,7 @@ public class PlayerScript : MonoBehaviour
             }          
 
             GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
             attackFlag = false;
             actionFlag = true;
@@ -363,6 +367,7 @@ public class PlayerScript : MonoBehaviour
             oneTimeFlag = true;
 
             GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSE2.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
         }
     }
 
