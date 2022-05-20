@@ -328,6 +328,7 @@ public class PlayerScript : MonoBehaviour
             }
 
             GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
             chargeFlag = false;
             actionFlag = true;
