@@ -49,6 +49,12 @@ public class PlayerScript : MonoBehaviour
 
     private GameObject refCamera;
 
+    private GameObject refGhostGirl;
+    private GameObject cloneGhostGirl;
+
+    private float ghostPosX = -2.5f;
+    private float ghostPosY = 1.0f;
+
     // フラグ用変数
     private bool rotateFlag = false;
     [System.NonSerialized] public bool blinkingFlag = false;
@@ -86,6 +92,10 @@ public class PlayerScript : MonoBehaviour
 
         refCamera = GameObject.Find("Main Camera");
 
+        refGhostGirl = (GameObject)Resources.Load("GhostGirl");
+
+        cloneGhostGirl = Instantiate(refGhostGirl, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
+
         cloneEffect = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         //cloneEffect2 = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
     }
@@ -118,6 +128,9 @@ public class PlayerScript : MonoBehaviour
             // アニメーション管理
             AnimationManager();
         }
+
+        // 女の子
+        cloneGhostGirl.transform.position = this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f);
 
         // 上下移動処理
         MoveAction();

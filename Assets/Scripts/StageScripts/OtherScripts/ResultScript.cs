@@ -63,6 +63,12 @@ public class ResultScript : MonoBehaviour
     private GameObject refObjMenu;
     private GameObject cloneMenu;
 
+    private GameObject refKirakira;
+    private GameObject cloneKirakira;
+
+    private float PosKiX = 0.0f;
+    private float PosKiY = 5.05f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +79,8 @@ public class ResultScript : MonoBehaviour
         refObjMenu = (GameObject)Resources.Load("UIResult");
 
         fadeObj = GameObject.Find("fade_white2");
+
+        refKirakira = (GameObject)Resources.Load("kirakira");
 
         if (StageSelectController.barNum >= 0 && StageSelectController.barNum < 6)
         {
@@ -270,6 +278,11 @@ public class ResultScript : MonoBehaviour
 
     private void SetRank()
     {
+        if (!cloneKirakira)
+        {
+            cloneKirakira = Instantiate(refKirakira, new Vector3(refObj2.transform.position.x + PosKiX, PosKiY, 0.0f), Quaternion.identity);
+        }
+         
         // スコアランクを表示する
 
         if (!cloneRank)
