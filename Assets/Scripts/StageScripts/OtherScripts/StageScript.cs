@@ -155,7 +155,7 @@ public class StageScript : MonoBehaviour
                         if (enemyArray[j] == null) // 空いているオブジェクト用変数があるか
                         {
                             // 生成
-                            enemyArray[j] = Instantiate(enemyTypeArray[j], new Vector3(enemyPosXDataArray[i], enemyPosYDataArray[i] - 2.0f, 0.0f), Quaternion.identity);
+                            enemyArray[j] = Instantiate(enemyTypeArray[i], new Vector3(enemyPosXDataArray[i], enemyPosYDataArray[i] - 2.0f, 0.0f), Quaternion.identity);
                             enemyDataArray[i] = false; // 重複して作られないようにこのデータはfalseにする
                             break;
                         }
