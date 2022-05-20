@@ -54,7 +54,7 @@ public class FadeScript : MonoBehaviour
 
 		if (temptime > fadeSpeed)
 		{
-			alfa -= 1;        
+			alfa -= 5;        
 			temptime = 0.0f;
 		}
 
@@ -73,7 +73,7 @@ public class FadeScript : MonoBehaviour
 
 		if (temptime > fadeSpeed)
 		{
-			alfa += 1;         // b)不透明度を徐々にあげる
+			alfa += 5;         // b)不透明度を徐々にあげる
 			temptime = 0.0f;
 		}
 

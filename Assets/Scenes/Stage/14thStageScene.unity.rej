@@ -1,0 +1,22 @@
+diff a/Assets/Scenes/Stage/14thStageScene.unity b/Assets/Scenes/Stage/14thStageScene.unity	(rejected hunks)
+@@ -433,6 +433,20 @@
+   m_NavMeshLayer: 0
+   m_StaticEditorFlags: 0
+   m_IsActive: 1
++--- !u!114 &908041374
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 908041373}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 99a2173790ffb3041aba6b21e58ac650, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  enemyTypeA: {fileID: 0}
++  obstacleTypeA: {fileID: 0}
+ --- !u!212 &908041375
+ SpriteRenderer:
+   m_ObjectHideFlags: 0

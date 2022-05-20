@@ -49,6 +49,12 @@ public class PlayerScript : MonoBehaviour
 
     private GameObject refCamera;
 
+    private GameObject refGhostGirl;
+    private GameObject cloneGhostGirl;
+
+    private float ghostPosX = -2.5f;
+    private float ghostPosY = 1.0f;
+
     // フラグ用変数
     private bool rotateFlag = false;
     [System.NonSerialized] public bool blinkingFlag = false;
@@ -86,6 +92,10 @@ public class PlayerScript : MonoBehaviour
 
         refCamera = GameObject.Find("Main Camera");
 
+        refGhostGirl = (GameObject)Resources.Load("GhostGirl");
+
+        cloneGhostGirl = Instantiate(refGhostGirl, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
+
         cloneEffect = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         //cloneEffect2 = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
     }
@@ -108,6 +118,7 @@ public class PlayerScript : MonoBehaviour
             if(!oneTimeFlag2)
             {
                 cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
                 oneTimeFlag2 = true;
             }
 
@@ -117,6 +128,9 @@ public class PlayerScript : MonoBehaviour
             // アニメーション管理
             AnimationManager();
         }
+
+        // 女の子
+        cloneGhostGirl.transform.position = this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f);
 
         // 上下移動処理
         MoveAction();
@@ -220,13 +234,14 @@ public class PlayerScript : MonoBehaviour
         // 上へ移動
         if (!actionFlag && moveUpFlag)
         {
-            if (this.transform.localPosition.y < UpperLimit)
+            if (this.transform.localPosition.y < UpperLimit + pPos)
             {
                 rotateFlag = true;
 
                 this.transform.position += new Vector3(0.0f, VerticalMoveAmount, 0.0f);
 
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
                 actionFlag = true;
             }
@@ -237,13 +252,14 @@ public class PlayerScript : MonoBehaviour
         // 下へ移動
         if (!actionFlag && moveDownFlag)
         {
-            if (this.transform.localPosition.y > LowerLimit)
+            if (this.transform.localPosition.y > LowerLimit + pPos)
             {
                 rotateFlag = true;
 
                 this.transform.position -= new Vector3(0.0f, VerticalMoveAmount, 0.0f);
 
                 GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
                 actionFlag = true;
             }
@@ -305,6 +321,7 @@ public class PlayerScript : MonoBehaviour
             }          
 
             GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
             attackFlag = false;
             actionFlag = true;
@@ -324,6 +341,7 @@ public class PlayerScript : MonoBehaviour
             }
 
             GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
             chargeFlag = false;
             actionFlag = true;
@@ -363,6 +381,7 @@ public class PlayerScript : MonoBehaviour
             oneTimeFlag = true;
 
             GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSE2.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
         }
     }
 

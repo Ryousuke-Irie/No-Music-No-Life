@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -78,16 +78,28 @@ public class StageSelectController : MonoBehaviour
     private int timeCnt = 0;
     private bool transFlagS = false;
     private bool transFlagW = false;
-    private Vector3 speed = new Vector3((float)0.1, (float)0.1, 0);
+    private Vector3 speed;
 
     public Image image;
     private Sprite sprite;
 
+    private float BspeedX, BspeedY;
+
     SoundManager soundManager;
+
+    private GameObject refObj;
+    private GameObject refObj2;
+    private GameObject refObj3;
+
+    private float DeadZone = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        refObj = GameObject.Find("menu_bar");
+        refObj2 = GameObject.Find("fade_white");
+        refObj3 = GameObject.Find("fade_white2");
+
         barNum = 0;
 
         soundManager = FindObjectOfType<SoundManager>();
@@ -130,289 +142,23 @@ public class StageSelectController : MonoBehaviour
         // barBox[1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
 
         imageBox[0].SetActive(true);
+
+        speed = new Vector3((float)10 * Time.deltaTime, (float)10 * Time.deltaTime, 0);
+
+        BspeedX = speedX;
+        BspeedY = speedY;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && transFlagS == false && transFlagW == false)
-        {
-            transFlagS = true;
-            barNum += 1;
+        speedX = BspeedX * Time.deltaTime;
+        speedY = BspeedY * Time.deltaTime;
 
-            if (barNum > 19)
-            {
-                barNum = 0;
-            }
+        if (refObj2) { return; }
+        if (refObj.GetComponent<SettingButtonController>().mStatus || refObj.GetComponent<SettingButtonController>().transFlagR) { return; }
 
-            if (barNum == 0 || barNum == 1 || barNum == 2)
-            {
-                barBox[barNum + 17].SetActive(false);
-                barBox[barNum + 1].SetActive(true);
-                barBox[barNum + 1].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
-                //barBox[barNum + 1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
-            }
-            else if (barNum == 19)
-            {
-                barBox[barNum - 3].SetActive(false);
-                barBox[barNum - 19].SetActive(true);
-                barBox[barNum - 19].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
-                //barBox[barNum - 19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
-            }
-            else
-            {
-                barBox[barNum - 3].SetActive(false);
-                barBox[barNum + 1].SetActive(true);
-                barBox[barNum + 1].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
-                //barBox[barNum + 1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
-            }
-
-            for (int i = 0; i < stageNum; i++)
-            {
-                imageBox[i].SetActive(false);
-            }
-
-            imageBox[barNum].SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.W) && transFlagW == false && transFlagS == false)
-        {
-            transFlagW = true;
-            barNum -= 1;
-
-            if (barNum < 0)
-            {
-                barNum = 19;
-            }
-
-            if (barNum == 19 || barNum == 18)
-            {
-                barBox[barNum - 18].SetActive(false);
-                barBox[barNum - 2].SetActive(true);
-                barBox[barNum - 2].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
-                //barBox[barNum - 2].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
-            }
-            else if (barNum == 1 || barNum == 0)
-            {
-                barBox[barNum + 2].SetActive(false);
-                barBox[barNum + 18].SetActive(true);
-                barBox[barNum + 18].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
-                //barBox[barNum + 18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
-            }
-            else
-            {
-                barBox[barNum + 2].SetActive(false);
-                barBox[barNum - 2].SetActive(true);
-                barBox[barNum - 2].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
-                //barBox[barNum - 2].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
-            }
-        }
-
-        for (int i = 0; i < stageNum; i++)
-        {
-            imageBox[i].SetActive(false);
-        }
-
-        imageBox[barNum].SetActive(true);
-
-        // BGM
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
-        {
-            soundManager.StopBgm();
-
-            switch (barNum)
-            {
-                case 0:
-                    soundManager.PlayBgmByName("stage1-1");
-                    break;
-                case 1:
-                    soundManager.PlayBgmByName("stage1-2");
-                    break;
-                case 2:
-                    soundManager.PlayBgmByName("stage1-3_No.03");
-                    break;
-                case 3:
-                    soundManager.PlayBgmByName("stage1-4_No.06");
-                    break;
-                case 4:
-                    soundManager.PlayBgmByName("stage1-5_No.01");
-                    break;
-                case 5:
-                    soundManager.PlayBgmByName("stage2-1_No.02");
-                    break;
-                case 6:
-                    soundManager.PlayBgmByName("stage2-2_No.11");
-                    break;
-                case 7:
-                    soundManager.PlayBgmByName("stage2-3_No.16");
-                    break;
-                case 8:
-                    soundManager.PlayBgmByName("stage1-2");
-                    break;
-                case 9:
-                    soundManager.PlayBgmByName("stage1-2");
-                    break;
-                case 10:
-                    soundManager.PlayBgmByName("stage3-1_No.07");
-                    break;
-                case 11:
-                    soundManager.PlayBgmByName("stage3-2_No.09");
-                    break;
-                case 12:
-                    soundManager.PlayBgmByName("stage3-3_No.17");
-                    break;
-                case 13:
-                    soundManager.PlayBgmByName("stage3-4_No.05");
-                    break;
-                case 14:
-                    soundManager.PlayBgmByName("stage1-2");
-                    break;
-                case 15:
-                    soundManager.PlayBgmByName("stage4-1_No.04");
-                    break;
-                case 16:
-                    soundManager.PlayBgmByName("stage4-2_No.13");
-                    break;
-                case 17:
-                    soundManager.PlayBgmByName("stage4-3_No.08");
-                    break;
-                case 18:
-                    soundManager.PlayBgmByName("stage4-4_No.15");
-                    break;
-                case 19:
-                    soundManager.PlayBgmByName("stage1-2");
-                    break;
-            }
-        }
-
-        if (transFlagS == true)
-        {
-            if (barNum == 1)
-            {
-                barBox[barNum + 18].transform.position += new Vector3(speedX, speedY, 0);
-                barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
-                //barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum + 1].transform.position += new Vector3(-speedX, speedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagS = false;
-                    timeCnt = 0;
-                }
-            }
-            else if (barNum == 19)
-            {
-                barBox[barNum - 2].transform.position += new Vector3(speedX, speedY, 0);
-                barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
-                //barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum - 19].transform.position += new Vector3(-speedX, speedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagS = false;
-                    timeCnt = 0;
-                }
-            }
-            else if (barNum == 0)
-            {
-                barBox[barNum + 18].transform.position += new Vector3(speedX, speedY, 0);
-                barBox[barNum + 19].transform.position += new Vector3(speedX, speedY, 0);
-                //barBox[barNum + 19].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum + 1].transform.position += new Vector3(-speedX, speedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagS = false;
-                    timeCnt = 0;
-                }
-            }
-            else
-            {
-                barBox[barNum - 2].transform.position += new Vector3(speedX, speedY, 0);
-                barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
-                //barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum + 1].transform.position += new Vector3(-speedX, speedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagS = false;
-                    timeCnt = 0;
-                }
-            }
-        }
-        else if (transFlagW == true)
-        {
-            if (barNum == 19)
-            {
-                barBox[barNum - 2].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum - 19].transform.position += new Vector3(speedX, -speedY, 0);
-                //barBox[barNum - 19].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagW = false;
-                    timeCnt = 0;
-                }
-            }
-            else if (barNum == 1)
-            {
-                barBox[barNum + 18].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum + 1].transform.position += new Vector3(speedX, -speedY, 0);
-                //barBox[barNum + 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagW = false;
-                    timeCnt = 0;
-                }
-            }
-            else if (barNum == 0)
-            {
-                barBox[barNum + 18].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum + 19].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum + 1].transform.position += new Vector3(speedX, -speedY, 0);
-                //barBox[barNum + 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagW = false;
-                    timeCnt = 0;
-                }
-            }
-            else
-            {
-                barBox[barNum - 2].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
-                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
-                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
-                barBox[barNum + 1].transform.position += new Vector3(speedX, -speedY, 0);
-                //barBox[barNum + 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
-                timeCnt += 1;
-                if (timeCnt > 40)
-                {
-                    transFlagW = false;
-                    timeCnt = 0;
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (refObj3.GetComponent<FadeScript>().fadeEndFlag)
         {
             soundManager.StopBgm();
 
@@ -482,11 +228,336 @@ public class StageSelectController : MonoBehaviour
                     break;
             }
         }
+
+        if (refObj3.GetComponent<FadeScript>().isFadeOut) { return; }
+
+        if (Gamepad.current == null)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow) && transFlagS == false && transFlagW == false)
+            {
+                DownProcess();
+                BGMProcess();
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) && transFlagW == false && transFlagS == false)
+            {
+                UpProcess();
+                BGMProcess();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                if (refObj3)
+                {
+                    refObj3.GetComponent<FadeScript>().isFadeOut = true;
+                }
+            }
+        }
+        else
+        {
+            if ((Input.GetKeyDown(KeyCode.DownArrow) || Gamepad.current.dpad.down.wasPressedThisFrame || Gamepad.current.leftStick.ReadValue().y < -DeadZone) && transFlagS == false && transFlagW == false)
+            {
+                DownProcess();
+                BGMProcess();
+            }
+
+            if ((Input.GetKeyDown(KeyCode.UpArrow) || Gamepad.current.dpad.up.wasPressedThisFrame || Gamepad.current.leftStick.ReadValue().y > DeadZone) && transFlagW == false && transFlagS == false)
+            {
+                UpProcess();
+                BGMProcess();
+            }
+
+            if (Gamepad.current.buttonSouth.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                if (refObj3)
+                {
+                    refObj3.GetComponent<FadeScript>().isFadeOut = true;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < stageNum; i++)
+        {
+            imageBox[i].SetActive(false);
+        }
+
+        imageBox[barNum].SetActive(true);
+
+
+        if (transFlagS == true)
+        {
+            if (barNum == 1)
+            {
+                barBox[barNum + 18].transform.position += new Vector3(speedX, speedY, 0);
+                barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
+                //barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum + 1].transform.position += new Vector3(-speedX, speedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagS = false;
+                    timeCnt = 0;
+                }
+            }
+            else if (barNum == 19)
+            {
+                barBox[barNum - 2].transform.position += new Vector3(speedX, speedY, 0);
+                barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
+                //barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum - 19].transform.position += new Vector3(-speedX, speedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagS = false;
+                    timeCnt = 0;
+                }
+            }
+            else if (barNum == 0)
+            {
+                barBox[barNum + 18].transform.position += new Vector3(speedX, speedY, 0);
+                barBox[barNum + 19].transform.position += new Vector3(speedX, speedY, 0);
+                //barBox[barNum + 19].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum + 1].transform.position += new Vector3(-speedX, speedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagS = false;
+                    timeCnt = 0;
+                }
+            }
+            else
+            {
+                barBox[barNum - 2].transform.position += new Vector3(speedX, speedY, 0);
+                barBox[barNum - 1].transform.position += new Vector3(speedX, speedY, 0);
+                //barBox[barNum - 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum + 1].transform.position += new Vector3(-speedX, speedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagS = false;
+                    timeCnt = 0;
+                }
+            }
+        }
+        else if (transFlagW == true)
+        {
+            if (barNum == 19)
+            {
+                barBox[barNum - 2].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum - 19].transform.position += new Vector3(speedX, -speedY, 0);
+                //barBox[barNum - 19].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagW = false;
+                    timeCnt = 0;
+                }
+            }
+            else if (barNum == 1)
+            {
+                barBox[barNum + 18].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum + 1].transform.position += new Vector3(speedX, -speedY, 0);
+                //barBox[barNum + 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagW = false;
+                    timeCnt = 0;
+                }
+            }
+            else if (barNum == 0)
+            {
+                barBox[barNum + 18].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum + 19].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum + 1].transform.position += new Vector3(speedX, -speedY, 0);
+                //barBox[barNum + 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagW = false;
+                    timeCnt = 0;
+                }
+            }
+            else
+            {
+                barBox[barNum - 2].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum - 1].transform.position += new Vector3(-speedX, -speedY, 0);
+                barBox[barNum].transform.position += new Vector3(-speedX, -speedY, 0);
+                //barBox[barNum].transform.localScale += new Vector3(sclspeedX, sclspeedY, 0);
+                barBox[barNum + 1].transform.position += new Vector3(speedX, -speedY, 0);
+                //barBox[barNum + 1].transform.localScale += new Vector3(-sclspeedX, -sclspeedY, 0);
+                timeCnt += 1;
+                if (barBox[barNum].transform.position.x < BpositionX)
+                {
+                    transFlagW = false;
+                    timeCnt = 0;
+                }
+            }
+        }
     }
 
     // Œ»Ý‚ÌbarNum‚ðŽæ“¾
     public static int getBarNum()
     {
         return barNum;
+    }
+
+    private void UpProcess()
+    {
+        transFlagW = true;
+        barNum -= 1;
+
+        if (barNum < 0)
+        {
+            barNum = 19;
+        }
+
+        if (barNum == 19 || barNum == 18)
+        {
+            barBox[barNum - 18].SetActive(false);
+            barBox[barNum - 2].SetActive(true);
+            barBox[barNum - 2].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
+            //barBox[barNum - 2].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+        else if (barNum == 1 || barNum == 0)
+        {
+            barBox[barNum + 2].SetActive(false);
+            barBox[barNum + 18].SetActive(true);
+            barBox[barNum + 18].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
+            //barBox[barNum + 18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+        else
+        {
+            barBox[barNum + 2].SetActive(false);
+            barBox[barNum - 2].SetActive(true);
+            barBox[barNum - 2].transform.position = new Vector3(S1positionX, S1positionY, 0.0f);
+            //barBox[barNum - 2].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+    }
+
+    private void DownProcess()
+    {
+        transFlagS = true;
+        barNum += 1;
+
+        if (barNum > 19)
+        {
+            barNum = 0;
+        }
+
+        if (barNum == 0 || barNum == 1 || barNum == 2)
+        {
+            barBox[barNum + 17].SetActive(false);
+            barBox[barNum + 1].SetActive(true);
+            barBox[barNum + 1].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
+            //barBox[barNum + 1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+        else if (barNum == 19)
+        {
+            barBox[barNum - 3].SetActive(false);
+            barBox[barNum - 19].SetActive(true);
+            barBox[barNum - 19].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
+            //barBox[barNum - 19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+        else
+        {
+            barBox[barNum - 3].SetActive(false);
+            barBox[barNum + 1].SetActive(true);
+            barBox[barNum + 1].transform.position = new Vector3(S3positionX, S3positionY, 0.0f);
+            //barBox[barNum + 1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+
+        for (int i = 0; i < stageNum; i++)
+        {
+            imageBox[i].SetActive(false);
+        }
+
+        imageBox[barNum].SetActive(true);
+    }
+
+    private void BGMProcess()
+    {
+        soundManager.StopBgm();
+
+        switch (barNum)
+        {
+            case 0:
+                soundManager.PlayBgmByName("stage1-1");
+                break;
+            case 1:
+                soundManager.PlayBgmByName("stage1-2");
+                break;
+            case 2:
+                soundManager.PlayBgmByName("stage1-3_No.03");
+                break;
+            case 3:
+                soundManager.PlayBgmByName("stage1-4_No.06");
+                break;
+            case 4:
+                soundManager.PlayBgmByName("stage1-5_No.01");
+                break;
+            case 5:
+                soundManager.PlayBgmByName("stage2-1_No.02");
+                break;
+            case 6:
+                soundManager.PlayBgmByName("stage2-2_No.11");
+                break;
+            case 7:
+                soundManager.PlayBgmByName("stage2-3_No.16");
+                break;
+            case 8:
+                soundManager.PlayBgmByName("stage1-2");
+                break;
+            case 9:
+                soundManager.PlayBgmByName("stage1-2");
+                break;
+            case 10:
+                soundManager.PlayBgmByName("stage3-1_No.07");
+                break;
+            case 11:
+                soundManager.PlayBgmByName("stage3-2_No.09");
+                break;
+            case 12:
+                soundManager.PlayBgmByName("stage3-3_No.17");
+                break;
+            case 13:
+                soundManager.PlayBgmByName("stage3-4_No.05");
+                break;
+            case 14:
+                soundManager.PlayBgmByName("stage1-2");
+                break;
+            case 15:
+                soundManager.PlayBgmByName("stage4-1_No.04");
+                break;
+            case 16:
+                soundManager.PlayBgmByName("stage4-2_No.13");
+                break;
+            case 17:
+                soundManager.PlayBgmByName("stage4-3_No.08");
+                break;
+            case 18:
+                soundManager.PlayBgmByName("stage4-4_No.15");
+                break;
+            case 19:
+                soundManager.PlayBgmByName("stage1-2");
+                break;
+        }
     }
 }
