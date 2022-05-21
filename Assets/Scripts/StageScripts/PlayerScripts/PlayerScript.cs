@@ -479,6 +479,8 @@ public class PlayerScript : MonoBehaviour
         if(HP <= 0)
         {
             deadFlag = true;
+
+            refCamera.GetComponent<PostEffect>().enabled = true;
         }
     }
 
