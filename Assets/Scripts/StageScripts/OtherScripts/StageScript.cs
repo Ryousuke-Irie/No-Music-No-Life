@@ -116,20 +116,35 @@ public class StageScript : MonoBehaviour
         // c–_•t‹ß”»’è‚ÌƒŠƒZƒbƒgˆ—
         if (refObjp.transform.position.x > refObjp.GetComponent<PlayerScript>().dist + refObjp.GetComponent<PlayerScript>().TempoTimeError)
         {
-            if(stickNum < GetLastStick())
+            if (stickNum < GetLastStick())
             {
                 stickNum++;
 
                 refObjp.GetComponent<PlayerScript>().dist = stickPosDataArray[stickNum];
 
-                if(stickNum < GetLastStick() - 1)
+                if (stickNum < GetLastStick() - 1)
                 {
                     refObjp.GetComponent<PlayerScript>().Nextdist = stickPosDataArray[stickNum + 1];
                 }
 
-                if(stickNum < GetLastStick() - 2)
+                if (stickNum < GetLastStick() - 2)
                 {
                     refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[stickNum + 2];
+                }
+
+                if (stickNum < GetLastStick() - 3)
+                {
+                    refObjp.GetComponent<PlayerScript>().Next3dist = stickPosDataArray[stickNum + 3];
+                }
+
+                if (stickNum < GetLastStick() - 4)
+                {
+                    refObjp.GetComponent<PlayerScript>().Next4dist = stickPosDataArray[stickNum + 4];
+                }
+
+                if (stickNum < GetLastStick() - 5)
+                {
+                    refObjp.GetComponent<PlayerScript>().Next5dist = stickPosDataArray[stickNum + 5];
                 }
 
                 refObjp.GetComponent<PlayerScript>().oneTimeFlag = false;

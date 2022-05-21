@@ -22,6 +22,9 @@ public class PlayerScript : MonoBehaviour
     [System.NonSerialized] public float dist = 0.0f;
     [System.NonSerialized] public float Nextdist = 0.0f;
     [System.NonSerialized] public float Next2dist = 0.0f;
+    [System.NonSerialized] public float Next3dist = 0.0f;
+    [System.NonSerialized] public float Next4dist = 0.0f;
+    [System.NonSerialized] public float Next5dist = 0.0f;
     [System.NonSerialized] public float MoveLimit = 140.0f;
     private float MoveLimitPlus = 10.0f;
     public float BesideMoveAmount = 10.0f;
@@ -54,6 +57,20 @@ public class PlayerScript : MonoBehaviour
 
     private float ghostPosX = -2.5f;
     private float ghostPosY = 1.0f;
+
+    private GameObject refGhostGirlEffect;
+    private GameObject cloneGhostGirlEffect;
+    private GameObject cloneGhostGirlEffect2;
+    private GameObject cloneGhostGirlEffect3;
+
+    private GameObject refAttackEffect;
+    private GameObject cloneAttackEffect;
+
+    private GameObject refAttackEffect2;
+    private GameObject cloneAttackEffect2;
+
+    private GameObject refAttackEffect3;
+    private GameObject cloneAttackEffect3;
 
     // フラグ用変数
     private bool rotateFlag = false;
@@ -93,8 +110,18 @@ public class PlayerScript : MonoBehaviour
         refCamera = GameObject.Find("Main Camera");
 
         refGhostGirl = (GameObject)Resources.Load("GhostGirl");
+        refGhostGirlEffect = (GameObject)Resources.Load("girlEffect");
+        refAttackEffect = (GameObject)Resources.Load("AttackEffect");
+        refAttackEffect2 = (GameObject)Resources.Load("AttackEffect3");
+        refAttackEffect3 = (GameObject)Resources.Load("AttackEffect6");
 
         cloneGhostGirl = Instantiate(refGhostGirl, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
+        cloneGhostGirlEffect = Instantiate(refGhostGirlEffect, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
+        cloneGhostGirlEffect2 = Instantiate(refGhostGirlEffect, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
+        cloneGhostGirlEffect3 = Instantiate(refGhostGirlEffect, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
+        cloneAttackEffect = Instantiate(refAttackEffect, this.transform.position + new Vector3(PlayerToSlush - 0.5f, 0.0f, 0.0f), Quaternion.identity);
+        cloneAttackEffect2 = Instantiate(refAttackEffect2, this.transform.position + new Vector3(PlayerToSlush - 1.5f, pPos, 0.0f), Quaternion.identity);
+        cloneAttackEffect3 = Instantiate(refAttackEffect3, this.transform.position + new Vector3(PlayerToSlush - 0.5f, pPos, 0.0f), Quaternion.identity);
 
         cloneEffect = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         //cloneEffect2 = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -131,6 +158,12 @@ public class PlayerScript : MonoBehaviour
 
         // 女の子
         cloneGhostGirl.transform.position = this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f);
+        cloneGhostGirlEffect.transform.position = this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f);
+        cloneGhostGirlEffect2.transform.position = this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f);
+        cloneGhostGirlEffect3.transform.position = this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f);
+        cloneGhostGirlEffect.GetComponent<Animator>().SetInteger("StateInt", Skill - 2);
+        cloneGhostGirlEffect2.GetComponent<Animator>().SetInteger("StateInt", Skill - 1);
+        cloneGhostGirlEffect3.GetComponent<Animator>().SetInteger("StateInt", Skill);
 
         // 上下移動処理
         MoveAction();
@@ -227,6 +260,10 @@ public class PlayerScript : MonoBehaviour
         {
             animator.SetBool("PlayerRunBool", false);
         }
+
+        cloneAttackEffect.transform.position = this.transform.position + new Vector3(PlayerToSlush - 0.5f, 0.0f, 0.0f);
+        cloneAttackEffect2.transform.position = new Vector3(this.transform.position.x + PlayerToSlush - 1.5f, pPos, 0.0f);
+        cloneAttackEffect3.transform.position = new Vector3(this.transform.position.x + PlayerToSlush - 0.5f, pPos, 0.0f);
     }
 
     private void MoveAction()
@@ -273,6 +310,14 @@ public class PlayerScript : MonoBehaviour
         animator.SetBool("PlayerAttackBool", false);
         animator.SetBool("PlayerAttack2Bool", false);
 
+        cloneGhostGirl.GetComponent<Animator>().SetBool("TamekoBool", false);
+        cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko2Bool", false);
+        cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko3Bool", false);
+
+        cloneAttackEffect.GetComponent<Animator>().SetBool("AttackBool", false);
+        cloneAttackEffect2.GetComponent<Animator>().SetBool("AttackBool", false);
+        cloneAttackEffect3.GetComponent<Animator>().SetBool("AttackBool", false);
+
         // 攻撃
         if (!actionFlag && attackFlag)
         {
@@ -293,6 +338,8 @@ public class PlayerScript : MonoBehaviour
                 GameObject Slush = (GameObject)Resources.Load("Slush");
                 GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
 
+                cloneAttackEffect.GetComponent<Animator>().SetBool("AttackBool", true);
+                cloneGhostGirl.GetComponent<Animator>().SetBool("TamekoBool", true);
             }
 
             if (Skill >= 3)
@@ -306,6 +353,9 @@ public class PlayerScript : MonoBehaviour
                 GameObject cloneSlush5 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, LowerLimit + pPos, 0.0f), Quaternion.identity);
                 GameObject cloneSlush6 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, UpperLimit + pPos, 0.0f), Quaternion.identity);
 
+                cloneAttackEffect3.GetComponent<Animator>().SetBool("AttackBool", true);
+                cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko3Bool", true);
+
                 Skill = 0;
             }
 
@@ -316,6 +366,9 @@ public class PlayerScript : MonoBehaviour
                 GameObject cloneSlush = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, 0.0f + pPos, 0.0f), Quaternion.identity);
                 GameObject cloneSlush2 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, LowerLimit + pPos, 0.0f), Quaternion.identity);
                 GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit + pPos, 0.0f), Quaternion.identity);
+
+                cloneAttackEffect2.GetComponent<Animator>().SetBool("AttackBool", true);
+                cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko2Bool", true);
 
                 Skill = 0;
             }          
@@ -330,6 +383,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ChargeAction()
     {
+        cloneGhostGirl.GetComponent<Animator>().SetBool("TameBool", false);
         // 溜め
         if (!actionFlag && chargeFlag)
         {
@@ -343,6 +397,8 @@ public class PlayerScript : MonoBehaviour
             GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
             cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
+            cloneGhostGirl.GetComponent<Animator>().SetBool("TameBool", true);
+
             chargeFlag = false;
             actionFlag = true;
         }
@@ -354,20 +410,20 @@ public class PlayerScript : MonoBehaviour
 
         if (Skill == 1)
         {
-            cloneEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.0f);
-            cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)128, (byte)0, (byte)255);
+            //cloneEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.0f);
+            //cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)128, (byte)0, (byte)255);
         }
 
         if (Skill == 2)
         {
-            cloneEffect.transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
-            cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)64, (byte)0, (byte)255);
+            //cloneEffect.transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+            //cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)64, (byte)0, (byte)255);
         }
 
         if (Skill >= 3)
         {
-            cloneEffect.transform.localScale = new Vector3(1.5f, 1.5f, 0.0f);
-            cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)0, (byte)0, (byte)255);
+            //cloneEffect.transform.localScale = new Vector3(1.5f, 1.5f, 0.0f);
+            //cloneEffect.GetComponent<SpriteRenderer>().color = new Color32((byte)255, (byte)0, (byte)0, (byte)255);
         }
 
         cloneEffect.transform.position = this.transform.position;

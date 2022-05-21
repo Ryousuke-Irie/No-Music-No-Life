@@ -17,6 +17,8 @@ public class DivisionEnemyScript : MonoBehaviour
 
     public float error = -5.0f;
 
+    public int pattern = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +31,54 @@ public class DivisionEnemyScript : MonoBehaviour
     {
         if (HP <= 0)
         {
-            GameObject Enemy = (GameObject)Resources.Load("Enemy");
-            GameObject cloneEnemy;
-            GameObject cloneEnemyUpper;
-            GameObject cloneEnemyLower;
-            cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist - error, 0.0f, 0.0f), Quaternion.identity);
-            cloneEnemyUpper = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist - error, 4.0f, 0.0f), Quaternion.identity);
-            cloneEnemyLower = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next2dist - error, -4.0f, 0.0f), Quaternion.identity);
+            if (pattern == 0)
+            {
+                GameObject Enemy = (GameObject)Resources.Load("DivisionEnemy_1");
+                GameObject Enemy1 = (GameObject)Resources.Load("DivisionEnemy_2");
+                GameObject Enemy2 = (GameObject)Resources.Load("DivisionEnemy_3");
+                GameObject cloneEnemy;
+                GameObject cloneEnemyUpper;
+                GameObject cloneEnemyLower;
+                cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist - error, 0.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyUpper = Instantiate(Enemy1, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist - error, 4.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyLower = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist - error, -4.0f - 2.0f, 0.0f), Quaternion.identity);
+            }
+            if (pattern == 1)
+            {
+                GameObject Enemy = (GameObject)Resources.Load("DivisionEnemy_1");
+                GameObject Enemy1 = (GameObject)Resources.Load("DivisionEnemy_2");
+                GameObject Enemy2 = (GameObject)Resources.Load("DivisionEnemy_3");
+                GameObject cloneEnemy;
+                GameObject cloneEnemyUpper;
+                GameObject cloneEnemyLower;
+                cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Nextdist - error, 0.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyUpper = Instantiate(Enemy1, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist - error, 4.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyLower = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist - error, -4.0f - 2.0f, 0.0f), Quaternion.identity);
+            }
+            if (pattern == 2)
+            {
+                GameObject Enemy = (GameObject)Resources.Load("DivisionEnemy_1");
+                GameObject Enemy1 = (GameObject)Resources.Load("DivisionEnemy_2");
+                GameObject Enemy2 = (GameObject)Resources.Load("DivisionEnemy_3");
+                GameObject cloneEnemy;
+                GameObject cloneEnemyUpper;
+                GameObject cloneEnemyLower;
+                cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist - error, 0.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyUpper = Instantiate(Enemy1, new Vector3(refObj.GetComponent<PlayerScript>().Nextdist - error, 4.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyLower = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist - error, -4.0f - 2.0f, 0.0f), Quaternion.identity);
+            }
+            if (pattern == 3)
+            {
+                GameObject Enemy = (GameObject)Resources.Load("DivisionEnemy_1");
+                GameObject Enemy1 = (GameObject)Resources.Load("DivisionEnemy_2");
+                GameObject Enemy2 = (GameObject)Resources.Load("DivisionEnemy_3");
+                GameObject cloneEnemy;
+                GameObject cloneEnemyUpper;
+                GameObject cloneEnemyLower;
+                cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist - error, 0.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyUpper = Instantiate(Enemy1, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist - error, 4.0f - 2.0f, 0.0f), Quaternion.identity);
+                cloneEnemyLower = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Nextdist - error, -4.0f - 2.0f, 0.0f), Quaternion.identity);
+            }
 
             Destroy(gameObject);
 
