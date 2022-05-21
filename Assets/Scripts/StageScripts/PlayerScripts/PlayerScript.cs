@@ -72,6 +72,8 @@ public class PlayerScript : MonoBehaviour
     private GameObject refAttackEffect3;
     private GameObject cloneAttackEffect3;
 
+    private GameObject refFade;
+
     // フラグ用変数
     private bool rotateFlag = false;
     [System.NonSerialized] public bool blinkingFlag = false;
@@ -86,6 +88,8 @@ public class PlayerScript : MonoBehaviour
     [System.NonSerialized] public bool startFlag = false;
     [System.NonSerialized] public bool goalFlag = false;
     [System.NonSerialized] public bool lastStickFlag = false;
+
+    [System.NonSerialized] public bool deadFlag = false;
 
     [System.NonSerialized] public bool oneTimeFlag = false;
     private bool oneTimeFlag2 = false;
@@ -108,6 +112,8 @@ public class PlayerScript : MonoBehaviour
         Effect = (GameObject)Resources.Load("nannkaEffect");
 
         refCamera = GameObject.Find("Main Camera");
+
+        refFade = GameObject.Find("fade_white2");
 
         refGhostGirl = (GameObject)Resources.Load("GhostGirl");
         refGhostGirlEffect = (GameObject)Resources.Load("girlEffect");
@@ -139,6 +145,22 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (deadFlag)
+        {
+            refFade.GetComponent<FadeScript>().isFadeOut = true;
+
+            refFade.transform.position = new Vector3(refCamera.transform.position.x, refCamera.transform.position.y, 0.0f);
+
+            if (refFade.GetComponent<FadeScript>().fadeEndFlag)
+            {
+                Cursor.visible = true;
+
+                SceneManager.LoadScene("StageSelectScene");
+            }
+
+            return;
+        }
+
         if (startFlag)
         {
             // BGMを流す
@@ -456,9 +478,7 @@ public class PlayerScript : MonoBehaviour
         // ゲームオーバー条件
         if(HP <= 0)
         {
-            Cursor.visible = true;
-
-            SceneManager.LoadScene("StageSelectScene");
+            deadFlag = true;
         }
     }
 

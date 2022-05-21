@@ -22,6 +22,8 @@ public class BackGroundScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (refObjp.GetComponent<PlayerScript>().deadFlag) { return; }
+
         if (refObjp.transform.position.x > start && refObjp.transform.position.x < refObjp.GetComponent<PlayerScript>().MoveLimit - StopPos && refObjp.GetComponent<PlayerScript>().startFlag)
         {
             this.transform.position += new Vector3(MoveAmount * Time.deltaTime, 0.0f, 0.0f);
