@@ -81,7 +81,7 @@ public class StageScript : MonoBehaviour
         for (int i = 0; i < 500; i++)
         {
             // 生成処理
-            if(stickDataArray[i])  // データがあるか
+            if (stickDataArray[i])  // データがあるか
             {
                 if (cameraPosLeft <= stickPosDataArray[i] && stickPosDataArray[i] < cameraPosRight) // 生成範囲内にあるか
                 {
@@ -94,7 +94,7 @@ public class StageScript : MonoBehaviour
                             stickDataArray[i] = false; // 重複して作られないようにこのデータはfalseにする
                             break;
                         }
-                    }                  
+                    }
                 }
             }
 
@@ -103,31 +103,31 @@ public class StageScript : MonoBehaviour
             {
                 if (stickArray[j] != null) // 生成されているオブジェクトを探す
                 {
-                    if(stickArray[j].transform.position.x < cameraPosLeft) // 削除範囲内にあるか
+                    if (stickArray[j].transform.position.x < cameraPosLeft) // 削除範囲内にあるか
                     {
                         // 削除
                         Destroy(stickArray[j], 0.0f);
                         stickArray[j] = null;
                     }
                 }
-            }               
+            }
         }
 
         // 縦棒付近判定のリセット処理
         if (refObjp.transform.position.x > refObjp.GetComponent<PlayerScript>().dist + refObjp.GetComponent<PlayerScript>().TempoTimeError)
         {
-            if(stickNum < GetLastStick())
+            if (stickNum < GetLastStick())
             {
                 stickNum++;
 
                 refObjp.GetComponent<PlayerScript>().dist = stickPosDataArray[stickNum];
 
-                if(stickNum < GetLastStick() - 1)
+                if (stickNum < GetLastStick() - 1)
                 {
                     refObjp.GetComponent<PlayerScript>().Nextdist = stickPosDataArray[stickNum + 1];
                 }
 
-                if(stickNum < GetLastStick() - 2)
+                if (stickNum < GetLastStick() - 2)
                 {
                     refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[stickNum + 2];
                 }
