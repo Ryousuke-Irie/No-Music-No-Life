@@ -102,6 +102,8 @@ public class PlayerScript : MonoBehaviour
     [System.NonSerialized] public bool loopStageFlag = false;
     [System.NonSerialized] public bool loopBackFlag = false;
 
+    [System.NonSerialized] public bool loopBossFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -523,6 +525,7 @@ public class PlayerScript : MonoBehaviour
             {
                 loopStageFlag = true;
                 loopBackFlag = true;
+                loopBossFlag = true;
 
                 if (cloneBGM)
                 {
