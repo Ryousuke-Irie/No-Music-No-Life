@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     // 変数
     private int Skill = 0;
 
-    [System.NonSerialized] public int HP = 10;
+    [System.NonSerialized] public int HP = 50;
     private int tempHP = 5;
 
     public float TempoTimeError = 1.5f;
@@ -74,6 +74,9 @@ public class PlayerScript : MonoBehaviour
 
     private GameObject refFade;
 
+    private GameObject refGameOver;
+    private GameObject cloneGameOver;
+
     // フラグ用変数
     private bool rotateFlag = false;
     [System.NonSerialized] public bool blinkingFlag = false;
@@ -96,6 +99,10 @@ public class PlayerScript : MonoBehaviour
 
     private bool animFlag = false;
 
+    public bool loopFlag = false;
+    [System.NonSerialized] public bool loopStageFlag = false;
+    [System.NonSerialized] public bool loopBackFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -114,6 +121,8 @@ public class PlayerScript : MonoBehaviour
         refCamera = GameObject.Find("Main Camera");
 
         refFade = GameObject.Find("fade_white2");
+
+        refGameOver = (GameObject)Resources.Load("GameOver");
 
         refGhostGirl = (GameObject)Resources.Load("GhostGirl");
         refGhostGirlEffect = (GameObject)Resources.Load("girlEffect");
@@ -147,9 +156,15 @@ public class PlayerScript : MonoBehaviour
     {
         if (deadFlag)
         {
-            refFade.GetComponent<FadeScript>().isFadeOut = true;
+            if (cloneGameOver)
+            {
+                if (cloneGameOver.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    refFade.GetComponent<FadeScript>().isFadeOut = true;
 
-            refFade.transform.position = new Vector3(refCamera.transform.position.x, refCamera.transform.position.y, 0.0f);
+                    refFade.transform.position = new Vector3(refCamera.transform.position.x, refCamera.transform.position.y, 0.0f);
+                }
+            }
 
             if (refFade.GetComponent<FadeScript>().fadeEndFlag)
             {
@@ -476,21 +491,41 @@ public class PlayerScript : MonoBehaviour
     private void Dead()
     {
         // ゲームオーバー条件
-        if(HP <= 0)
+        if(HP <= 0 && !deadFlag)
         {
             deadFlag = true;
 
             refCamera.GetComponent<PostEffect>().enabled = true;
+
+            GameObject hibi = (GameObject)Resources.Load("Hibi");
+            GameObject cloneHibi = Instantiate(hibi, new Vector3(refCamera.transform.position.x, refCamera.transform.position.y, 0.0f), Quaternion.identity);
+
+            cloneGameOver = Instantiate(refGameOver, new Vector3(refCamera.transform.position.x, refCamera.transform.position.y, 0.0f), Quaternion.identity);
         }
     }
 
     private void Goal()
     {
+        if (loopBackFlag)
+        {
+            loopBackFlag = false;
+            this.transform.position = new Vector3(0.0f, pPos, 0.0f);
+            refCamera.transform.position = new Vector3(0.0f, refCamera.transform.position.y, refCamera.transform.position.z);
+        }
+
         // ゴール条件
         if (this.transform.position.x >= MoveLimit)
         {
-            goalFlag = true;
-            Cursor.visible = true;
+            if (loopFlag)
+            {
+                loopStageFlag = true;
+                loopBackFlag = true;
+            }
+            else
+            {
+                goalFlag = true;
+                Cursor.visible = true;
+            }
         }
     }
 }

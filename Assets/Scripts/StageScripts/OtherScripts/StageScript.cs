@@ -73,6 +73,12 @@ public class StageScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if (refObjp.GetComponent<PlayerScript>().loopStageFlag)
+        {
+            ResetData();
+            refObjp.GetComponent<PlayerScript>().loopStageFlag = false;
+        }
+
         // カメラの位置を参照してオブジェクトを設置＆削除する
         float cameraPosLeft = refObj.transform.position.x - 20;
         float cameraPosRight = refObj.transform.position.x + 20;
@@ -264,6 +270,33 @@ public class StageScript : MonoBehaviour
         obstaclePosXDataArray[num] = x;
         obstaclePosYDataArray[num] = y;
         obstacleTypeArray[num] = obstacleType;
+    }
+
+    public void ResetData()
+    {
+        for (int i = 0; i < 500; i++)
+        {
+            if (stickPosDataArray[i] >= 0.1f)
+            {
+                stickDataArray[i] = true;
+            }
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+            if (enemyPosXDataArray[i] >= 0.1f)
+            {
+                enemyDataArray[i] = true;
+            }
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+            if (obstaclePosXDataArray[i] >= 0.1f)
+            {
+                obstacleDataArray[i] = true;
+            }
+        }
     }
 
     public virtual void SetStickData() { }

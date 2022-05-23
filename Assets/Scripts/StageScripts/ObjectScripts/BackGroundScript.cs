@@ -8,7 +8,10 @@ public class BackGroundScript : MonoBehaviour
     public float MoveAmount = 10.0f;
     public GameObject NextBG;
 
+    private Vector3 firstPos;
+
     private bool oneTimeFlag = false;
+    private bool oneTimeFlag2 = false;
 
     private float start = 8.0f;
     public float StopPos = 12.0f;
@@ -17,6 +20,8 @@ public class BackGroundScript : MonoBehaviour
     void Start()
     {
         refObjp = GameObject.Find("Player");
+
+        firstPos = this.transform.position;
     }
 
     // Update is called once per frame
@@ -39,6 +44,18 @@ public class BackGroundScript : MonoBehaviour
         if(refObjp.transform.position.x > this.transform.position.x + gameObject.GetComponent<Renderer>().bounds.size.x)
         {
             Destroy(gameObject);
+        }
+
+        if (refObjp.GetComponent<PlayerScript>().loopBackFlag)
+        {
+            if (!oneTimeFlag2)
+            {
+                float temp = this.transform.position.x - refObjp.transform.position.x;
+
+                this.transform.position = new Vector3(0.0f + temp, firstPos.y, 0.0f);
+
+                oneTimeFlag2 = true;
+            }
         }
     }
 }

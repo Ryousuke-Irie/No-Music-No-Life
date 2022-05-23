@@ -703,6 +703,10 @@ PrefabInstance:
       propertyPath: BGM
       value: 
       objectReference: {fileID: 6594259420060840344, guid: 55a63d25be83d774b91c6391d4475c4f, type: 3}
+    - target: {fileID: -1858896167153040996, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: loopFlag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name
       value: Player
