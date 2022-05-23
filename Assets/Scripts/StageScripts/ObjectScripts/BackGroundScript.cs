@@ -28,6 +28,7 @@ public class BackGroundScript : MonoBehaviour
     void Update()
     {
         if (refObjp.GetComponent<PlayerScript>().deadFlag) { return; }
+        if (refObjp.GetComponent<PlayerScript>().loopFlag && refObjp.GetComponent<PlayerScript>().goalFlag) { return; }
 
         if (refObjp.transform.position.x > start && refObjp.transform.position.x < refObjp.GetComponent<PlayerScript>().MoveLimit - StopPos && refObjp.GetComponent<PlayerScript>().startFlag)
         {

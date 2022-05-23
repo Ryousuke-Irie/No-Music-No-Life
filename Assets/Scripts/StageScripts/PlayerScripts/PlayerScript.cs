@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     // ïœêî
     private int Skill = 0;
 
-    [System.NonSerialized] public int HP = 50;
+    [System.NonSerialized] public int HP = 10;
     private int tempHP = 5;
 
     public float TempoTimeError = 1.5f;
@@ -64,7 +64,6 @@ public class PlayerScript : MonoBehaviour
     private GameObject cloneGhostGirlEffect3;
 
     private GameObject refAttackEffect;
-    private GameObject cloneAttackEffect;
 
     private GameObject refAttackEffect2;
     private GameObject cloneAttackEffect2;
@@ -134,7 +133,8 @@ public class PlayerScript : MonoBehaviour
         cloneGhostGirlEffect = Instantiate(refGhostGirlEffect, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
         cloneGhostGirlEffect2 = Instantiate(refGhostGirlEffect, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
         cloneGhostGirlEffect3 = Instantiate(refGhostGirlEffect, this.transform.position + new Vector3(ghostPosX, ghostPosY, 0.0f), Quaternion.identity);
-        cloneAttackEffect = Instantiate(refAttackEffect, this.transform.position + new Vector3(PlayerToSlush - 0.5f, 0.0f, 0.0f), Quaternion.identity);
+        //cloneAttackEffect = Instantiate(refAttackEffect, this.transform.position + new Vector3(PlayerToSlush - 0.5f, 0.0f, 0.0f), Quaternion.identity);
+        //cloneAttackEffectN = Instantiate(refAttackEffect, this.transform.position + new Vector3(PlayerToSlush - 0.5f, 0.0f, 0.0f), Quaternion.identity);
         cloneAttackEffect2 = Instantiate(refAttackEffect2, this.transform.position + new Vector3(PlayerToSlush - 1.5f, pPos, 0.0f), Quaternion.identity);
         cloneAttackEffect3 = Instantiate(refAttackEffect3, this.transform.position + new Vector3(PlayerToSlush - 0.5f, pPos, 0.0f), Quaternion.identity);
 
@@ -154,6 +154,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (loopFlag && goalFlag) { return; }
+
         if (deadFlag)
         {
             if (cloneGameOver)
@@ -298,7 +300,6 @@ public class PlayerScript : MonoBehaviour
             animator.SetBool("PlayerRunBool", false);
         }
 
-        cloneAttackEffect.transform.position = this.transform.position + new Vector3(PlayerToSlush - 0.5f, 0.0f, 0.0f);
         cloneAttackEffect2.transform.position = new Vector3(this.transform.position.x + PlayerToSlush - 1.5f, pPos, 0.0f);
         cloneAttackEffect3.transform.position = new Vector3(this.transform.position.x + PlayerToSlush - 0.5f, pPos, 0.0f);
     }
@@ -351,7 +352,6 @@ public class PlayerScript : MonoBehaviour
         cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko2Bool", false);
         cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko3Bool", false);
 
-        cloneAttackEffect.GetComponent<Animator>().SetBool("AttackBool", false);
         cloneAttackEffect2.GetComponent<Animator>().SetBool("AttackBool", false);
         cloneAttackEffect3.GetComponent<Animator>().SetBool("AttackBool", false);
 
@@ -375,7 +375,10 @@ public class PlayerScript : MonoBehaviour
                 GameObject Slush = (GameObject)Resources.Load("Slush");
                 GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(PlayerToSlush, 0.0f, 0.0f), Quaternion.identity);
 
+                GameObject cloneAttackEffect = Instantiate(refAttackEffect, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                 cloneAttackEffect.GetComponent<Animator>().SetBool("AttackBool", true);
+                cloneAttackEffect.transform.position = this.transform.position + new Vector3(PlayerToSlush + 1.5f, 0.0f, 0.0f);
+
                 cloneGhostGirl.GetComponent<Animator>().SetBool("TamekoBool", true);
             }
 
@@ -520,6 +523,13 @@ public class PlayerScript : MonoBehaviour
             {
                 loopStageFlag = true;
                 loopBackFlag = true;
+
+                if (cloneBGM)
+                {
+                    Destroy(cloneBGM);
+                    cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                    cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                }
             }
             else
             {
