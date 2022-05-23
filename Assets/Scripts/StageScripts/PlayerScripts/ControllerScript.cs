@@ -71,7 +71,7 @@ public class ControllerScript : MonoBehaviour
 
         // UŒ‚ˆ—
         if ((Gamepad.current.buttonEast.wasPressedThisFrame
-            || Gamepad.current.buttonWest.wasPressedThisFrame || Gamepad.current.rightShoulder.wasPressedThisFrame)
+            || Gamepad.current.buttonWest.wasPressedThisFrame || Gamepad.current.rightShoulder.wasPressedThisFrame || Gamepad.current.leftShoulder.wasPressedThisFrame)
              && (this.transform.position.x > this.GetComponent<PlayerScript>().dist - this.GetComponent<PlayerScript>().TempoTimeError && this.transform.position.x < this.GetComponent<PlayerScript>().dist + this.GetComponent<PlayerScript>().TempoTimeError) && !this.GetComponent<PlayerScript>().actionFlag)
         {
             this.GetComponent<PlayerScript>().attackFlag = true;

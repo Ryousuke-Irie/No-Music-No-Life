@@ -7,6 +7,15 @@ public class SecondStageScript : StageScript
     public GameObject enemyTypeA;
     public GameObject enemyTypeB;
     public GameObject obstacleTypeA;
+    public GameObject obstacleTypeB;
+    public GameObject obstacleTypeC;
+    public GameObject obstacleTypeD;
+    public GameObject obstacleTypeE;
+    public GameObject obstacleTypeF;
+    public GameObject obstacleTypeG;
+    public GameObject obstacleTypeH;
+    public GameObject obstacleTypeI;
+    public GameObject obstacleTypeJ;
 
     private int Max = 0;
 
@@ -164,37 +173,37 @@ public class SecondStageScript : StageScript
 
         // Obstacleコピペゾーン -----------------
 
-        SetObstacle(num++, 15f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 18f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 26f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 26f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 27.5f * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, 15f * vel - error, 1 * updown, obstacleTypeG);
+        SetObstacle(num++, 18f * vel - error, 0 * updown, obstacleTypeB);
+        SetObstacle(num++, 26f * vel - error, 1 * updown, obstacleTypeH);
+        SetObstacle(num++, 26f * vel - error, -1 * updown, obstacleTypeJ);
+        SetObstacle(num++, 27.5f * vel - error, 0 * updown, obstacleTypeI);
         SetObstacle(num++, 29f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 29.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 31f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 32.5f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 33f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 35f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 51f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 58f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 58.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 61f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 62f * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, 29.5f * vel - error, -1 * updown, obstacleTypeF);
+        SetObstacle(num++, 31f * vel - error, 0 * updown, obstacleTypeE);
+        SetObstacle(num++, 32.5f * vel - error, 1 * updown, obstacleTypeH);
+        SetObstacle(num++, 33f * vel - error, 0 * updown, obstacleTypeG);
+        SetObstacle(num++, 35f * vel - error, -1 * updown, obstacleTypeC);
+        SetObstacle(num++, 51f * vel - error, 1 * updown, obstacleTypeF);
+        SetObstacle(num++, 58f * vel - error, 0 * updown, obstacleTypeI);
+        SetObstacle(num++, 58.5f * vel - error, -1 * updown, obstacleTypeJ);
+        SetObstacle(num++, 61f * vel - error, 1 * updown, obstacleTypeD);
+        SetObstacle(num++, 62f * vel - error, -1 * updown, obstacleTypeG);
         SetObstacle(num++, 63.5f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 65f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 76.5f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 77f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 79f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 79.5f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 80.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 81f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 83f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 83.5f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 85.5f * vel - error, -1 * updown, obstacleTypeA);
-        SetObstacle(num++, 86f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 88.5f * vel - error, 1 * updown, obstacleTypeA);
-        SetObstacle(num++, 94f * vel - error, 0 * updown, obstacleTypeA);
-        SetObstacle(num++, 99f * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, 65f * vel - error, 0 * updown, obstacleTypeI);
+        SetObstacle(num++, 76.5f * vel - error, 1 * updown, obstacleTypeH);
+        SetObstacle(num++, 77f * vel - error, 0 * updown, obstacleTypeC);
+        SetObstacle(num++, 79f * vel - error, -1 * updown, obstacleTypeE);
+        SetObstacle(num++, 79.5f * vel - error, 0 * updown, obstacleTypeB);
+        SetObstacle(num++, 80.5f * vel - error, -1 * updown, obstacleTypeJ);
+        SetObstacle(num++, 81f * vel - error, 0 * updown, obstacleTypeF);
+        SetObstacle(num++, 83f * vel - error, 1 * updown, obstacleTypeC);
+        SetObstacle(num++, 83.5f * vel - error, 0 * updown, obstacleTypeE);
+        SetObstacle(num++, 85.5f * vel - error, -1 * updown, obstacleTypeD);
+        SetObstacle(num++, 86f * vel - error, 0 * updown, obstacleTypeG);
+        SetObstacle(num++, 88.5f * vel - error, 1 * updown, obstacleTypeH);
+        SetObstacle(num++, 94f * vel - error, 0 * updown, obstacleTypeI);
+        SetObstacle(num++, 99f * vel - error, -1 * updown, obstacleTypeJ);
 
         // --------------------------------------
     }

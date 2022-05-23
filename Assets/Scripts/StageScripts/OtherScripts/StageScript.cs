@@ -159,7 +159,10 @@ public class StageScript : MonoBehaviour
             }
             else
             {
-                refObjp.GetComponent<PlayerScript>().lastStickFlag = true;
+                if (!refObjp.GetComponent<PlayerScript>().loopFlag)
+                {
+                    refObjp.GetComponent<PlayerScript>().lastStickFlag = true;
+                }
             }
         }
 
@@ -297,6 +300,8 @@ public class StageScript : MonoBehaviour
                 obstacleDataArray[i] = true;
             }
         }
+
+        stickNum = 0;
     }
 
     public virtual void SetStickData() { }

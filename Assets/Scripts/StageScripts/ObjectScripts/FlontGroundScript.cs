@@ -26,6 +26,7 @@ public class FlontGroundScript : MonoBehaviour
     void Update()
     {
         if (refObjp.GetComponent<PlayerScript>().deadFlag) { return; }
+        if (refObjp.GetComponent<PlayerScript>().loopFlag && refObjp.GetComponent<PlayerScript>().goalFlag) { return; }
 
         if (refObjp.transform.position.x > this.transform.position.x && !oneTimeFlag)
         {
