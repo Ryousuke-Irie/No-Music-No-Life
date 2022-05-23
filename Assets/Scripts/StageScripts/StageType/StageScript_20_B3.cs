@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageScript_08_No16 : StageScript
+public class StageScript_20_B3 : StageScript
 {
     public GameObject enemyTypeA;
     public GameObject enemyTypeB;
@@ -15,9 +15,9 @@ public class StageScript_08_No16 : StageScript
         int num = 0;
         float vel = refObjp.GetComponent<PlayerScript>().BesideMoveAmount;
 
-        float bpm = 140.0f;
-        float sp = 0.10f;
-        float p = 30 / bpm;
+        float bpm = 120.0f;
+        float sp = 0.0f;
+        float p = 60 / bpm;
         float t = 1.0f;
         // Stickコピペゾーン --------------------
 
@@ -222,105 +222,6 @@ public class StageScript_08_No16 : StageScript
         SetStick(num++, (sp + (p * (t * 198))) * vel);
         SetStick(num++, (sp + (p * (t * 199))) * vel);
         SetStick(num++, (sp + (p * (t * 200))) * vel);
-        SetStick(num++, (sp + (p * (t * 201))) * vel);
-        SetStick(num++, (sp + (p * (t * 202))) * vel);
-        SetStick(num++, (sp + (p * (t * 203))) * vel);
-        SetStick(num++, (sp + (p * (t * 204))) * vel);
-        SetStick(num++, (sp + (p * (t * 205))) * vel);
-        SetStick(num++, (sp + (p * (t * 206))) * vel);
-        SetStick(num++, (sp + (p * (t * 207))) * vel);
-        SetStick(num++, (sp + (p * (t * 208))) * vel);
-        SetStick(num++, (sp + (p * (t * 209))) * vel);
-        SetStick(num++, (sp + (p * (t * 210))) * vel);
-        SetStick(num++, (sp + (p * (t * 211))) * vel);
-        SetStick(num++, (sp + (p * (t * 212))) * vel);
-        SetStick(num++, (sp + (p * (t * 213))) * vel);
-        SetStick(num++, (sp + (p * (t * 214))) * vel);
-        SetStick(num++, (sp + (p * (t * 215))) * vel);
-        SetStick(num++, (sp + (p * (t * 216))) * vel);
-        SetStick(num++, (sp + (p * (t * 217))) * vel);
-        SetStick(num++, (sp + (p * (t * 218))) * vel);
-        SetStick(num++, (sp + (p * (t * 219))) * vel);
-        SetStick(num++, (sp + (p * (t * 220))) * vel);
-        SetStick(num++, (sp + (p * (t * 221))) * vel);
-        SetStick(num++, (sp + (p * (t * 222))) * vel);
-        SetStick(num++, (sp + (p * (t * 223))) * vel);
-        SetStick(num++, (sp + (p * (t * 224))) * vel);
-        SetStick(num++, (sp + (p * (t * 225))) * vel);
-        SetStick(num++, (sp + (p * (t * 226))) * vel);
-        SetStick(num++, (sp + (p * (t * 227))) * vel);
-        SetStick(num++, (sp + (p * (t * 228))) * vel);
-        SetStick(num++, (sp + (p * (t * 229))) * vel);
-        SetStick(num++, (sp + (p * (t * 230))) * vel);
-        SetStick(num++, (sp + (p * (t * 231))) * vel);
-        SetStick(num++, (sp + (p * (t * 232))) * vel);
-        SetStick(num++, (sp + (p * (t * 233))) * vel);
-        SetStick(num++, (sp + (p * (t * 234))) * vel);
-        SetStick(num++, (sp + (p * (t * 235))) * vel);
-        SetStick(num++, (sp + (p * (t * 236))) * vel);
-        SetStick(num++, (sp + (p * (t * 237))) * vel);
-        SetStick(num++, (sp + (p * (t * 238))) * vel);
-        SetStick(num++, (sp + (p * (t * 239))) * vel);
-        SetStick(num++, (sp + (p * (t * 240))) * vel);
-        SetStick(num++, (sp + (p * (t * 241))) * vel);
-        SetStick(num++, (sp + (p * (t * 242))) * vel);
-        SetStick(num++, (sp + (p * (t * 243))) * vel);
-        SetStick(num++, (sp + (p * (t * 244))) * vel);
-        SetStick(num++, (sp + (p * (t * 245))) * vel);
-        SetStick(num++, (sp + (p * (t * 246))) * vel);
-        SetStick(num++, (sp + (p * (t * 247))) * vel);
-        SetStick(num++, (sp + (p * (t * 248))) * vel);
-        SetStick(num++, (sp + (p * (t * 249))) * vel);
-        SetStick(num++, (sp + (p * (t * 250))) * vel);
-        SetStick(num++, (sp + (p * (t * 251))) * vel);
-        SetStick(num++, (sp + (p * (t * 252))) * vel);
-        SetStick(num++, (sp + (p * (t * 253))) * vel);
-        SetStick(num++, (sp + (p * (t * 254))) * vel);
-        SetStick(num++, (sp + (p * (t * 255))) * vel);
-        SetStick(num++, (sp + (p * (t * 256))) * vel);
-        SetStick(num++, (sp + (p * (t * 257))) * vel);
-        SetStick(num++, (sp + (p * (t * 258))) * vel);
-        SetStick(num++, (sp + (p * (t * 259))) * vel);
-        SetStick(num++, (sp + (p * (t * 260))) * vel);
-        SetStick(num++, (sp + (p * (t * 261))) * vel);
-        SetStick(num++, (sp + (p * (t * 262))) * vel);
-        SetStick(num++, (sp + (p * (t * 263))) * vel);
-        SetStick(num++, (sp + (p * (t * 264))) * vel);
-        SetStick(num++, (sp + (p * (t * 265))) * vel);
-        SetStick(num++, (sp + (p * (t * 266))) * vel);
-        SetStick(num++, (sp + (p * (t * 267))) * vel);
-        SetStick(num++, (sp + (p * (t * 268))) * vel);
-        SetStick(num++, (sp + (p * (t * 269))) * vel);
-        SetStick(num++, (sp + (p * (t * 270))) * vel);
-        SetStick(num++, (sp + (p * (t * 271))) * vel);
-        SetStick(num++, (sp + (p * (t * 272))) * vel);
-        SetStick(num++, (sp + (p * (t * 273))) * vel);
-        SetStick(num++, (sp + (p * (t * 274))) * vel);
-        SetStick(num++, (sp + (p * (t * 275))) * vel);
-        SetStick(num++, (sp + (p * (t * 276))) * vel);
-        SetStick(num++, (sp + (p * (t * 277))) * vel);
-        SetStick(num++, (sp + (p * (t * 278))) * vel);
-        SetStick(num++, (sp + (p * (t * 279))) * vel);
-        SetStick(num++, (sp + (p * (t * 280))) * vel);
-        SetStick(num++, (sp + (p * (t * 281))) * vel);
-        SetStick(num++, (sp + (p * (t * 282))) * vel);
-        SetStick(num++, (sp + (p * (t * 283))) * vel);
-        SetStick(num++, (sp + (p * (t * 284))) * vel);
-        SetStick(num++, (sp + (p * (t * 285))) * vel);
-        SetStick(num++, (sp + (p * (t * 286))) * vel);
-        SetStick(num++, (sp + (p * (t * 287))) * vel);
-        SetStick(num++, (sp + (p * (t * 288))) * vel);
-        SetStick(num++, (sp + (p * (t * 289))) * vel);
-        SetStick(num++, (sp + (p * (t * 290))) * vel);
-        SetStick(num++, (sp + (p * (t * 291))) * vel);
-        SetStick(num++, (sp + (p * (t * 292))) * vel);
-        SetStick(num++, (sp + (p * (t * 293))) * vel);
-        SetStick(num++, (sp + (p * (t * 294))) * vel);
-        SetStick(num++, (sp + (p * (t * 295))) * vel);
-        SetStick(num++, (sp + (p * (t * 296))) * vel);
-        SetStick(num++, (sp + (p * (t * 297))) * vel);
-        SetStick(num++, (sp + (p * (t * 298))) * vel);
-        SetStick(num++, (sp + (p * (t * 299))) * vel);
 
 
         // --------------------------------------
