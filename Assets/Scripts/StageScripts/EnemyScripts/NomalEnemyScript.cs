@@ -9,33 +9,49 @@ public class NomalEnemyScript : MonoBehaviour
     private GameObject refObj;
     private bool oneTimeFlag = false;
 
+    private GameObject refCamera;
+
     private float heartSpace = 1.5f;
     private float heartToEnemy = 2.0f;
 
     private static int HEART_MAX = 5;
     GameObject[] cloneHeart = new GameObject[HEART_MAX];
 
+    public bool scoreFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
         refObj = GameObject.Find("Player");
+        refCamera = GameObject.Find("Main Camera");
         tempHP = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(HP <= 0)
+        if (refCamera.transform.position.x - 20.0f > this.transform.position.x)
+        {
+            Destroy(gameObject);
+        }
+
+        if (HP <= 0)
         {
             Destroy(gameObject);
 
-            refObj.GetComponent<PlayerScript>().score += 500;
+            if (!scoreFlag)
+            {
+                refObj.GetComponent<PlayerScript>().score += 500;
+            }
         }
 
         if(tempHP > HP)
         {
             tempHP = HP;
-            refObj.GetComponent<PlayerScript>().score += 500;
+            if (!scoreFlag)
+            {
+                refObj.GetComponent<PlayerScript>().score += 500;
+            }
             this.transform.position = new Vector3(refObj.GetComponent<PlayerScript>().Nextdist + 5.0f, this.transform.position.y, this.transform.position.z);
         }
 
