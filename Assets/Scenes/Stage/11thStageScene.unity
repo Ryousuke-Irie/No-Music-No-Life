@@ -268,12 +268,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 908041373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4010ad66151b74a91a43ee65de62bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8552ee6664034a14d8a0fcdab5d8efff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypeA: {fileID: 911785158536550667, guid: fb5b581b7e4f9754f86e1603b0d3cbb7, type: 3}
-  enemyTypeB: {fileID: 911785158536550667, guid: fb5b581b7e4f9754f86e1603b0d3cbb7, type: 3}
-  obstacleTypeA: {fileID: 911785158536550667, guid: fb5b581b7e4f9754f86e1603b0d3cbb7, type: 3}
+  enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
+  enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
+  obstacleTypeA: {fileID: 1068153395543856828, guid: 263bbc3b509ca30489b01204074b7c19, type: 3}
 --- !u!212 &908041375
 SpriteRenderer:
   m_ObjectHideFlags: 0
