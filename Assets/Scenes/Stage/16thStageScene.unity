@@ -453,6 +453,7 @@ GameObject:
   - component: {fileID: 908041379}
   - component: {fileID: 908041377}
   - component: {fileID: 908041378}
+  - component: {fileID: 908041374}
   m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
@@ -460,6 +461,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &908041374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908041373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3327cf8f5cb8eb44bab9dafab09cd426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTypeA: {fileID: 0}
+  enemyTypeB: {fileID: 0}
+  obstacleTypeA: {fileID: 0}
 --- !u!212 &908041375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -556,7 +572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908041373}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 077298cc887c9ae4bbe8a3d8118f596d, type: 3}
   m_Name: 
@@ -846,6 +862,10 @@ PrefabInstance:
       propertyPath: BGM
       value: 
       objectReference: {fileID: 3647264435247113350, guid: 4b21565465087bf429022051229c4048, type: 3}
+    - target: {fileID: -1858896167153040996, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: BesideMoveAmount
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name
       value: Player

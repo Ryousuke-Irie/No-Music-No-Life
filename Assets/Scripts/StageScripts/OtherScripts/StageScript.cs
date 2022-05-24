@@ -73,12 +73,6 @@ public class StageScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (refObjp.GetComponent<PlayerScript>().loopStageFlag)
-        {
-            ResetData();
-            refObjp.GetComponent<PlayerScript>().loopStageFlag = false;
-        }
-
         // カメラの位置を参照してオブジェクトを設置＆削除する
         float cameraPosLeft = refObj.transform.position.x - 20;
         float cameraPosRight = refObj.transform.position.x + 20;
@@ -87,7 +81,7 @@ public class StageScript : MonoBehaviour
         for (int i = 0; i < 500; i++)
         {
             // 生成処理
-            if(stickDataArray[i])  // データがあるか
+            if (stickDataArray[i])  // データがあるか
             {
                 if (cameraPosLeft <= stickPosDataArray[i] && stickPosDataArray[i] < cameraPosRight) // 生成範囲内にあるか
                 {
@@ -100,7 +94,7 @@ public class StageScript : MonoBehaviour
                             stickDataArray[i] = false; // 重複して作られないようにこのデータはfalseにする
                             break;
                         }
-                    }                  
+                    }
                 }
             }
 
@@ -109,14 +103,14 @@ public class StageScript : MonoBehaviour
             {
                 if (stickArray[j] != null) // 生成されているオブジェクトを探す
                 {
-                    if(stickArray[j].transform.position.x < cameraPosLeft) // 削除範囲内にあるか
+                    if (stickArray[j].transform.position.x < cameraPosLeft) // 削除範囲内にあるか
                     {
                         // 削除
                         Destroy(stickArray[j], 0.0f);
                         stickArray[j] = null;
                     }
                 }
-            }               
+            }
         }
 
         // 縦棒付近判定のリセット処理
@@ -138,31 +132,13 @@ public class StageScript : MonoBehaviour
                     refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[stickNum + 2];
                 }
 
-                if (stickNum < GetLastStick() - 3)
-                {
-                    refObjp.GetComponent<PlayerScript>().Next3dist = stickPosDataArray[stickNum + 3];
-                }
-
-                if (stickNum < GetLastStick() - 4)
-                {
-                    refObjp.GetComponent<PlayerScript>().Next4dist = stickPosDataArray[stickNum + 4];
-                }
-
-                if (stickNum < GetLastStick() - 5)
-                {
-                    refObjp.GetComponent<PlayerScript>().Next5dist = stickPosDataArray[stickNum + 5];
-                }
-
                 refObjp.GetComponent<PlayerScript>().oneTimeFlag = false;
 
                 refObjp.GetComponent<PlayerScript>().actionFlag = false;
             }
             else
             {
-                if (!refObjp.GetComponent<PlayerScript>().loopFlag)
-                {
-                    refObjp.GetComponent<PlayerScript>().lastStickFlag = true;
-                }
+                refObjp.GetComponent<PlayerScript>().lastStickFlag = true;
             }
         }
 
@@ -273,35 +249,6 @@ public class StageScript : MonoBehaviour
         obstaclePosXDataArray[num] = x;
         obstaclePosYDataArray[num] = y;
         obstacleTypeArray[num] = obstacleType;
-    }
-
-    public void ResetData()
-    {
-        for (int i = 0; i < 500; i++)
-        {
-            if (stickPosDataArray[i] >= 0.1f)
-            {
-                stickDataArray[i] = true;
-            }
-        }
-
-        for (int i = 0; i < 100; i++)
-        {
-            if (enemyPosXDataArray[i] >= 0.1f)
-            {
-                enemyDataArray[i] = true;
-            }
-        }
-
-        for (int i = 0; i < 100; i++)
-        {
-            if (obstaclePosXDataArray[i] >= 0.1f)
-            {
-                obstacleDataArray[i] = true;
-            }
-        }
-
-        stickNum = 0;
     }
 
     public virtual void SetStickData() { }

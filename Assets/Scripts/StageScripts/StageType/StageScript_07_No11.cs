@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StageScript_07_No11 : StageScript
 {
-    public GameObject enemyTypeA;    //�ʏ�̓G
-    public GameObject enemyTypeB;    //���􂷂�G
-    public GameObject enemyTypeC;    //���剻����G
-    public GameObject obstacleTypeA; //�ʏ�̏�Q��
+    public GameObject enemyTypeA;    //通常の敵
+    public GameObject enemyTypeB;    //分裂する敵
+    public GameObject enemyTypeC;    //巨大化する敵
+    public GameObject obstacleTypeA; //通常の障害物
 
     private int Max = 0;
 
@@ -21,7 +21,7 @@ public class StageScript_07_No11 : StageScript
         float p = 30 / bpm;
         float t = 1.0f;
 
-        // Stick�R�s�y�]�[�� --------------------
+        // Stickコピペゾーン --------------------
 
         // SetStick(num++, (sp + (p * (t * 0))) * vel);
         // SetStick(num++, (sp + (p * (t * 1))) * vel);
@@ -372,7 +372,7 @@ public class StageScript_07_No11 : StageScript
         float p = 30 / bpm;
         float t = 1.0f;
 
-        // Enemy�R�s�y�]�[�� --------------------
+        // Enemyコピペゾーン --------------------
         SetEnemy(num++, (sp + (p * (t * 6))) * vel - error, 0 * updown, enemyTypeA);
         SetEnemy(num++, (sp + (p * (t * 7))) * vel - error, 0 * updown, enemyTypeA);
         SetEnemy(num++, (sp + (p * (t * 8))) * vel - error, 0 * updown, enemyTypeA);
@@ -431,7 +431,7 @@ public class StageScript_07_No11 : StageScript
         float p = 30 / bpm;
         float t = 1.0f;
 
-        // Obstacle�R�s�y�]�[�� -----------------
+        // Obstacleコピペゾーン -----------------
 
         SetObstacle(num++, (sp + (p * (t * 11))) * vel - error, 0 * updown, obstacleTypeA);
         SetObstacle(num++, (sp + (p * (t * 11))) * vel - error, 1 * updown, obstacleTypeA);
