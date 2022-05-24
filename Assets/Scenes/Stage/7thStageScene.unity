@@ -360,9 +360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3433817dd0c7042a35b810fbec9164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypeA: {fileID: 0}
-  enemyTypeB: {fileID: 0}
-  obstacleTypeA: {fileID: 0}
+  enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
+  enemyTypeB: {fileID: 1018093989853714880, guid: 1823b58e3b988aa48a44e8befa637021, type: 3}
+  enemyTypeC: {fileID: 4414493422333894568, guid: 1d969e3c4850fd8479f6769315e97bda, type: 3}
+  obstacleTypeA: {fileID: 1068153395543856828, guid: 263bbc3b509ca30489b01204074b7c19, type: 3}
 --- !u!212 &908041375
 SpriteRenderer:
   m_ObjectHideFlags: 0
