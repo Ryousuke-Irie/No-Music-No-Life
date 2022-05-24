@@ -416,14 +416,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908041373}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e68022d56660494c8a459b5281b74c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypeA: {fileID: 0}
-  enemyTypeB: {fileID: 0}
-  obstacleTypeA: {fileID: 0}
 --- !u!212 &908041375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -923,6 +920,14 @@ PrefabInstance:
       propertyPath: BGM
       value: 
       objectReference: {fileID: 5228103793561632979, guid: 91cab4969f6a60845a3d2ca44594cad0, type: 3}
+    - target: {fileID: -1858896167153040996, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: loopFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1858896167153040996, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: lastStageFlag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name
       value: Player
@@ -977,6 +982,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+--- !u!1 &2075913485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+  m_PrefabInstance: {fileID: 2075913484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2075913486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075913485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4520ae0439b30924987a4854ef8bc5fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4511455916956229124
 PrefabInstance:
   m_ObjectHideFlags: 0

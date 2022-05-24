@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class StageScript_20_B3 : StageScript
 {
-    public GameObject enemyTypeA;
-    public GameObject enemyTypeB;
-    public GameObject obstacleTypeA;
+    //public GameObject enemyTypeA;
+    //public GameObject enemyTypeB;
+    //public GameObject obstacleTypeA;
 
     private int Max = 0;
 
@@ -45,7 +45,6 @@ public class StageScript_20_B3 : StageScript
         SetStick(num++, (sp + (p * (t * 21))) * vel);
         SetStick(num++, (sp + (p * (t * 22))) * vel);
         SetStick(num++, (sp + (p * (t * 23))) * vel);
-        SetStick(num++, (sp + (p * (t * 24))) * vel);
         //SetStick(num++, (sp + (p * (t * 25))) * vel);
         //SetStick(num++, (sp + (p * (t * 26))) * vel);
         //SetStick(num++, (sp + (p * (t * 27))) * vel);
@@ -253,7 +252,7 @@ public class StageScript_20_B3 : StageScript
     public override float SetMoveLimit()
     {
         // return ((stickPosDataArray[Max - 1]) + 6.0f);
-        return ((stickPosDataArray[Max - 1]) + 36.0f);
+        return ((stickPosDataArray[Max - 1]));
     }
 
     public override int GetLastStick()

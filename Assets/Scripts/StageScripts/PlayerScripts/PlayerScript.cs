@@ -103,6 +103,9 @@ public class PlayerScript : MonoBehaviour
     [System.NonSerialized] public bool loopBackFlag = false;
 
     [System.NonSerialized] public bool loopBossFlag = false;
+    [System.NonSerialized] public bool loopLastFlag = false;
+
+    public bool lastStageFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -526,12 +529,46 @@ public class PlayerScript : MonoBehaviour
                 loopStageFlag = true;
                 loopBackFlag = true;
                 loopBossFlag = true;
+                loopLastFlag = true;
 
                 if (cloneBGM)
                 {
                     Destroy(cloneBGM);
-                    cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-                    cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                    if (lastStageFlag)
+                    {
+                        if (this.GetComponent<LastStageManagerScript>().loopNum == 0)
+                        {
+                            GameObject nextBGM = (GameObject)Resources.Load("Audio/BGM/Ultimate_B1");
+                            cloneBGM = Instantiate(nextBGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                            cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                        }
+
+                        if (this.GetComponent<LastStageManagerScript>().loopNum == 1)
+                        {
+                            GameObject nextBGM = (GameObject)Resources.Load("Audio/BGM/Ultimate_B2");
+                            cloneBGM = Instantiate(nextBGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                            cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                        }
+
+                        if (this.GetComponent<LastStageManagerScript>().loopNum == 2)
+                        {
+                            GameObject nextBGM = (GameObject)Resources.Load("Audio/BGM/Ultimate_B3");
+                            cloneBGM = Instantiate(nextBGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                            cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                        }
+
+                        if (this.GetComponent<LastStageManagerScript>().loopNum == 3)
+                        {
+                            GameObject nextBGM = (GameObject)Resources.Load("Audio/BGM/Ultimate_B4");
+                            cloneBGM = Instantiate(nextBGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                            cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                        }
+                    }
+                    else
+                    {
+                        cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                        cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                    }
                 }
             }
             else
