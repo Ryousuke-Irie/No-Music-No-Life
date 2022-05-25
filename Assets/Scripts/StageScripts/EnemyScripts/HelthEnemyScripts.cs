@@ -14,17 +14,25 @@ public class HelthEnemyScripts : MonoBehaviour
 
     private static int HEART_MAX = 5;
     GameObject[] cloneHeart = new GameObject[HEART_MAX];
+    private PlayerScript playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         refObj = GameObject.Find("Player");
+        playerScript = refObj.GetComponent<PlayerScript>();
+
         tempHP = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerScript.loopStageFlag)
+        {
+            Destroy(gameObject);
+        }
+
         if (HP <= 0)
         {
             Destroy(gameObject);

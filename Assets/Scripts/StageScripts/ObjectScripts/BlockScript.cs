@@ -8,16 +8,22 @@ public class BlockScript : MonoBehaviour
     GameObject refObj;
 
     private bool oneTimeFlag = false;
+    private PlayerScript playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         refObj = GameObject.Find("Player");
+        playerScript = refObj.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerScript.loopStageFlag)
+        {
+            Destroy(gameObject);
+        }
 
     }
 

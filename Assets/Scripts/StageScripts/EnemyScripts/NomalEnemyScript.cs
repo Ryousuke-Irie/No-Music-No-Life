@@ -18,6 +18,7 @@ public class NomalEnemyScript : MonoBehaviour
     GameObject[] cloneHeart = new GameObject[HEART_MAX];
 
     public bool scoreFlag = false;
+    private PlayerScript playerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,18 @@ public class NomalEnemyScript : MonoBehaviour
         refObj = GameObject.Find("Player");
         refCamera = GameObject.Find("Main Camera");
         tempHP = HP;
+        playerScript = refObj.GetComponent<PlayerScript>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerScript.loopStageFlag)
+        {
+            Destroy(gameObject);
+        }
+
         if (refCamera.transform.position.x - 20.0f > this.transform.position.x)
         {
             Destroy(gameObject);

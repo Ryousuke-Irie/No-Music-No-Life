@@ -7,7 +7,7 @@ public class LastStageManagerScript : MonoBehaviour
     private GameObject cloneLastBossBGM;
     private GameObject refObj;
 
-    [System.NonSerialized] public int loopNum = 0;
+    [System.NonSerialized] public int loopNum = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,10 @@ public class LastStageManagerScript : MonoBehaviour
         {
             refObj.GetComponent<PlayerScript>().loopLastFlag = false;
             Destroy(cloneLastBossBGM);
+            if (loopNum == -1)
+            {
+                loopNum = 0;
+            }
 
             if (loopNum == 0)
             {
@@ -40,7 +44,7 @@ public class LastStageManagerScript : MonoBehaviour
             }
             else if (loopNum == 2)
             {
-                GameObject LastBoss = (GameObject)Resources.Load("BGM_B3");
+                GameObject LastBoss = (GameObject)Resources.Load("BGM_B1");
                 cloneLastBossBGM = Instantiate(LastBoss, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                 loopNum = 3;
             }

@@ -272,6 +272,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeB: {fileID: 2255346361024674232, guid: 8f06bcdbe80f42549b07b6d3d58f0774, type: 3}
+  enemyTypeC: {fileID: 9139688000510325243, guid: 3c3ff22a94a43c347aabe03a1160f206, type: 3}
+  enemyTypeD: {fileID: 7500747578378857373, guid: 5e82f96786ed8c640946fe440f933e1e, type: 3}
+  enemyTypeUp: {fileID: 7025213417303218631, guid: 2dc4d6fc344843d4382c5a9136089a6d, type: 3}
+  enemyTypeDown: {fileID: 4383160348591178960, guid: 61aace4f90f9fbb429e16310c360f0de, type: 3}
+  enemyTypeAlpha: {fileID: 315986534936648487, guid: 63b3b755c2d18504fb69b1bd35e90988, type: 3}
   obstacleTypeA: {fileID: 2583750455893392724, guid: 385e13050913b5b4191d5c7942a235df, type: 3}
   obstacleTypeB: {fileID: 6456012000537884362, guid: dadbbb2c36ee2d745a02cf12affaca3c, type: 3}
   obstacleTypeC: {fileID: 6467204364301883763, guid: 10840e20118810548bd57006f84347f8, type: 3}
@@ -718,27 +723,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_A
-      value: 8000
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_B
-      value: 6000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_C
-      value: 3000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_S
-      value: 11000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_SS
-      value: 14000
+      value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_SSS
-      value: 17000
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name

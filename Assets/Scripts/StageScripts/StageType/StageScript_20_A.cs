@@ -6,7 +6,7 @@ public class StageScript_20_A : StageScript
 {
     //public GameObject enemyTypeA;
     //public GameObject enemyTypeB;
-    //public GameObject obstacleTypeA;
+    public GameObject obstacleTypeA;
 
     private int Max = 0;
 
@@ -21,7 +21,7 @@ public class StageScript_20_A : StageScript
         float t = 1.0f;
         // Stickコピペゾーン --------------------
 
-        SetStick(num++, (sp + (p * (t * 0))) * vel);
+        //SetStick(num++, (sp + (p * (t * 0))) * vel);
         SetStick(num++, (sp + (p * (t * 1))) * vel);
         SetStick(num++, (sp + (p * (t * 2))) * vel);
         SetStick(num++, (sp + (p * (t * 3))) * vel);
@@ -112,7 +112,7 @@ public class StageScript_20_A : StageScript
         SetStick(num++, (sp + (p * (t * 88))) * vel);
         SetStick(num++, (sp + (p * (t * 89))) * vel);
         SetStick(num++, (sp + (p * (t * 90))) * vel);
-        SetStick(num++, (sp + (p * (t * 91))) * vel);
+        //SetStick(num++, (sp + (p * (t * 91))) * vel);
         //SetStick(num++, (sp + (p * (t * 93))) * vel);
         //SetStick(num++, (sp + (p * (t * 94))) * vel);
         //SetStick(num++, (sp + (p * (t * 95))) * vel);
@@ -243,8 +243,52 @@ public class StageScript_20_A : StageScript
     {
         int num = 0;
         float vel = refObjp.GetComponent<PlayerScript>().BesideMoveAmount;
+        float error = -5.0f;
 
+        float bpm = 120.0f;
+        float sp = 0.0f;
+        float p = 60 / bpm;
+        float t = 1.0f;
         // Obstacleコピペゾーン -----------------
+
+        SetObstacle(num++, (sp + (p * (t * 2))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 3))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 8))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 11))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 13))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 16))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 19))) * vel - error, -1 * updown, obstacleTypeA);
+
+        SetObstacle(num++, (sp + (p * (t * 21))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 23))) * vel - error, -1 * updown, obstacleTypeA);
+
+        SetObstacle(num++, (sp + (p * (t * 24))) * vel - error, 1 * updown, obstacleTypeA);
+
+        SetObstacle(num++, (sp + (p * (t * 26))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 26))) * vel - error, -1 * updown, obstacleTypeA);
+
+        SetObstacle(num++, (sp + (p * (t * 28))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 32))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 36))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 39))) * vel - error, 0 * updown, obstacleTypeA);
+
+        SetObstacle(num++, (sp + (p * (t * 48))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 50))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 53))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 57))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 58))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 61))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 64))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 67))) * vel - error, 1 * updown, obstacleTypeA);
+
+        SetObstacle(num++, (sp + (p * (t * 70))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 73))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 77))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 79))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 81))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 83))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 86))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * 88))) * vel - error, 1 * updown, obstacleTypeA);
 
         // --------------------------------------
     }
@@ -252,7 +296,7 @@ public class StageScript_20_A : StageScript
     public override float SetMoveLimit()
     {
         // return ((stickPosDataArray[Max - 1]) + 6.0f);
-        return ((stickPosDataArray[Max - 1]));
+        return ((stickPosDataArray[Max - 1] + 2.5f));
     }
 
     public override int GetLastStick()

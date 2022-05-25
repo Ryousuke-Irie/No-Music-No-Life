@@ -60,6 +60,10 @@ public class StageScript : MonoBehaviour
         SetObstacleData();
 
         refObjp.GetComponent<PlayerScript>().dist = stickPosDataArray[0];
+        refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[1];
+        refObjp.GetComponent<PlayerScript>().Next3dist = stickPosDataArray[2];
+        refObjp.GetComponent<PlayerScript>().Next4dist = stickPosDataArray[3];
+        refObjp.GetComponent<PlayerScript>().Next5dist = stickPosDataArray[4];
         refObjp.GetComponent<PlayerScript>().MoveLimit = SetMoveLimit();
 
         refObjCenter.transform.localScale = new Vector3(SetMoveLimit(), refObjCenter.transform.localScale.y, refObjCenter.transform.localScale.z);

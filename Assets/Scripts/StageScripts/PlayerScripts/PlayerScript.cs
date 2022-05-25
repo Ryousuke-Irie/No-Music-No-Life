@@ -517,7 +517,7 @@ public class PlayerScript : MonoBehaviour
         if (loopBackFlag)
         {
             loopBackFlag = false;
-            this.transform.position = new Vector3(0.0f, pPos, 0.0f);
+            this.transform.position = new Vector3(0.0f, this.transform.position.y, 0.0f);
             refCamera.transform.position = new Vector3(0.0f, refCamera.transform.position.y, refCamera.transform.position.z);
         }
 
@@ -536,6 +536,11 @@ public class PlayerScript : MonoBehaviour
                     Destroy(cloneBGM);
                     if (lastStageFlag)
                     {
+                        if (this.GetComponent<LastStageManagerScript>().loopNum == -1)
+                        {
+                            this.GetComponent<LastStageManagerScript>().loopNum = 0;
+                        }
+
                         if (this.GetComponent<LastStageManagerScript>().loopNum == 0)
                         {
                             GameObject nextBGM = (GameObject)Resources.Load("Audio/BGM/Ultimate_B1");
@@ -552,7 +557,7 @@ public class PlayerScript : MonoBehaviour
 
                         if (this.GetComponent<LastStageManagerScript>().loopNum == 2)
                         {
-                            GameObject nextBGM = (GameObject)Resources.Load("Audio/BGM/Ultimate_B3");
+                            GameObject nextBGM = (GameObject)Resources.Load("Audio/BGM/Ultimate_B1");
                             cloneBGM = Instantiate(nextBGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                             cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
                         }

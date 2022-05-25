@@ -7,6 +7,7 @@ public class TestStage : StageScript
     public GameObject enemyTypeA;
     public GameObject enemyTypeB;
     public GameObject enemyTypeC;
+    public GameObject enemyTypeD;
     public GameObject obstacleTypeA;
     public GameObject obstacleTypeB;
     public GameObject obstacleTypeC;
@@ -403,6 +404,11 @@ public class TestStage : StageScript
 
         SetEnemy(num++, 3.8f * vel - error, 0 * updown, enemyTypeA);
         SetEnemy(num++, 13.7f * vel - error, 1 * updown, enemyTypeB);
+
+        SetEnemy(num++, 14.5f * vel - error, 0 * updown, enemyTypeD);
+        SetEnemy(num++, 19.5f * vel - error, -1 * updown, enemyTypeD);
+        SetEnemy(num++, 24.5f * vel - error, 1 * updown, enemyTypeD);
+
         SetEnemy(num++, 35f * vel - error, -1 * updown, enemyTypeC);
         SetEnemy(num++, 41f * vel - error, 0 * updown, enemyTypeA);
 
@@ -415,13 +421,24 @@ public class TestStage : StageScript
         SetEnemy(num++, 54.6f * vel - error, 0 * updown, enemyTypeA);
         SetEnemy(num++, 55.5f * vel - error, 0 * updown, enemyTypeA);
 
+        SetEnemy(num++, 62.5f * vel - error, 0 * updown, enemyTypeD);
+
         SetEnemy(num++, 65.2f * vel - error, -1 * updown, enemyTypeC);
         SetEnemy(num++, 70.5f * vel - error, 1 * updown, enemyTypeA);
-        SetEnemy(num++, 72.4f * vel - error, 1 * updown, enemyTypeB);
+        SetEnemy(num++, 73f * vel - error, 1 * updown, enemyTypeB);
+
+        SetEnemy(num++, 79.5f * vel - error, -1 * updown, enemyTypeD);
+        SetEnemy(num++, 82.0f * vel - error, 1 * updown, enemyTypeD);
+        SetEnemy(num++, 85.0f * vel - error, -1 * updown, enemyTypeD);
+
         SetEnemy(num++, 86.8f * vel - error, 1 * updown, enemyTypeA);
         SetEnemy(num++, 89.3f * vel - error, 1 * updown, enemyTypeA);
         SetEnemy(num++, 91.5f * vel - error, 1 * updown, enemyTypeA);
         SetEnemy(num++, 93f * vel - error, 1 * updown, enemyTypeA);
+
+        SetEnemy(num++, 93.0f * vel - error, -1 * updown, enemyTypeD);
+        SetEnemy(num++, 94.0f * vel - error, 0 * updown, enemyTypeD);
+        SetEnemy(num++, 97.5f * vel - error, 1 * updown, enemyTypeD);
 
         SetEnemy(num++, 100f * vel - error, 0 * updown, enemyTypeA);
         SetEnemy(num++, 100.9f * vel - error, 0 * updown, enemyTypeA);
