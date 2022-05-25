@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 908041376}
   - component: {fileID: 908041375}
   - component: {fileID: 908041379}
+  - component: {fileID: 908041374}
   - component: {fileID: 908041377}
   - component: {fileID: 908041378}
   - component: {fileID: 908041374}
@@ -332,9 +333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a8c46029f5df34d91ce4c18dc032d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypeA: {fileID: 0}
-  enemyTypeB: {fileID: 0}
-  obstacleTypeA: {fileID: 0}
+  enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
+  enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
+  obstacleTypeA: {fileID: 1068153395543856828, guid: 263bbc3b509ca30489b01204074b7c19, type: 3}
 --- !u!212 &908041375
 SpriteRenderer:
   m_ObjectHideFlags: 0

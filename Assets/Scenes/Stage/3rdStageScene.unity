@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 908041376}
   - component: {fileID: 908041375}
   - component: {fileID: 908041379}
+  - component: {fileID: 908041374}
   - component: {fileID: 908041377}
   - component: {fileID: 908041378}
   m_Layer: 0
@@ -315,6 +316,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &908041374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908041373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17cc0edfce332184e8096e040734a1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
+  enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
+  obstacleTypeA: {fileID: 1068153395543856828, guid: 263bbc3b509ca30489b01204074b7c19, type: 3}
 --- !u!212 &908041375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -411,7 +427,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908041373}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 077298cc887c9ae4bbe8a3d8118f596d, type: 3}
   m_Name: 
