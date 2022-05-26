@@ -66,6 +66,14 @@ public class TitleScript : MonoBehaviour
 
     void LoadScene()
     {
-        SceneManager.LoadScene("StageSelectScene");
+        int tutorial = PlayerPrefs.GetInt("tutorial");
+        if(tutorial == 0)
+        {
+            SceneManager.LoadScene("TutorialStageScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("StageSelectScene");
+        }
     }
 }

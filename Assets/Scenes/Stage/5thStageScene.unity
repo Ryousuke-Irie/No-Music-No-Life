@@ -447,6 +447,7 @@ MonoBehaviour:
   enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeC: {fileID: 0}
+  enemyTypeD: {fileID: 0}
   obstacleTypeA: {fileID: 2583750455893392724, guid: 385e13050913b5b4191d5c7942a235df, type: 3}
   obstacleTypeB: {fileID: 0}
   obstacleTypeC: {fileID: 0}
@@ -717,7 +718,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

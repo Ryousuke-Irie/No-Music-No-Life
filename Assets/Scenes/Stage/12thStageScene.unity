@@ -450,8 +450,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
-  enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
-  obstacleTypeA: {fileID: 1068153395543856828, guid: 263bbc3b509ca30489b01204074b7c19, type: 3}
+  enemyTypeB: {fileID: 5878314192632893436, guid: d8057a33bd7af0c4ab9b4d8bb9928192, type: 3}
+  obstacleTypeA: {fileID: 4653301092091691131, guid: f897d5edc53f558498bfa43466e1b759, type: 3}
+  obstacleTypeB: {fileID: 2172172531783728984, guid: cc55d6d25e9a5ff4f9598937c17a9cde, type: 3}
+  obstacleTypeC: {fileID: 6960770402119501911, guid: 69f655accd4394a4e832d8eebc69af5a, type: 3}
+  obstacleTypeD: {fileID: 1970884348772872889, guid: 5832fdfa50ada47449f176710ef2cdff, type: 3}
+  obstacleTypeE: {fileID: 8604119858303600952, guid: a51ae856c41e82c42860b461b8e7f90c, type: 3}
+  obstacleTypeF: {fileID: 8917715189453116316, guid: 54434ff74703b6248b50d4692d868b5d, type: 3}
+  obstacleTypeG: {fileID: 6586488135659784365, guid: fc4eca427b7b53e4a9d1b77510b6140d, type: 3}
+  obstacleTypeH: {fileID: 3876766577758069937, guid: 1fc077340eca0534296f3081183401db, type: 3}
+  obstacleTypeI: {fileID: 1975017506393465668, guid: 45514c40c75433e45b7cda63478ecb91, type: 3}
+  obstacleTypeJ: {fileID: 3548499154591598767, guid: b7545b4b733bbd141ae514ab7f01cbfb, type: 3}
+  obstacleTypeK: {fileID: 75115822750578046, guid: 79e5c572efacab643b1a7d9fc6a83385, type: 3}
+  obstacleTypeL: {fileID: 911785158536550667, guid: fb5b581b7e4f9754f86e1603b0d3cbb7, type: 3}
 --- !u!212 &908041375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -556,6 +567,7 @@ MonoBehaviour:
   enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeC: {fileID: 0}
+  enemyTypeD: {fileID: 0}
   obstacleTypeA: {fileID: 2583750455893392724, guid: 385e13050913b5b4191d5c7942a235df, type: 3}
   obstacleTypeB: {fileID: 0}
   obstacleTypeC: {fileID: 0}
@@ -838,6 +850,30 @@ PrefabInstance:
       propertyPath: BGM
       value: 
       objectReference: {fileID: 2301291281937786851, guid: 211a3ce87a0bc28478f241838142039b, type: 3}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_A
+      value: 9000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_B
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_C
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_S
+      value: 12000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_SS
+      value: 16000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_SSS
+      value: 20000
+      objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name
       value: Player

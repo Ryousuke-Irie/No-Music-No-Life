@@ -107,6 +107,8 @@ public class PlayerScript : MonoBehaviour
 
     public bool lastStageFlag = false;
 
+    public bool tutorialFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -190,6 +192,11 @@ public class PlayerScript : MonoBehaviour
             {
                 cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                 cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                if (tutorialFlag)
+                {
+                    cloneBGM.GetComponent<AudioSource>().volume = 0.0f;
+                }
+
                 oneTimeFlag2 = true;
             }
 
@@ -494,6 +501,12 @@ public class PlayerScript : MonoBehaviour
 
             tempHP = HP;
         }
+
+        if(tutorialFlag)
+        {
+            HP = 10;
+            tempHP = 10;
+        }
     }
 
     private void Dead()
@@ -573,6 +586,11 @@ public class PlayerScript : MonoBehaviour
                     {
                         cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                         cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                    }
+
+                    if (tutorialFlag)
+                    {
+                        cloneBGM.GetComponent<AudioSource>().volume = 0.0f;
                     }
                 }
             }

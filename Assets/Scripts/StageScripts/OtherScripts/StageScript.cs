@@ -8,18 +8,18 @@ public class StageScript : MonoBehaviour
     [System.NonSerialized] public GameObject[] stickArray = new GameObject[20];
     [System.NonSerialized] public GameObject[] enemyArray = new GameObject[20];
     [System.NonSerialized] public GameObject[] obstacleArray = new GameObject[20];
-    [System.NonSerialized] public GameObject[] enemyTypeArray = new GameObject[100];
-    [System.NonSerialized] public GameObject[] obstacleTypeArray = new GameObject[100];
+    [System.NonSerialized] public GameObject[] enemyTypeArray = new GameObject[150];
+    [System.NonSerialized] public GameObject[] obstacleTypeArray = new GameObject[150];
 
     [System.NonSerialized] public float[] stickPosDataArray = new float[500];
-    [System.NonSerialized] public float[] enemyPosXDataArray = new float[100];
-    [System.NonSerialized] public float[] enemyPosYDataArray = new float[100];
-    [System.NonSerialized] public float[] obstaclePosXDataArray = new float[100];
-    [System.NonSerialized] public float[] obstaclePosYDataArray = new float[100];
+    [System.NonSerialized] public float[] enemyPosXDataArray = new float[150];
+    [System.NonSerialized] public float[] enemyPosYDataArray = new float[150];
+    [System.NonSerialized] public float[] obstaclePosXDataArray = new float[150];
+    [System.NonSerialized] public float[] obstaclePosYDataArray = new float[150];
 
     [System.NonSerialized] public bool[] stickDataArray = new bool[500];
-    [System.NonSerialized] public bool[] enemyDataArray = new bool[100];
-    [System.NonSerialized] public bool[] obstacleDataArray = new bool[100];
+    [System.NonSerialized] public bool[] enemyDataArray = new bool[150];
+    [System.NonSerialized] public bool[] obstacleDataArray = new bool[150];
 
     [System.NonSerialized] public float updown = 4.0f;
 
@@ -171,7 +171,7 @@ public class StageScript : MonoBehaviour
         }
 
         // 敵
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 150; i++)
         {
             // 生成処理
             if (enemyDataArray[i])  // データがあるか
@@ -207,7 +207,7 @@ public class StageScript : MonoBehaviour
         }
 
         // 障害物
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 150; i++)
         {
             // 生成処理
             if (obstacleDataArray[i])  // データがあるか
@@ -250,7 +250,7 @@ public class StageScript : MonoBehaviour
             stickDataArray[i] = false;
         }
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 150; i++)
         {
             enemyDataArray[i] = false;
             obstacleDataArray[i] = false;
@@ -289,7 +289,7 @@ public class StageScript : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 150; i++)
         {
             if (enemyPosXDataArray[i] >= 0.1f)
             {
@@ -297,7 +297,7 @@ public class StageScript : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 150; i++)
         {
             if (obstaclePosXDataArray[i] >= 0.1f)
             {

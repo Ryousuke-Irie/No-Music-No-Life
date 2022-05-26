@@ -77,6 +77,11 @@ public class NomalEnemyScript : MonoBehaviour
             cloneHeart[i].transform.position = new Vector3(this.transform.position.x + (i * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
         }
 
+        if (HP < 0)
+        {
+            HP = 0;
+        }
+
         for (int i = HP; i < HEART_MAX; i++)
         {
             if (cloneHeart[i])

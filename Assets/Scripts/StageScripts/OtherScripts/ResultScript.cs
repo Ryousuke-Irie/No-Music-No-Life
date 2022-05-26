@@ -267,7 +267,7 @@ public class ResultScript : MonoBehaviour
         if (tempScore == refObj.GetComponent<PlayerScript>().score)
         {
             int i = PlayerPrefs.GetInt("StageScore" + StageSelectController.barNum.ToString("00"));
-            if (i < refObj.GetComponent<PlayerScript>().score)
+            if (i < refObj.GetComponent<PlayerScript>().score && !refObj.GetComponent<PlayerScript>().tutorialFlag)
             {
                 PlayerPrefs.SetInt("StageScore" + StageSelectController.barNum.ToString("00"), refObj.GetComponent<PlayerScript>().score);
             }
@@ -291,8 +291,11 @@ public class ResultScript : MonoBehaviour
             {
                 GameObject Rank = (GameObject)Resources.Load("ScoreRank/RankSSS");
                 cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
-
-                PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 7);
+               
+                if (!refObj.GetComponent<PlayerScript>().tutorialFlag)
+                {
+                    PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 7);
+                }
             }
 
             if (Rank_SSS > refObj.GetComponent<PlayerScript>().score && refObj.GetComponent<PlayerScript>().score >= Rank_SS)
@@ -301,7 +304,7 @@ public class ResultScript : MonoBehaviour
                 cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
 
                 int i = PlayerPrefs.GetInt("StageRank" + StageSelectController.barNum.ToString("00"));
-                if (i < 6)
+                if (i < 6 && !refObj.GetComponent<PlayerScript>().tutorialFlag)
                 {
                     PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 6);
                 }
@@ -313,7 +316,7 @@ public class ResultScript : MonoBehaviour
                 cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
 
                 int i = PlayerPrefs.GetInt("StageRank" + StageSelectController.barNum.ToString("00"));
-                if (i < 5)
+                if (i < 5 && !refObj.GetComponent<PlayerScript>().tutorialFlag)
                 {
                     PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 5);
                 }
@@ -325,7 +328,7 @@ public class ResultScript : MonoBehaviour
                 cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
 
                 int i = PlayerPrefs.GetInt("StageRank" + StageSelectController.barNum.ToString("00"));
-                if (i < 4)
+                if (i < 4 && !refObj.GetComponent<PlayerScript>().tutorialFlag)
                 {
                     PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 4);
                 }
@@ -337,7 +340,7 @@ public class ResultScript : MonoBehaviour
                 cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
 
                 int i = PlayerPrefs.GetInt("StageRank" + StageSelectController.barNum.ToString("00"));
-                if (i < 3)
+                if (i < 3 && !refObj.GetComponent<PlayerScript>().tutorialFlag)
                 {
                     PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 3);
                 }
@@ -349,7 +352,7 @@ public class ResultScript : MonoBehaviour
                 cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
 
                 int i = PlayerPrefs.GetInt("StageRank" + StageSelectController.barNum.ToString("00"));
-                if (i < 2)
+                if (i < 2 && !refObj.GetComponent<PlayerScript>().tutorialFlag)
                 {
                     PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 2);
                 }
@@ -361,7 +364,7 @@ public class ResultScript : MonoBehaviour
                 cloneRank = Instantiate(Rank, new Vector3(refObj2.transform.position.x + PosXr, PosYr, 0.0f), Quaternion.identity);
 
                 int i = PlayerPrefs.GetInt("StageRank" + StageSelectController.barNum.ToString("00"));
-                if (i < 1)
+                if (i < 1 && !refObj.GetComponent<PlayerScript>().tutorialFlag)
                 {
                     PlayerPrefs.SetInt("StageRank" + StageSelectController.barNum.ToString("00"), 1);
                 }
@@ -401,7 +404,7 @@ public class ResultScript : MonoBehaviour
                 }
                 else
                 {
-                    if (Gamepad.current.buttonSouth.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+                    if (Gamepad.current.buttonSouth.wasPressedThisFrame || Gamepad.current.buttonEast.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
                     {
                         fadeObj.transform.position = new Vector3(refObj2.transform.position.x, refObj2.transform.position.y, 0.0f);
                         fadeObj.GetComponent<FadeScript>().isFadeOut = true;
@@ -412,6 +415,11 @@ public class ResultScript : MonoBehaviour
 
             if (fadeObj.GetComponent<FadeScript>().fadeEndFlag)
             {
+                if (refObj.GetComponent<PlayerScript>().tutorialFlag)
+                {
+                    PlayerPrefs.SetInt("tutorial", 1);
+                }
+
                 SceneManager.LoadScene("StageSelectScene");
             }
         }

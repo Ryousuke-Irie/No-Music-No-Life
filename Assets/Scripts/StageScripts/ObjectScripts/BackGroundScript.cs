@@ -26,8 +26,10 @@ public class BackGroundScript : MonoBehaviour
 
         firstPos = this.transform.position;
 
-        temp = refObjp.GetComponent<LastStageManagerScript>().loopNum;
-
+        if (refObjp.GetComponent<PlayerScript>().lastStageFlag)
+        {
+            temp = refObjp.GetComponent<LastStageManagerScript>().loopNum;
+        }
     }
 
     // Update is called once per frame

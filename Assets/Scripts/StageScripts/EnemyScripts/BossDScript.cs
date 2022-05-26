@@ -22,6 +22,9 @@ public class BossDScript : MonoBehaviour
     private bool blinkingFlag = false;
     private bool blinkingFlag2 = false;
 
+    private bool shakeFlag = false;
+    private float shakeAmount = 0.0f;
+
     private bool moveFlag = false;
     private float myTime = 0.0f;
     private bool skill1 = false;
@@ -80,6 +83,26 @@ public class BossDScript : MonoBehaviour
     {
         // ì_ñ≈èàóù
         Blinking();
+
+        // è„â∫ÇÃóhÇÍ
+        if (shakeFlag && shakeAmount < 0.4f)
+        {
+            this.transform.localScale -= new Vector3(0.1f, 0.1f, 0.0f);
+            shakeAmount += 0.1f;
+        }
+
+        if (shakeFlag && shakeAmount >= 0.4f && shakeAmount < 0.8f)
+        {
+            this.transform.localScale += new Vector3(0.1f, 0.1f, 0.0f);
+            shakeAmount += 0.1f;
+        }
+
+        if (shakeFlag && shakeAmount >= 0.8f)
+        {
+            shakeFlag = false;
+            shakeAmount = 0.0f;
+            this.transform.localScale = new Vector3(2.0f, 2.0f, 1.0f);
+        }
     }
 
     // Update is called once per frame
@@ -347,6 +370,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity); 
             skill12 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 3.1f && !skill1)
@@ -360,24 +384,28 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill15 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 6.3f && !skill2)
         {
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill2 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 7.1f && !skill4)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill4 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 9.1f && !skill3)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill3 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 11.1f && !skill5)
@@ -396,24 +424,28 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill7 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 17.4f && !skill8)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill8 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 18.2f && !skill9)
         {
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill9 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 19.4f && !skill10)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill10 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 21.4f && !skill11)
@@ -421,6 +453,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill11 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 21.8f && !skill13)
@@ -428,6 +461,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill13 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 22.4f && !skill14)
@@ -436,6 +470,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple3 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill14 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 23.9f && !skill16)
@@ -443,6 +478,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill16 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 25.1f && !skill17)
@@ -450,6 +486,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill17 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 26.7f && !skill18)
@@ -463,36 +500,42 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple3 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill19 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 30.1f && !skill20)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill20 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 30.9f && !skill21)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill21 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 31.3f && !skill22)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill22 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 31.9f && !skill23)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill23 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 32.5f && !skill24)
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill24 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 34.4f && !skill25)
@@ -501,6 +544,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple3 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill25 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 35.1f && !skill26)
@@ -514,6 +558,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill27 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 37.4f && !skill28)
@@ -522,6 +567,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple3 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill28 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 38.1f && !skill29)
@@ -543,6 +589,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill1 = true;
+            shakeFlag = true;
         }
 
 
@@ -558,6 +605,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill3 = true;
+            shakeFlag = true;
         }
 
 
@@ -572,6 +620,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill4 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 7.1f && !skill5)
@@ -585,6 +634,7 @@ public class BossDScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill6 = true;
+            shakeFlag = true;
         }
     }
 
@@ -594,6 +644,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill1 = true;
+            shakeFlag = true;
         }
 
 
@@ -601,6 +652,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill2 = true;
+            shakeFlag = true;
         }
 
 
@@ -608,6 +660,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill3 = true;
+            shakeFlag = true;
         }
 
 
@@ -615,6 +668,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill4 = true;
+            shakeFlag = true;
         }
 
 
@@ -622,6 +676,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill4 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 7.1f && !skill5)
@@ -634,6 +689,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill6 = true;
+            shakeFlag = true;
         }
     }
 
@@ -643,6 +699,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill1 = true;
+            shakeFlag = true;
         }
 
 
@@ -650,6 +707,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill2 = true;
+            shakeFlag = true;
         }
 
 
@@ -657,6 +715,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill3 = true;
+            shakeFlag = true;
         }
 
 
@@ -664,6 +723,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill4 = true;
+            shakeFlag = true;
         }
 
 
@@ -671,6 +731,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refTriangle, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill4 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 7.1f && !skill5)
@@ -683,6 +744,7 @@ public class BossDScript : MonoBehaviour
         {
             GameObject cloneApple = Instantiate(refCircle, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             skill6 = true;
+            shakeFlag = true;
         }
     }
 }
