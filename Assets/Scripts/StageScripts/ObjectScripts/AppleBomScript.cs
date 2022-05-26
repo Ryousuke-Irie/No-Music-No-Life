@@ -52,6 +52,7 @@ public class AppleBomScript : MonoBehaviour
             this.transform.position += new Vector3(25.0f * Time.deltaTime, 0.0f, 0.0f);
         }
 
+        this.GetComponent<Animator>().SetInteger("StateInt", 1);
 
         if (refCamera.transform.position.x - 20.0f > this.transform.position.x || refCamera.transform.position.x + 20.0f < this.transform.position.x)
         {
