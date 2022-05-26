@@ -785,7 +785,7 @@ PrefabInstance:
     - target: {fileID: -1858896167153040996, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: BGM
       value: 
-      objectReference: {fileID: 1553933450778720434, guid: 7c06f58b88891cb4884e9fbe7db5baeb, type: 3}
+      objectReference: {fileID: 3652528410688109698, guid: 7c06f58b88891cb4884e9fbe7db5baeb, type: 3}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name
       value: Player
