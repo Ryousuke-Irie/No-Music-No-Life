@@ -13,7 +13,7 @@ public class CountDownScript : MonoBehaviour
 
 	private bool endFlag = false;
 
-	GameObject countDown;
+	[SerializeField] GameObject countDown;
 	GameObject cloneCount;
 
 	private float AnimSpeed = 0.4f;
@@ -27,7 +27,7 @@ public class CountDownScript : MonoBehaviour
 
 		refObj3 = GameObject.Find("Main Camera");
 
-		countDown = (GameObject)Resources.Load("CountDown");
+		// countDown = (GameObject)Resources.Load("CountDown");
 	}
 
     // Update is called once per frame

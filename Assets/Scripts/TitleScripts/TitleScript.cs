@@ -15,7 +15,7 @@ public class TitleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        refObj = GameObject.Find("fade_white");
+        refObj = GameObject.Find("fade_white3");
     }
 
     // Update is called once per frame

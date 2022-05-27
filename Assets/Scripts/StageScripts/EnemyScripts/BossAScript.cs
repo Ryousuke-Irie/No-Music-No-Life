@@ -236,6 +236,8 @@ public class BossAScript : MonoBehaviour
             if (cloneHeart[i])
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + (i * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 180, 70, 255);
             }
         }
 
@@ -247,7 +249,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 5) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(0, 255, 0, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 40, 255);
             }
         }
 
@@ -259,7 +261,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 10) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 140, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(180, 255, 40, 255);
             }
         }
 
@@ -271,7 +273,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 15) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(140, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 255, 40, 255);
             }
         }
 
@@ -283,7 +285,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 20) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 70, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 255, 200, 255);
             }
         }
 
@@ -295,7 +297,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i -25) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(70, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 200, 255, 255);
             }
         }
 
@@ -307,7 +309,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 30) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 0, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 120, 255, 255);
             }
         }
 
@@ -319,7 +321,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 35) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(0, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(90, 0, 230, 255);
             }
         }
 

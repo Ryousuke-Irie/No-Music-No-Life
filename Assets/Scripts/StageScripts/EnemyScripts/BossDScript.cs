@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BossDScript : MonoBehaviour
 {
-    [System.NonSerialized] public int HP = 40;
-    private int tempHP = 40;
+    [System.NonSerialized] public int HP = 70;
+    private int tempHP = 70;
     private GameObject refObj;
     private bool oneTimeFlag = false;
 
     private float heartSpace = 1.5f;
     private float heartToEnemy = 5.0f;
 
-    private static int HEART_MAX = 40;
+    private static int HEART_MAX = 70;
     GameObject[] cloneHeart = new GameObject[HEART_MAX];
 
     private float blinkingTime = 0.0f;
@@ -204,6 +204,8 @@ public class BossDScript : MonoBehaviour
             if (cloneHeart[i])
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + (i * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 180, 70, 255);
             }
         }
 
@@ -215,7 +217,7 @@ public class BossDScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 5) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(0, 255, 0, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 40, 255);
             }
         }
 
@@ -227,7 +229,7 @@ public class BossDScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 10) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 140, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(180, 255, 40, 255);
             }
         }
 
@@ -239,7 +241,7 @@ public class BossDScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 15) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(140, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 255, 40, 255);
             }
         }
 
@@ -251,7 +253,7 @@ public class BossDScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 20) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 70, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 255, 200, 255);
             }
         }
 
@@ -263,7 +265,7 @@ public class BossDScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 25) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(70, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 200, 255, 255);
             }
         }
 
@@ -275,7 +277,7 @@ public class BossDScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 30) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 0, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 120, 255, 255);
             }
         }
 
@@ -287,9 +289,58 @@ public class BossDScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 35) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(0, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(90, 0, 230, 255);
             }
         }
+
+        for (int i = 40; i < 45; i++)
+        {
+            float space = heartSpace * 0.5f * (5 - 1);
+
+            if (cloneHeart[i])
+            {
+                cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 40) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(200, 0, 230, 255);
+            }
+        }
+
+        for (int i = 45; i < 50; i++)
+        {
+            float space = heartSpace * 0.5f * (5 - 1);
+
+            if (cloneHeart[i])
+            {
+                cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 45) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 0, 150, 255);
+            }
+        }
+
+        for (int i = 50; i < 55; i++)
+        {
+            float space = heartSpace * 0.5f * (5 - 1);
+
+            if (cloneHeart[i])
+            {
+                cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 50) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(220, 0, 60, 255);
+            }
+        }
+
+        for (int i = 55; i < 60; i++)
+        {
+            float space = heartSpace * 0.5f * (5 - 1);
+
+            if (cloneHeart[i])
+            {
+                cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 55) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 60, 0, 255);
+            }
+        }
+
 
         if (HP < 0)
         {

@@ -155,9 +155,9 @@ public class TutorialStageManagerScript : MonoBehaviour
             {
                 posX = playerScript.Next5dist;
 
-                GameObject cloneObstacle = Instantiate(enemy, new Vector3(posX + 5.0f, -2.0f, 0.0f), Quaternion.identity);
-                GameObject cloneObstacle2 = Instantiate(enemy, new Vector3(posX + 5.0f, -6.0f, 0.0f), Quaternion.identity);
-                GameObject cloneObstacle3 = Instantiate(enemy, new Vector3(posX + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+                GameObject cloneObstacle = Instantiate(enemy, new Vector3(playerScript.Next4dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+                GameObject cloneObstacle2 = Instantiate(enemy, new Vector3(playerScript.Next4dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+                GameObject cloneObstacle3 = Instantiate(enemy, new Vector3(playerScript.Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
 
                 tutorialNum = 7;
 
