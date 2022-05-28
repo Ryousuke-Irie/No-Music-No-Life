@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +8,8 @@ using UnityEngine.InputSystem;
 public class TitleScript : MonoBehaviour
 {
     GameObject refObj;
+
+    GameObject refObj;
     public SoundManager soundManager;
 
     private bool endFlag = false;
@@ -17,26 +18,25 @@ public class TitleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        refObj = GameObject.Find("fade_white");
-        soundManager = FindObjectOfType<SoundManager>();
+        refObj = GameObject.Find("fade_white3");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (bgmFlag == false)
-		{
-            PlayTitleBGM();
-            bgmFlag = true;
-        }
+            if (bgmFlag == false)
+            {
+                PlayTitleBGM();
+                bgmFlag = true;
+            }
 
-        if (Gamepad.current == null)
+            if (Gamepad.current == null)
         {
             if (Input.anyKeyDown)
             {
-                PlayTitleSE();
+                    PlayTitleSE();
 
-                if (refObj != null)
+                    if (refObj != null)
                 {
                     refObj.GetComponent<FadeScript>().isFadeOut = true;
                 }
@@ -54,9 +54,9 @@ public class TitleScript : MonoBehaviour
                 Gamepad.current.leftShoulder.wasPressedThisFrame ||
                 Gamepad.current.rightShoulder.wasPressedThisFrame)
             {
-                PlayTitleSE();
+                    PlayTitleSE();
 
-                if (refObj != null)
+                    if (refObj != null)
                 {
                     refObj.GetComponent<FadeScript>().isFadeOut = true;
                 }
@@ -81,7 +81,16 @@ public class TitleScript : MonoBehaviour
     {
         soundManager.StopBgm();
         bgmFlag = false;
-        SceneManager.LoadScene("StageSelectScene");
+
+        int tutorial = PlayerPrefs.GetInt("tutorial");
+        if(tutorial == 0)
+        {
+            SceneManager.LoadScene("TutorialStageScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("StageSelectScene");
+        }
     }
 
     public void PlayTitleBGM()
@@ -92,4 +101,5 @@ public class TitleScript : MonoBehaviour
 	{
         soundManager.PlaySeByName("decisionSE");
 	}
+
 }

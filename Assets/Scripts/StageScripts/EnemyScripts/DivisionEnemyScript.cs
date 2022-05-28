@@ -92,6 +92,11 @@ public class DivisionEnemyScript : MonoBehaviour
             this.transform.position = new Vector3(refObj.GetComponent<PlayerScript>().Nextdist, this.transform.position.y, this.transform.position.z);
         }
 
+        if (HP < 0)
+        {
+            HP = 0;
+        }
+
         // HP(ハート)を設置
         for (int i = 0; i < HP; i++)
         {

@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c291385be49c2047a0914b5b48d067e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countDown: {fileID: 7862631017576385437, guid: a5874b7038225b14a9f64242c37022ae, type: 3}
 --- !u!114 &908041379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +380,7 @@ MonoBehaviour:
   enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeC: {fileID: 0}
+  enemyTypeD: {fileID: 0}
   obstacleTypeA: {fileID: 2583750455893392724, guid: 385e13050913b5b4191d5c7942a235df, type: 3}
   obstacleTypeB: {fileID: 0}
   obstacleTypeC: {fileID: 0}

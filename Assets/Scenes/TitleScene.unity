@@ -956,7 +956,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4511455916742878836, guid: 3fbd90c1d49e37c45a11aaecba5aa116, type: 3}
       propertyPath: m_Name
-      value: fade_white
+      value: fade_white3
       objectReference: {fileID: 0}
     - target: {fileID: 4511455916742878837, guid: 3fbd90c1d49e37c45a11aaecba5aa116, type: 3}
       propertyPath: isFadeIn

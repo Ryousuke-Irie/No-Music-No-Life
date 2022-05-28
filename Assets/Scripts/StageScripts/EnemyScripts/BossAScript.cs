@@ -22,6 +22,9 @@ public class BossAScript : MonoBehaviour
     private bool blinkingFlag = false;
     private bool blinkingFlag2 = false;
 
+    private bool shakeFlag = false;
+    private float shakeAmount = 0.0f;
+
     private bool moveFlag = false;
     private float myTime = 0.0f;
     private bool skill1 = false;
@@ -53,6 +56,26 @@ public class BossAScript : MonoBehaviour
     {
         // ì_ñ≈èàóù
         Blinking();
+
+        // è„â∫ÇÃóhÇÍ
+        if (shakeFlag && shakeAmount < 0.4f)
+        {
+            this.transform.localScale -= new Vector3(0.1f, 0.1f, 0.0f);
+            shakeAmount += 0.1f;
+        }
+
+        if (shakeFlag && shakeAmount >= 0.4f && shakeAmount < 0.8f)
+        {
+            this.transform.localScale += new Vector3(0.1f, 0.1f, 0.0f);
+            shakeAmount += 0.1f;
+        }
+
+        if (shakeFlag && shakeAmount >= 0.8f)
+        {
+            shakeFlag = false;
+            shakeAmount = 0.0f;
+            this.transform.localScale = new Vector3(2.0f, 2.0f, 1.0f);
+        }
     }
 
     // Update is called once per frame
@@ -111,6 +134,7 @@ public class BossAScript : MonoBehaviour
             GameObject cloneApple2 = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple3 = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill1 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 9.4f && !skill3)
@@ -119,6 +143,7 @@ public class BossAScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple3 = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill3 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 12.1f && !skill4)
@@ -127,6 +152,7 @@ public class BossAScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple2 = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill4 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 15.4f && !skill5)
@@ -134,6 +160,7 @@ public class BossAScript : MonoBehaviour
             GameObject refApple = (GameObject)Resources.Load("AppleBom");
             GameObject cloneApple3 = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill5 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 17.1f && !skill2)
@@ -147,6 +174,7 @@ public class BossAScript : MonoBehaviour
             GameObject refApple = (GameObject)Resources.Load("AppleBom");
             GameObject cloneApple2 = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, -4.0f, 0.0f), Quaternion.identity);
             skill6 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 25.4f && !skill7)
@@ -155,6 +183,7 @@ public class BossAScript : MonoBehaviour
             GameObject cloneApple = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneApple3 = Instantiate(refApple, this.transform.position + new Vector3(-6.0f, 4.0f, 0.0f), Quaternion.identity);
             skill7 = true;
+            shakeFlag = true;
         }
 
         if (myTime > 28.4f && !skill8)
@@ -166,6 +195,7 @@ public class BossAScript : MonoBehaviour
             GameObject cloneEnemy5 = Instantiate(refEnemy, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, this.transform.position.y + 0.0f, 0.0f), Quaternion.identity);
             GameObject cloneEnemy6 = Instantiate(refEnemy, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, this.transform.position.y - 4.0f, 0.0f), Quaternion.identity);
             skill8 = true;
+            shakeFlag = true;
         }
 
         if(myTime > 30.05f)
@@ -206,6 +236,8 @@ public class BossAScript : MonoBehaviour
             if (cloneHeart[i])
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + (i * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 180, 70, 255);
             }
         }
 
@@ -217,7 +249,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 5) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(0, 255, 0, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 40, 255);
             }
         }
 
@@ -229,7 +261,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 10) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 140, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(180, 255, 40, 255);
             }
         }
 
@@ -241,7 +273,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 15) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(140, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 255, 40, 255);
             }
         }
 
@@ -253,7 +285,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 20) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 70, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 255, 200, 255);
             }
         }
 
@@ -265,7 +297,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i -25) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(70, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 200, 255, 255);
             }
         }
 
@@ -277,7 +309,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 30) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 0, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(20, 120, 255, 255);
             }
         }
 
@@ -289,7 +321,7 @@ public class BossAScript : MonoBehaviour
             {
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 35) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(0, 255, 255, 255);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(90, 0, 230, 255);
             }
         }
 

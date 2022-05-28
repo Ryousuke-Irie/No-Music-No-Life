@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c291385be49c2047a0914b5b48d067e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countDown: {fileID: 7862631017576385437, guid: a5874b7038225b14a9f64242c37022ae, type: 3}
 --- !u!114 &908041379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +379,7 @@ MonoBehaviour:
   enemyTypeA: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeB: {fileID: 8371625418766222388, guid: d971901097b942244b7d51619a755e0c, type: 3}
   enemyTypeC: {fileID: 0}
+  enemyTypeD: {fileID: 0}
   obstacleTypeA: {fileID: 2583750455893392724, guid: 385e13050913b5b4191d5c7942a235df, type: 3}
   obstacleTypeB: {fileID: 0}
   obstacleTypeC: {fileID: 0}
@@ -542,10 +544,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b1b38b7d099bdcb42959a9b460d47f52, type: 3}
+    - target: {fileID: 3903199047788208102, guid: 84691dfe9c4d1674780669548675105b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3903199047929390731, guid: 84691dfe9c4d1674780669548675105b, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b1b38b7d099bdcb42959a9b460d47f52, type: 3}
+    - target: {fileID: 3903199047929390731, guid: 84691dfe9c4d1674780669548675105b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3903199048534048337, guid: 84691dfe9c4d1674780669548675105b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -863,9 +873,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1958779920220805472, guid: fea19a559db0d7547a515825624d2243, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2732090124349273303, guid: fea19a559db0d7547a515825624d2243, type: 3}
       propertyPath: m_Name
       value: T
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102164537552279416, guid: fea19a559db0d7547a515825624d2243, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7451299718645062262, guid: fea19a559db0d7547a515825624d2243, type: 3}
       propertyPath: m_RootOrder

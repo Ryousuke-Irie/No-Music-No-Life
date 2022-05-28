@@ -61,9 +61,12 @@ public class FadeScript : MonoBehaviour
 		SetAlpha();                      //b)変更した不透明度パネルに反映する
 		if (alfa <= 0)
 		{                    //c)完全に透明になったら処理を抜ける
-			fadeEndFlag = true;
 			isFadeIn = false;
 			Destroy(gameObject);
+		}
+		if (alfa <= 6)
+        {
+			fadeEndFlag = true;
 		}
 	}
 
