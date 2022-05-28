@@ -9,22 +9,33 @@ using UnityEngine.InputSystem;
 public class TitleScript : MonoBehaviour
 {
     GameObject refObj;
+    public SoundManager soundManager;
 
     private bool endFlag = false;
+    private bool bgmFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
         refObj = GameObject.Find("fade_white");
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (bgmFlag == false)
+		{
+            PlayTitleBGM();
+            bgmFlag = true;
+        }
+
         if (Gamepad.current == null)
         {
             if (Input.anyKeyDown)
             {
+                PlayTitleSE();
+
                 if (refObj != null)
                 {
                     refObj.GetComponent<FadeScript>().isFadeOut = true;
@@ -43,6 +54,8 @@ public class TitleScript : MonoBehaviour
                 Gamepad.current.leftShoulder.wasPressedThisFrame ||
                 Gamepad.current.rightShoulder.wasPressedThisFrame)
             {
+                PlayTitleSE();
+
                 if (refObj != null)
                 {
                     refObj.GetComponent<FadeScript>().isFadeOut = true;
@@ -66,6 +79,17 @@ public class TitleScript : MonoBehaviour
 
     void LoadScene()
     {
+        soundManager.StopBgm();
+        bgmFlag = false;
         SceneManager.LoadScene("StageSelectScene");
     }
+
+    public void PlayTitleBGM()
+	{
+        soundManager.PlayBgmByName("S.H.R. pop_in");
+	}
+    public void PlayTitleSE()
+	{
+        soundManager.PlaySeByName("decisionSE");
+	}
 }
