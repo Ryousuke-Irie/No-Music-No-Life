@@ -851,6 +851,10 @@ PrefabInstance:
       propertyPath: BGM
       value: 
       objectReference: {fileID: 2301291281937786851, guid: 211a3ce87a0bc28478f241838142039b, type: 3}
+    - target: {fileID: -1858896167153040996, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: BesideMoveAmount
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_A
       value: 9000

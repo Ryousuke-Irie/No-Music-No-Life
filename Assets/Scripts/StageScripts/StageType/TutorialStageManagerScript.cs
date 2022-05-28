@@ -141,6 +141,8 @@ public class TutorialStageManagerScript : MonoBehaviour
                 tutorialNum = 6;
 
                 tempX = playerScript.Next3dist;
+
+                cloneB.gameObject.SetActive(false);
             }
         }
 
@@ -149,6 +151,7 @@ public class TutorialStageManagerScript : MonoBehaviour
             if (refObj.transform.position.x > tempX)
             {
                 cloneY.gameObject.SetActive(false);
+                cloneB.gameObject.SetActive(true);
             }
 
             if (refObj.transform.position.x > posX)
@@ -163,6 +166,7 @@ public class TutorialStageManagerScript : MonoBehaviour
 
                 tempX = playerScript.Next3dist;
                 cloneY.gameObject.SetActive(true);
+                cloneB.gameObject.SetActive(false);
             }
         }
 
@@ -171,6 +175,7 @@ public class TutorialStageManagerScript : MonoBehaviour
             if (refObj.transform.position.x > tempX)
             {
                 cloneY.gameObject.SetActive(false);
+                cloneB.gameObject.SetActive(true);
             }
 
             if (refObj.transform.position.x > posX)
