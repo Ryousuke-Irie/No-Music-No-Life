@@ -877,6 +877,26 @@ PrefabInstance:
       propertyPath: loopFlag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_B
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_C
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_S
+      value: 18000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_SS
+      value: 23000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_SSS
+      value: 28000
+      objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name
       value: Player

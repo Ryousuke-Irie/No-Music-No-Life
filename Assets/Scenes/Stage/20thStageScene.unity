@@ -1905,23 +1905,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_B
-      value: 15000
+      value: 14000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_C
-      value: 10000
+      value: 8000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_S
-      value: 25000
+      value: 26000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_SS
-      value: 30000
+      value: 32000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_SSS
-      value: 35000
+      value: 38000
       objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name

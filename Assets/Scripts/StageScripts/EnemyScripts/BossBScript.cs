@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BossBScript : MonoBehaviour
 {
-    [System.NonSerialized] public int HP = 40;
-    private int tempHP = 40;
+    [System.NonSerialized] public int HP = 50;
+    private int tempHP = 50;
     private GameObject refObj;
     private bool oneTimeFlag = false;
 
     private float heartSpace = 1.5f;
     private float heartToEnemy = 5.0f;
 
-    private static int HEART_MAX = 40;
+    private static int HEART_MAX = 50;
     GameObject[] cloneHeart = new GameObject[HEART_MAX];
 
     private float blinkingTime = 0.0f;
@@ -35,6 +35,22 @@ public class BossBScript : MonoBehaviour
     private bool skill6 = false;
     private bool skill7 = false;
     private bool skill8 = false;
+    private bool skill9 = false;
+    private bool skill10 = false;
+    private bool skill11 = false;
+    private bool skill12 = false;
+    private bool skill13 = false;
+    private bool skill14 = false;
+    private bool skill15 = false;
+    private bool skill16 = false;
+    private bool skill17 = false;
+    private bool skill18 = false;
+    private bool skill19 = false;
+    private bool skill20 = false;
+    private bool skill21 = false;
+    private bool skill22 = false;
+    private bool skill23 = false;
+    private bool skill24 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -103,11 +119,327 @@ public class BossBScript : MonoBehaviour
             skill6 = false;
             skill7 = false;
             skill8 = false;
+            skill9 = false;
+            skill10 = false;
+            skill11 = false;
+            skill12 = false;
+            skill13 = false;
+            skill14 = false;
+            skill15 = false;
+            skill16 = false;
+            skill17 = false;
+            skill18 = false;
+            skill19 = false;
+            skill20 = false;
+            skill21 = false;
+            skill22 = false;
+            skill23 = false;
+            skill24 = false;
         }
 
         if (refObj.GetComponent<PlayerScript>().startFlag)
         {
             myTime += Time.deltaTime;
+        }
+
+
+        if (myTime > 1.0f && !skill4)
+        {
+            GameObject Enemy = (GameObject)Resources.Load("Enemy_B1");
+            GameObject cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy2 = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy3 = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            GameObject Obstacle2 = (GameObject)Resources.Load("Block_center2");
+            GameObject Obstacle = (GameObject)Resources.Load("Block_top2");
+
+            GameObject cloneObstacle = Instantiate(Obstacle2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            skill4 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 3.0f && !skill5)
+        {
+            GameObject Obstacle = (GameObject)Resources.Load("Block_top2");
+            GameObject Obstacle2 = (GameObject)Resources.Load("Block_center2");
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block3");
+
+            GameObject cloneObstacle = Instantiate(Obstacle2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle2 = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            skill5 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 5.0f && !skill6)
+        {
+            moveFlag = true;
+            skill6 = true;
+        }
+
+        if (myTime > 6.0f && !skill7)
+        {
+            GameObject Enemy2 = (GameObject)Resources.Load("B_DivisionEnemy");
+            GameObject Enemy = (GameObject)Resources.Load("Enemy_B1");
+
+            GameObject cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy2 = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy3 = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block");
+
+            GameObject cloneObstacle2 = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            skill7 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 8.0f && !skill8)
+        {
+            moveFlag = true;
+            skill8 = true;
+        }
+
+        if (myTime > 10.0f && !skill1)
+        {
+            refObj.GetComponent<PlayerScript>().BesideMoveAmount = 15.0f;
+
+            skill1 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 11.0f && !skill9)
+        {
+            GameObject Enemy2 = (GameObject)Resources.Load("B_DivisionEnemy");
+            GameObject Enemy = (GameObject)Resources.Load("Enemy_B1");
+
+            GameObject cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy2 = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block2");
+            GameObject Obstacle = (GameObject)Resources.Load("Block_top2");
+
+            GameObject cloneObstacle2 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+
+            skill9 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 13.5f && !skill11)
+        {
+            moveFlag = true;
+            skill11 = true;
+        }
+
+        if (myTime > 15.0f && !skill2)
+        {
+            refObj.GetComponent<PlayerScript>().BesideMoveAmount = 5.0f;
+
+            skill2 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 15.5f && !skill10)
+        {
+            GameObject Enemy2 = (GameObject)Resources.Load("B_DivisionEnemy");
+            GameObject Enemy = (GameObject)Resources.Load("Enemy_B1");
+
+            GameObject cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy2 = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block4");
+            GameObject Obstacle2 = (GameObject)Resources.Load("Block");
+            GameObject Obstacle = (GameObject)Resources.Load("Block_center2");
+
+            GameObject cloneObstacle2 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle = Instantiate(Obstacle2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            skill10 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 20.0f && !skill3)
+        {
+            refObj.GetComponent<PlayerScript>().BesideMoveAmount = 10.0f;
+
+            skill3 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 21.0f && !skill12)
+        {
+            moveFlag = true;
+            skill12 = true;
+        }
+
+        if (myTime > 23.0f && !skill13)
+        {
+            refObj.GetComponent<PlayerScript>().BesideMoveAmount = 15.0f;
+
+            skill13 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 23.5f && !skill17)
+        {
+            GameObject Enemy = (GameObject)Resources.Load("Enemy_B1");
+            GameObject cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy2 = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy3 = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            GameObject Obstacle2 = (GameObject)Resources.Load("Block_center2");
+            GameObject Obstacle = (GameObject)Resources.Load("Block_top2");
+
+            GameObject cloneObstacle = Instantiate(Obstacle2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            skill17 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 25.0f && !skill18)
+        {
+            GameObject Obstacle4 = (GameObject)Resources.Load("Block_stop");
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block_under2");
+            GameObject Obstacle2 = (GameObject)Resources.Load("Block2");
+            GameObject Obstacle = (GameObject)Resources.Load("Block");
+
+            GameObject cloneObstacle = Instantiate(Obstacle2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle2 = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle4 = Instantiate(Obstacle4, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+
+
+            skill18 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 26.5f && !skill19)
+        {
+            moveFlag = true;
+            skill19 = true;
+        }
+
+        if (myTime > 27.5f && !skill20)
+        {
+            GameObject Enemy2 = (GameObject)Resources.Load("B_DivisionEnemy");
+            GameObject Enemy = (GameObject)Resources.Load("Enemy_B1");
+
+            GameObject cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy2 = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block2");
+            GameObject Obstacle = (GameObject)Resources.Load("Block_top2");
+
+            GameObject cloneObstacle2 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+
+            skill20 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 29.0f && !skill14)
+        {
+            refObj.GetComponent<PlayerScript>().BesideMoveAmount = 10.0f;
+
+            skill14 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 30.0f && !skill21)
+        {
+            moveFlag = true;
+            skill21 = true;
+        }
+
+        if (myTime > 31.5f && !skill22)
+        {
+            GameObject Enemy = (GameObject)Resources.Load("Enemy_B1");
+            GameObject Enemy2 = (GameObject)Resources.Load("B_DivisionEnemy");
+
+            GameObject cloneEnemy = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, -2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy2 = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy3 = Instantiate(Enemy, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneEnemy4 = Instantiate(Enemy2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            skill22 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 32.0f && !skill15)
+        {
+            refObj.GetComponent<PlayerScript>().BesideMoveAmount = 5.0f;
+
+            skill15 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 32.5f && !skill16)
+        {
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block_under2");
+            GameObject Obstacle2 = (GameObject)Resources.Load("Block2");
+
+            GameObject cloneObstacle = Instantiate(Obstacle2, new Vector3(refObj.GetComponent<PlayerScript>().Next5dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle2 = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+
+            skill16 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 34.0f && !skill23)
+        {
+            moveFlag = true;
+            skill23 = true;
+        }
+
+        if (myTime > 35.5f && !skill24)
+        {
+            GameObject Obstacle3 = (GameObject)Resources.Load("Block_under2");
+            GameObject Obstacle2 = (GameObject)Resources.Load("Block2");
+            GameObject Obstacle = (GameObject)Resources.Load("Block");
+
+            GameObject cloneObstacle = Instantiate(Obstacle3, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, -6.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle2 = Instantiate(Obstacle2, new Vector3(refObj.GetComponent<PlayerScript>().Next4dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+            GameObject cloneObstacle3 = Instantiate(Obstacle, new Vector3(refObj.GetComponent<PlayerScript>().Next3dist + 5.0f, 2.0f, 0.0f), Quaternion.identity);
+
+            skill24 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 38.0f)
+        {
+            refObj.GetComponent<PlayerScript>().BesideMoveAmount = 10.0f;
+
+            myTime = 0.0f;
+            skill1 = false;
+            skill2 = false;
+            skill3 = false;
+            skill4 = false;
+            skill5 = false;
+            skill6 = false;
+            skill7 = false;
+            skill8 = false;
+            skill9 = false;
+            skill10 = false;
+            skill11 = false;
+            skill12 = false;
+            skill13 = false;
+            skill14 = false;
+            skill15 = false;
+            skill16 = false;
+            skill17 = false;
+            skill18 = false;
+            skill19 = false;
+            skill20 = false;
+            skill21 = false;
+            skill22 = false;
+            skill23 = false;
+            skill24 = false;
         }
 
 
@@ -223,6 +555,30 @@ public class BossBScript : MonoBehaviour
                 cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 35) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
                 cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(90, 0, 230, 255);
+            }
+        }
+
+        for (int i = 40; i < 45; i++)
+        {
+            float space = heartSpace * 0.5f * (5 - 1);
+
+            if (cloneHeart[i])
+            {
+                cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 40) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(200, 0, 230, 255);
+            }
+        }
+
+        for (int i = 45; i < 50; i++)
+        {
+            float space = heartSpace * 0.5f * (5 - 1);
+
+            if (cloneHeart[i])
+            {
+                cloneHeart[i].transform.position = new Vector3(this.transform.position.x + ((i - 45) * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
+
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 0, 150, 255);
             }
         }
 

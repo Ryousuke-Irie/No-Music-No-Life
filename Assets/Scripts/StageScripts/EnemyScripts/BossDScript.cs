@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BossDScript : MonoBehaviour
 {
-    [System.NonSerialized] public int HP = 70;
-    private int tempHP = 70;
+    [System.NonSerialized] public int HP = 60;
+    private int tempHP = 60;
     private GameObject refObj;
     private bool oneTimeFlag = false;
 
     private float heartSpace = 1.5f;
     private float heartToEnemy = 5.0f;
 
-    private static int HEART_MAX = 70;
+    private static int HEART_MAX = 60;
     GameObject[] cloneHeart = new GameObject[HEART_MAX];
 
     private float blinkingTime = 0.0f;
