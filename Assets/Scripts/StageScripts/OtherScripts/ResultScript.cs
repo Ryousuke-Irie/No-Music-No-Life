@@ -82,19 +82,19 @@ public class ResultScript : MonoBehaviour
 
         refKirakira = (GameObject)Resources.Load("kirakira");
 
-        if (StageSelectController.barNum >= 0 && StageSelectController.barNum < 6)
+        if (StageSelectController.barNum >= 0 && StageSelectController.barNum < 3)
         {
             refObjicon = (GameObject)Resources.Load("icon_1");
         }
-        if (StageSelectController.barNum >= 6 && StageSelectController.barNum < 11)
+        if (StageSelectController.barNum >= 3 && StageSelectController.barNum < 6)
         {
             refObjicon = (GameObject)Resources.Load("icon_2");
         }
-        if (StageSelectController.barNum >= 11 && StageSelectController.barNum < 16)
+        if (StageSelectController.barNum >= 6 && StageSelectController.barNum < 9)
         {
             refObjicon = (GameObject)Resources.Load("icon_3");
         }
-        if (StageSelectController.barNum >= 16 && StageSelectController.barNum <= 20)
+        if (StageSelectController.barNum >= 9 && StageSelectController.barNum <= 12)
         {
             refObjicon = (GameObject)Resources.Load("icon_4");
         }

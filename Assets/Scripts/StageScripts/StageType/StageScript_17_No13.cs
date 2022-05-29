@@ -19,19 +19,26 @@ public class StageScript_17_No13 : StageScript
         float sp = 0.10f;
         float p = 30 / bpm;
         float t = 1.0f;
-        float g = - 1.5f;     // 誤差
-		// Stickコピペゾーン --------------------
+        float g = - 1.5f;    
+        // 誤差
+                             
+        // Stickコピペゾーン --------------------
+                             
+        //185から201
+        //237  243
+        //253  261
+        //290から307
 
-		//SetStick(num++, (sp + (p * (t * 0))) * vel);
-		//SetStick(num++, (sp + (p * (t * 1))) * vel);
-		//SetStick(num++, (sp + (p * (t * 2))) * vel);
-		//SetStick(num++, (sp + (p * (t * 3))) * vel);
-		//SetStick(num++, (sp + (p * (t * 4))) * vel);
-		//SetStick(num++, (sp + (p * (t * 5))) * vel);
-		//SetStick(num++, (sp + (p * (t * 6))) * vel);
-		//SetStick(num++, (sp + (p * (t * 7))) * vel);
-		//SetStick(num++, (sp + (p * (t * 8))) * vel);
-		SetStick(num++, (sp + (p * (t * (9 + g)))) * vel);
+        //SetStick(num++, (sp + (p * (t * 0))) * vel);
+        //SetStick(num++, (sp + (p * (t * 1))) * vel);
+        //SetStick(num++, (sp + (p * (t * 2))) * vel);
+        //SetStick(num++, (sp + (p * (t * 3))) * vel);
+        //SetStick(num++, (sp + (p * (t * 4))) * vel);
+        //SetStick(num++, (sp + (p * (t * 5))) * vel);
+        //SetStick(num++, (sp + (p * (t * 6))) * vel);
+        //SetStick(num++, (sp + (p * (t * 7))) * vel);
+        //SetStick(num++, (sp + (p * (t * 8))) * vel);
+        SetStick(num++, (sp + (p * (t * (9 + g)))) * vel);
 		//SetStick(num++, (sp + (p * (t (* 10))) * vel);
   //      SetStick(num++, (sp + (p * (t (* 11))) * vel);
   //      SetStick(num++, (sp + (p * (t (* 12))) * vel);
@@ -207,6 +214,8 @@ public class StageScript_17_No13 : StageScript
         //SetStick(num++, (sp + (p * (t (* 182))) * vel);
         SetStick(num++, (sp + (p * (t * (183 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 184))) * vel);
+
+
         SetStick(num++, (sp + (p * (t * (185 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 186))) * vel);
         SetStick(num++, (sp + (p * (t * (187 + g)))) * vel);
@@ -224,6 +233,8 @@ public class StageScript_17_No13 : StageScript
         SetStick(num++, (sp + (p * (t * (199 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 200))) * vel);
         SetStick(num++, (sp + (p * (t * (201 + g)))) * vel);
+
+
         //SetStick(num++, (sp + (p * (t (* 202))) * vel);
         SetStick(num++, (sp + (p * (t * (203 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 204))) * vel);
@@ -259,13 +270,15 @@ public class StageScript_17_No13 : StageScript
         //SetStick(num++, (sp + (p * (t (* 234))) * vel);
         SetStick(num++, (sp + (p * (t * (235 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 236))) * vel);
+       
         SetStick(num++, (sp + (p * (t * (237 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 238))) * vel);
         SetStick(num++, (sp + (p * (t * (239 + g)))) * vel);
-        //SetStick(num++, (sp + (p * (t (* 240))) * vel);
+       //SetStick(num++, (sp + (p * (t (* 240))) * vel);
         SetStick(num++, (sp + (p * (t * (241 + g)))) * vel);
-        //SetStick(num++, (sp + (p * (t (* 242))) * vel);
+       // SetStick(num++, (sp + (p * (t (* 242))) * vel);
         SetStick(num++, (sp + (p * (t * (243 + g)))) * vel);
+       
         //SetStick(num++, (sp + (p * (t (* 244))) * vel);
         SetStick(num++, (sp + (p * (t * (245 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 246))) * vel);
@@ -274,6 +287,8 @@ public class StageScript_17_No13 : StageScript
         SetStick(num++, (sp + (p * (t * (249 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 250))) * vel);
         SetStick(num++, (sp + (p * (t * (251 + g)))) * vel);
+       
+      
         //SetStick(num++, (sp + (p * (t (* 252))) * vel);
         SetStick(num++, (sp + (p * (t * (253 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 254))) * vel);
@@ -284,6 +299,7 @@ public class StageScript_17_No13 : StageScript
         SetStick(num++, (sp + (p * (t * (259 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 260))) * vel);
         SetStick(num++, (sp + (p * (t * (261 + g)))) * vel);
+        
         //SetStick(num++, (sp + (p * (t (* 262))) * vel);
         SetStick(num++, (sp + (p * (t * (263 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 264))) * vel);
@@ -312,6 +328,8 @@ public class StageScript_17_No13 : StageScript
         SetStick(num++, (sp + (p * (t * (287 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 288))) * vel);
         SetStick(num++, (sp + (p * (t * (289 + g)))) * vel);
+        
+
         //SetStick(num++, (sp + (p * (t (* 290))) * vel);
         SetStick(num++, (sp + (p * (t * (291 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 292))) * vel);
@@ -330,6 +348,7 @@ public class StageScript_17_No13 : StageScript
         SetStick(num++, (sp + (p * (t * (305 + g)))) * vel);
         SetStick(num++, (sp + (p * (t * (306 + g)))) * vel);
         SetStick(num++, (sp + (p * (t * (307 + g)))) * vel);
+       
         //SetStick(num++, (sp + (p * (t (* 308))) * vel);
         SetStick(num++, (sp + (p * (t * (309 + g)))) * vel);
         //SetStick(num++, (sp + (p * (t (* 310))) * vel);
@@ -346,9 +365,73 @@ public class StageScript_17_No13 : StageScript
         int num = 0;
         float vel = refObjp.GetComponent<PlayerScript>().BesideMoveAmount;
         float error = -5.0f;
-
+        float bpm = 150.0f;
+        float sp = 0.10f;
+        float p = 30 / bpm;
+        float t = 1.0f;
+        float g = -1.5f;
+        //185から201連打
+        //237  243
+        //253  261
+        //290から307
         // Enemyコピペゾーン --------------------
-
+        SetEnemy(num++, (sp + (p * (t * (9 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (17 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (25 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (33 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (35 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (39 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (41 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (45 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (47 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (49 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (57 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (65 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (69 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (75 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (77 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (79 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (89 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (99 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        
+        SetEnemy(num++, (sp + (p * (t * (103 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (105 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (109 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (115 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (117 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (105 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (123 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (125 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (127 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (137 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (149 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (153 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (157 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (159 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (161 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (167 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (170 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (179 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (181 + g)))) * vel - error, 0 * updown, enemyTypeA);
+       
+        SetEnemy(num++, (sp + (p * (t * (205 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (207 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (209 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (215 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (217 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (219 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (223 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (233 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (235 + g)))) * vel - error, 0 * updown, enemyTypeA);
+       
+        
+        SetEnemy(num++, (sp + (p * (t * (263 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (267 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (269 + g)))) * vel - error, 0 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (271 + g)))) * vel - error, 1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (279 + g)))) * vel - error, -1 * updown, enemyTypeA);
+        SetEnemy(num++, (sp + (p * (t * (281 + g)))) * vel - error, 1 * updown, enemyTypeA);
+      
         // --------------------------------------
     }
 
@@ -356,16 +439,66 @@ public class StageScript_17_No13 : StageScript
     {
         int num = 0;
         float vel = refObjp.GetComponent<PlayerScript>().BesideMoveAmount;
+        float bpm = 150.0f;
+        float sp = 0.10f;
+        float p = 30 / bpm;
+        float t = 1.0f;
+        float error = -5.0f;
+        float g = -1.5f;
 
+        //185から201
+        //237  243
+        //253  261
+
+        //290から307
         // Obstacleコピペゾーン -----------------
-
+        SetObstacle(num++, (sp + (p * (t * (13 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (21 + g)))) * vel - error,0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (29 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (31 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (37 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (43 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (53 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (61 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (71 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (73 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (81 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (87 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (93 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (107 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (111 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (119 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (129 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (131 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (133 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (143 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (155 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (163 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (165 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (168 + g)))) * vel - error,0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (172 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (174 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (176 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+       
+        SetObstacle(num++, (sp + (p * (t * (203 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (211 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (213 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (221 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (225 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (229 + g)))) * vel - error, -1 * updown, obstacleTypeA);       
+        SetObstacle(num++, (sp + (p * (t * (265 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (273 + g)))) * vel - error, -1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (277 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (285 + g)))) * vel - error, 0 * updown, obstacleTypeA);
+        SetObstacle(num++, (sp + (p * (t * (289 + g)))) * vel - error, 1 * updown, obstacleTypeA);
+       
         // --------------------------------------
     }
 
     public override float SetMoveLimit()
     {
         // return ((stickPosDataArray[Max - 1]) + 6.0f);
-        return ((stickPosDataArray[Max - 1]) + 36.0f);
+        return ((stickPosDataArray[Max - 1]) + 6.0f);
     }
 
     public override int GetLastStick()

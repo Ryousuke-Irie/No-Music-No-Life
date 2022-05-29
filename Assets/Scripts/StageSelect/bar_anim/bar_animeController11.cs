@@ -22,7 +22,7 @@ public class bar_animeController11 : MonoBehaviour
 		{
             anim.SetBool("Big", true);
 		}
-        else if (barNum == 10 || barNum == 12)
+        else if (barNum == 10 || barNum == 0)
         {
             anim.SetBool("Big", false);
 		}
