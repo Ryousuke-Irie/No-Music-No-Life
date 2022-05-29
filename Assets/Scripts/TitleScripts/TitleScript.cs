@@ -8,8 +8,6 @@ using UnityEngine.InputSystem;
 public class TitleScript : MonoBehaviour
 {
     GameObject refObj;
-
-    GameObject refObj;
     public SoundManager soundManager;
 
     private bool endFlag = false;
