@@ -252,7 +252,6 @@ GameObject:
   - component: {fileID: 908041374}
   - component: {fileID: 908041377}
   - component: {fileID: 908041378}
-  - component: {fileID: 908041374}
   m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
@@ -837,10 +836,6 @@ PrefabInstance:
       propertyPath: BGM
       value: 
       objectReference: {fileID: 8214817224586062487, guid: 96123a60da629344aa6627ce56650334, type: 3}
-    - target: {fileID: -1858896167153040996, guid: 02555d51abe2e6145ba218db54626105, type: 3}
-      propertyPath: BesideMoveAmount
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name
       value: Player
