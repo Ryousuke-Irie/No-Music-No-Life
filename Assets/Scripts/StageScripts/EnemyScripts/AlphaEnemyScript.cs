@@ -105,12 +105,12 @@ public class AlphaEnemyScript : MonoBehaviour
             {
                 GameObject Heart = (GameObject)Resources.Load("heart");
                 cloneHeart[i] = Instantiate(Heart, new Vector3(this.transform.position.x + (i * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f), Quaternion.identity);
-                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 0);
+                cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 170, 70, 0);
             }
 
             cloneHeart[i].transform.position = new Vector3(this.transform.position.x + (i * heartSpace) - space, this.transform.position.y + heartToEnemy, 0.0f);
 
-            cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, (byte)colorFloat);
+            cloneHeart[i].GetComponent<SpriteRenderer>().color = new Color32(255, 170, 70, (byte)colorFloat);
         }
 
         for (int i = HP; i < HEART_MAX; i++)

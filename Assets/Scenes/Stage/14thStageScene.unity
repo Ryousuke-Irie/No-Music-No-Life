@@ -849,27 +849,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_A
-      value: 30000
-      objectReference: {fileID: 0}
-    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
-      propertyPath: Rank_B
       value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
-      propertyPath: Rank_C
+      propertyPath: Rank_B
       value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
+      propertyPath: Rank_C
+      value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_S
-      value: 35000
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_SS
-      value: 40000
+      value: 35000
       objectReference: {fileID: 0}
     - target: {fileID: 782676339, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: Rank_SSS
-      value: 45000
+      value: 40000
       objectReference: {fileID: 0}
     - target: {fileID: 6904612814948962562, guid: 02555d51abe2e6145ba218db54626105, type: 3}
       propertyPath: m_Name

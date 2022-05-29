@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ControllerScript : MonoBehaviour
 {
@@ -54,6 +55,12 @@ public class ControllerScript : MonoBehaviour
         {
             this.GetComponent<PlayerScript>().chargeFlag = true;
         }
+
+        // –ß‚é
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SceneManager.LoadScene("StageSelectScene");
+        }
     }
 
     private void Controller()
@@ -81,6 +88,12 @@ public class ControllerScript : MonoBehaviour
         if (Gamepad.current.buttonNorth.wasPressedThisFrame && (this.transform.position.x > this.GetComponent<PlayerScript>().dist - this.GetComponent<PlayerScript>().TempoTimeError && this.transform.position.x < this.GetComponent<PlayerScript>().dist + this.GetComponent<PlayerScript>().TempoTimeError) && !this.GetComponent<PlayerScript>().actionFlag)
         {
             this.GetComponent<PlayerScript>().chargeFlag = true;
+        }
+
+        // –ß‚é
+        if (Gamepad.current.selectButton.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("StageSelectScene");
         }
     }
 }

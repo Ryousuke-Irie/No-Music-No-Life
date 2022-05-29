@@ -40,16 +40,16 @@ public class BossSlushScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Attack")
-        {
-            if (leftFlag)
-            {
-                leftFlag = false;
-                this.GetComponent<SpriteRenderer>().flipX = true;
-                refObj.GetComponent<PlayerScript>().score += 500;
-                col.gameObject.tag = "Untagged";
-            }
-        }
+        //if (col.gameObject.tag == "Attack")
+        //{
+        //    if (leftFlag)
+        //    {
+        //        leftFlag = false;
+        //        this.GetComponent<SpriteRenderer>().flipX = true;
+        //        refObj.GetComponent<PlayerScript>().score += 500;
+        //        col.gameObject.tag = "Untagged";
+        //    }
+        //}
 
         if (col.gameObject.tag == "Player")
         {

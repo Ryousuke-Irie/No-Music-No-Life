@@ -30,10 +30,12 @@ public class BossCScript : MonoBehaviour
     private int num = 0;
 
     [SerializeField] GameObject Slush;
+    [SerializeField] GameObject cloneSlushAir;
 
     private bool moveFlag = false;
     private float myTime = 0.0f;
     private bool skill1 = false;
+    private bool skill2 = false;
     private bool skill3 = false;
     private bool skill4 = false;
     private bool skill5 = false;
@@ -57,6 +59,10 @@ public class BossCScript : MonoBehaviour
     {
         refObj = GameObject.Find("Player");
         tempHP = HP;
+
+        cloneSlushAir = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
+        cloneSlushAir.gameObject.SetActive(false);
+        cloneSlushAir.GetComponent<BossSlushScript>().velX = 0.0f;
 
         for (int i = 0; i < HEART_MAX; i++)
         {
@@ -112,6 +118,7 @@ public class BossCScript : MonoBehaviour
             refObj.GetComponent<PlayerScript>().loopBossFlag = false;
             myTime = 0.0f;
             skill1 = false;
+            skill2 = false;
             skill3 = false;
             skill4 = false;
             skill5 = false;
@@ -135,6 +142,7 @@ public class BossCScript : MonoBehaviour
         {
             num += 1;
             myTime = 0.0f;
+            skill2 = false;
             skill3 = false;
             skill4 = false;
             skill5 = false;
@@ -162,24 +170,46 @@ public class BossCScript : MonoBehaviour
         // 0.7ŠÔŠu  ŽaŒ‚ 0.0 “Ëi 0.3
 
         if (myTime > 1.1f && !skill1) // 0 ƒ‹[ƒv‚Í‚¶‚ß‚¾‚¯’Ê‚é
-        {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
-            
+        {            
             skill1 = true;
             myTime = 0.0f;
             shakeFlag = true;
         }
 
+        cloneSlushAir.transform.position = new Vector3(this.transform.position.x + -6.0f, 0.0f, 0.0f);
+
+        if (myTime > 0.3f && !skill2 && skill1)
+        {
+            cloneSlushAir.gameObject.SetActive(true);
+            cloneSlushAir.transform.position = new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f);
+        }
+
+        if (myTime > 0.7f && !skill2 && skill1) // 1
+        {
+            cloneSlushAir.gameObject.SetActive(false);
+            GameObject cloneSlush = Instantiate(Slush,new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
+
+            skill2 = true;
+            shakeFlag = true;
+        }
+
+        if (myTime > 1.0f && !skill3)
+        {
+            cloneSlushAir.gameObject.SetActive(true);
+            cloneSlushAir.transform.position = new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f);
+        }
+
         if (myTime > 1.4f && !skill3) // 2
         {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSlushAir.gameObject.SetActive(false);
+            GameObject cloneSlush = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
 
             skill3 = true;
             shakeFlag = true;
         }
 
 
-        if (myTime > 2.5f && !skill4) // 4
+        if (myTime > 2.55f && !skill4) // 4
         {
             moveFlag = true;
             skill4 = true;
@@ -187,45 +217,73 @@ public class BossCScript : MonoBehaviour
 
 
 
-        if (myTime > 3.9f && !skill5) // 6
+        if (myTime > 3.95f && !skill5) // 6
         {
             moveFlag = true;
             skill5 = true;
         }
 
+        if (myTime > 5.9f && !skill6)
+        {
+            cloneSlushAir.gameObject.SetActive(true);
+            cloneSlushAir.transform.position = new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f);
+        }
+
         if (myTime > 6.3f && !skill6) // 9
         {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSlushAir.gameObject.SetActive(false);
+            GameObject cloneSlush = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
 
             skill6 = true;
             shakeFlag = true;
         }
 
+        if (myTime > 6.6f && !skill7)
+        {
+            cloneSlushAir.gameObject.SetActive(true);
+            cloneSlushAir.transform.position = new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f);
+        }
+
         if (myTime > 7.0f && !skill7) // 10
         {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSlushAir.gameObject.SetActive(false);
+            GameObject cloneSlush = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
 
             skill7 = true;
             shakeFlag = true;
         }
 
-        if (myTime > 7.4f && !skill8) // 11
+        if (myTime > 7.45f && !skill8) // 11
         {
             moveFlag = true;
             skill8 = true;
         }
 
+        if (myTime > 8.7f && !skill9)
+        {
+            cloneSlushAir.gameObject.SetActive(true);
+            cloneSlushAir.transform.position = new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f);
+        }
+
         if (myTime > 9.1f && !skill9) // 13
         {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSlushAir.gameObject.SetActive(false);
+            GameObject cloneSlush = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
 
             skill9 = true;
             shakeFlag = true;
         }
 
+        if (myTime > 10.1f && !skill10)
+        {
+            cloneSlushAir.gameObject.SetActive(true);
+            cloneSlushAir.transform.position = new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f);
+        }
+
         if (myTime > 10.5f && !skill10) // 15
         {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
+            cloneSlushAir.gameObject.SetActive(false);
+            GameObject cloneSlush = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
 
             skill10 = true;
             shakeFlag = true;
@@ -269,7 +327,7 @@ public class BossCScript : MonoBehaviour
 
         if (myTime > 14.7f && !skill17) // 21
         {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
+            //GameObject cloneSlush = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
 
             skill17 = true;
             shakeFlag = true;
@@ -286,7 +344,7 @@ public class BossCScript : MonoBehaviour
 
         if (myTime > 16.8f && !skill14 && num < 2) // 24
         {
-            GameObject cloneSlush = Instantiate(Slush, this.transform.position + new Vector3(-6.0f, 0.0f, 0.0f), Quaternion.identity);
+            //GameObject cloneSlush = Instantiate(Slush, new Vector3(this.transform.position.x + -6.0f, refObj.transform.position.y, 0.0f), Quaternion.identity);
 
             GameObject Obstacle2 = (GameObject)Resources.Load("Block_train7");
             GameObject Obstacle3 = (GameObject)Resources.Load("Block_train8");
@@ -321,7 +379,7 @@ public class BossCScript : MonoBehaviour
         {
             Destroy(gameObject);
 
-            refObj.GetComponent<PlayerScript>().score += 500;
+            refObj.GetComponent<PlayerScript>().score +=2000;
 
             refObj.GetComponent<PlayerScript>().goalFlag = true;
             Cursor.visible = true;
@@ -330,7 +388,7 @@ public class BossCScript : MonoBehaviour
         if (tempHP > HP)
         {
             tempHP = HP;
-            refObj.GetComponent<PlayerScript>().score += 500;
+            
             blinkingFlag = true;
         }
 
@@ -496,8 +554,9 @@ public class BossCScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Attack")
         {
-            HP -= 1;
+            HP -= 2;
             moveFlag = false;
+            refObj.GetComponent<PlayerScript>().score += 1500;
             col.gameObject.tag = "Untagged";
         }
 

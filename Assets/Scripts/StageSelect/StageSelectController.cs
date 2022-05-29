@@ -100,7 +100,7 @@ public class StageSelectController : MonoBehaviour
         refObj2 = GameObject.Find("fade_white");
         refObj3 = GameObject.Find("fade_white2");
 
-        barNum = 0;
+        //barNum = 0;
 
         soundManager = FindObjectOfType<SoundManager>();
         soundManager.PlayBgmByName("stage1-1");
@@ -125,23 +125,84 @@ public class StageSelectController : MonoBehaviour
             imageBox[i].SetActive(false);
 		}
 
-        barBox[18].SetActive(true);
-        barBox[18].transform.position = new Vector3(S1positionX + (float)-2.0, S1positionY + (float)-2.0, 0.0f);
-        // barBox[18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
 
-        barBox[19].SetActive(true);
-        barBox[19].transform.position = new Vector3(S2positionX, S2positionY, 0.0f);
-        // barBox[19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        if (barNum == 0)
+        {
+            barBox[barNum + 18].SetActive(true);
+            barBox[barNum + 18].transform.position = new Vector3(S1positionX + (float)-2.0, S1positionY + (float)-2.0, 0.0f);
+            // barBox[18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
 
-        barBox[0].SetActive(true);
-        barBox[0].transform.position = new Vector3(BpositionX, BpositionY, 0.0f);
-        // barBox[0].transform.localScale = new Vector3(BscaleX, BscaleY, 0.0f);
+            barBox[barNum + 19].SetActive(true);
+            barBox[barNum + 19].transform.position = new Vector3(S2positionX, S2positionY, 0.0f);
+            // barBox[19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
 
-        barBox[1].SetActive(true);
-        barBox[1].transform.position = new Vector3(S3positionX + (float)-2.0, S3positionY + (float)2.0, 0.0f);
-        // barBox[1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+            barBox[barNum].SetActive(true);
+            barBox[barNum].transform.position = new Vector3(BpositionX, BpositionY, 0.0f);
+            // barBox[0].transform.localScale = new Vector3(BscaleX, BscaleY, 0.0f);
 
-        imageBox[0].SetActive(true);
+            barBox[barNum + 1].SetActive(true);
+            barBox[barNum + 1].transform.position = new Vector3(S3positionX + (float)-2.0, S3positionY + (float)2.0, 0.0f);
+            // barBox[1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+
+        }
+        else if (barNum == 1)
+        {
+            barBox[barNum + 18].SetActive(true);
+            barBox[barNum + 18].transform.position = new Vector3(S1positionX + (float)-2.0, S1positionY + (float)-2.0, 0.0f);
+            // barBox[18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+
+            barBox[barNum - 1].SetActive(true);
+            barBox[barNum - 1].transform.position = new Vector3(S2positionX, S2positionY, 0.0f);
+            // barBox[19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+
+            barBox[barNum].SetActive(true);
+            barBox[barNum].transform.position = new Vector3(BpositionX, BpositionY, 0.0f);
+            // barBox[0].transform.localScale = new Vector3(BscaleX, BscaleY, 0.0f);
+
+            barBox[barNum + 1].SetActive(true);
+            barBox[barNum + 1].transform.position = new Vector3(S3positionX + (float)-2.0, S3positionY + (float)2.0, 0.0f);
+            // barBox[1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+        else if (barNum == 19)
+        {
+            barBox[barNum - 2].SetActive(true);
+            barBox[barNum - 2].transform.position = new Vector3(S1positionX + (float)-2.0, S1positionY + (float)-2.0, 0.0f);
+            // barBox[18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+
+            barBox[barNum - 1].SetActive(true);
+            barBox[barNum - 1].transform.position = new Vector3(S2positionX, S2positionY, 0.0f);
+            // barBox[19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+
+            barBox[barNum].SetActive(true);
+            barBox[barNum].transform.position = new Vector3(BpositionX, BpositionY, 0.0f);
+            // barBox[0].transform.localScale = new Vector3(BscaleX, BscaleY, 0.0f);
+
+            barBox[barNum - 19].SetActive(true);
+            barBox[barNum - 19].transform.position = new Vector3(S3positionX + (float)-2.0, S3positionY + (float)2.0, 0.0f);
+            // barBox[1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+        else
+        {
+            barBox[barNum - 2].SetActive(true);
+            barBox[barNum - 2].transform.position = new Vector3(S1positionX + (float)-2.0, S1positionY + (float)-2.0, 0.0f);
+            // barBox[18].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+
+            barBox[barNum - 1].SetActive(true);
+            barBox[barNum - 1].transform.position = new Vector3(S2positionX, S2positionY, 0.0f);
+            // barBox[19].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+
+            barBox[barNum].SetActive(true);
+            barBox[barNum].transform.position = new Vector3(BpositionX, BpositionY, 0.0f);
+            // barBox[0].transform.localScale = new Vector3(BscaleX, BscaleY, 0.0f);
+
+            barBox[barNum + 1].SetActive(true);
+            barBox[barNum + 1].transform.position = new Vector3(S3positionX + (float)-2.0, S3positionY + (float)2.0, 0.0f);
+            // barBox[1].transform.localScale = new Vector3(SscaleX, SscaleY, 0.0f);
+        }
+
+
+
+        imageBox[barNum].SetActive(true);
 
         speed = new Vector3((float)10 * Time.deltaTime, (float)10 * Time.deltaTime, 0);
 
