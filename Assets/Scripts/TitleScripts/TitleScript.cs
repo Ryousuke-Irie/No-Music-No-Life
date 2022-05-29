@@ -17,6 +17,7 @@ public class TitleScript : MonoBehaviour
     void Start()
     {
         refObj = GameObject.Find("fade_white3");
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -93,7 +94,7 @@ public class TitleScript : MonoBehaviour
 
     public void PlayTitleBGM()
 	{
-        soundManager.PlayBgmByName("S.H.R. pop_in");
+        soundManager.PlayBgmByName("S.H.R.pop_in");
 	}
     public void PlayTitleSE()
 	{

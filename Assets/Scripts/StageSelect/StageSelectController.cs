@@ -103,7 +103,7 @@ public class StageSelectController : MonoBehaviour
         //barNum = 0;
 
         soundManager = FindObjectOfType<SoundManager>();
-        soundManager.PlayBgmByName("stage1-1");
+        BGMProcess();
 
         barBox = new GameObject[]
         {
