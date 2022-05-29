@@ -83,11 +83,13 @@ public class SettingButtonController : MonoBehaviour
         {
             if (Gamepad.current.buttonEast.wasPressedThisFrame)
             {
+                soundManager.PlaySeByName("selectSE");
                 Buttonclick(1);
             }
 
             if (Gamepad.current.buttonNorth.wasPressedThisFrame || Gamepad.current.startButton.wasPressedThisFrame)
             {
+                soundManager.PlaySeByName("selectSE");
                 Buttonclick(0);
             }
         }
@@ -145,6 +147,8 @@ public class SettingButtonController : MonoBehaviour
 
                     if (Gamepad.current.dpad.left.wasPressedThisFrame)
                     {
+                        soundManager.PlaySeByName("selectSE");
+
                         if (refObjSA.GetComponent<Slider>().value == 1) refObjSA.GetComponent<Slider>().value = 0.0f;
                         if (refObjSA.GetComponent<Slider>().value == 2) refObjSA.GetComponent<Slider>().value = 1.0f;
                         if (refObjSA.GetComponent<Slider>().value == 3) refObjSA.GetComponent<Slider>().value = 2.0f;
@@ -159,6 +163,8 @@ public class SettingButtonController : MonoBehaviour
 
                     if (Gamepad.current.dpad.right.wasPressedThisFrame)
                     {
+                        soundManager.PlaySeByName("selectSE");
+
                         if (refObjSA.GetComponent<Slider>().value == 9) refObjSA.GetComponent<Slider>().value = 10.0f;
                         if (refObjSA.GetComponent<Slider>().value == 8) refObjSA.GetComponent<Slider>().value = 9.0f;
                         if (refObjSA.GetComponent<Slider>().value == 7) refObjSA.GetComponent<Slider>().value = 8.0f;
@@ -182,6 +188,8 @@ public class SettingButtonController : MonoBehaviour
 
                     if (Gamepad.current.dpad.left.wasPressedThisFrame)
                     {
+                        soundManager.PlaySeByName("selectSE");
+
                         if (refObjSB.GetComponent<Slider>().value == 1) refObjSB.GetComponent<Slider>().value = 0.0f;
                         if (refObjSB.GetComponent<Slider>().value == 2) refObjSB.GetComponent<Slider>().value = 1.0f;
                         if (refObjSB.GetComponent<Slider>().value == 3) refObjSB.GetComponent<Slider>().value = 2.0f;
@@ -196,6 +204,8 @@ public class SettingButtonController : MonoBehaviour
 
                     if (Gamepad.current.dpad.right.wasPressedThisFrame)
                     {
+                        soundManager.PlaySeByName("selectSE");
+
                         if (refObjSB.GetComponent<Slider>().value == 9) refObjSB.GetComponent<Slider>().value = 10.0f;
                         if (refObjSB.GetComponent<Slider>().value == 8) refObjSB.GetComponent<Slider>().value = 9.0f;
                         if (refObjSB.GetComponent<Slider>().value == 7) refObjSB.GetComponent<Slider>().value = 8.0f;
@@ -224,6 +234,8 @@ public class SettingButtonController : MonoBehaviour
 
                     if (Gamepad.current.dpad.left.wasPressedThisFrame)
                     {
+                        soundManager.PlaySeByName("selectSE");
+
                         if (refObjSS.GetComponent<Slider>().value == 1) refObjSS.GetComponent<Slider>().value = 0.0f;
                         if (refObjSS.GetComponent<Slider>().value == 2) refObjSS.GetComponent<Slider>().value = 1.0f;
                         if (refObjSS.GetComponent<Slider>().value == 3) refObjSS.GetComponent<Slider>().value = 2.0f;
@@ -238,6 +250,8 @@ public class SettingButtonController : MonoBehaviour
 
                     if (Gamepad.current.dpad.right.wasPressedThisFrame)
                     {
+                        soundManager.PlaySeByName("selectSE");
+
                         if (refObjSS.GetComponent<Slider>().value == 9) refObjSS.GetComponent<Slider>().value = 10.0f;
                         if (refObjSS.GetComponent<Slider>().value == 8) refObjSS.GetComponent<Slider>().value = 9.0f;
                         if (refObjSS.GetComponent<Slider>().value == 7) refObjSS.GetComponent<Slider>().value = 8.0f;

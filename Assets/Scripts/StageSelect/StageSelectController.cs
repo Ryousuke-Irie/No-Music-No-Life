@@ -308,6 +308,8 @@ public class StageSelectController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
+                soundManager.PlaySeByName("decisionSE");
+
                 if (refObj3)
                 {
                     refObj3.GetComponent<FadeScript>().isFadeOut = true;
@@ -330,6 +332,8 @@ public class StageSelectController : MonoBehaviour
 
             if (Gamepad.current.buttonSouth.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
+                soundManager.PlaySeByName("decisionSE");
+
                 if (refObj3)
                 {
                     refObj3.GetComponent<FadeScript>().isFadeOut = true;
@@ -482,6 +486,8 @@ public class StageSelectController : MonoBehaviour
 
     private void UpProcess()
     {
+        soundManager.PlaySeByName("oneSE");
+
         transFlagW = true;
         barNum -= 1;
 
@@ -517,6 +523,8 @@ public class StageSelectController : MonoBehaviour
     {
         transFlagS = true;
         barNum += 1;
+
+        soundManager.PlaySeByName("oneSE");
 
         if (barNum > stageNum - 1)
         {
