@@ -101,6 +101,7 @@ public class StageScript_07_No11 : StageScript
         // SetStick(num++, (sp + (p * (t * 66))) * vel);
         // SetStick(num++, (sp + (p * (t * 67))) * vel);
         // SetStick(num++, (sp + (p * (t * 68))) * vel);
+        //SetStick(num++, (sp + (p * (t * 68))) * vel);
         SetStick(num++, (sp + (p * (t * 69))) * vel);
         SetStick(num++, (sp + (p * (t * 70))) * vel);
         SetStick(num++, (sp + (p * (t * 71))) * vel);
