@@ -238,7 +238,7 @@ public class StageSelectController : MonoBehaviour
                     SceneManager.LoadScene("7thStageScene");
                     break;
                 case 4:
-                    SceneManager.LoadScene("2ndStageScene");
+                    SceneManager.LoadScene("9thStageScene");
                     break;
                 case 5:
                     SceneManager.LoadScene("8thStageScene");
@@ -580,7 +580,7 @@ public class StageSelectController : MonoBehaviour
                 soundManager.PlayBgmByName("stage2-2_No.11");
                 break;
             case 4:
-                soundManager.PlayBgmByName("stage1-2");
+                soundManager.PlayBgmByName("theZEROstep01");
                 break;
             case 5:
                 soundManager.PlayBgmByName("stage2-3_No.16");
