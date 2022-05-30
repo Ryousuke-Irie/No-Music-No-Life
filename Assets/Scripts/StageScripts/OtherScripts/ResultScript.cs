@@ -173,8 +173,6 @@ public class ResultScript : MonoBehaviour
 
     private void SetScore()
     {
-        tempScore += plusScore;
-
         // Œ…”ŒvZ
         int number = tempScore;
 
@@ -274,6 +272,8 @@ public class ResultScript : MonoBehaviour
 
             scoreEndFlag = true;
         }
+
+        tempScore += plusScore;
     }
 
     private void SetRank()

@@ -247,7 +247,7 @@ public class StageSelectController : MonoBehaviour
                     SceneManager.LoadScene("12thStageScene");
                     break;
                 case 7:
-                    SceneManager.LoadScene("2ndStageScene");
+                    SceneManager.LoadScene("13thStageScene");
                     break;
                 case 8:
                     SceneManager.LoadScene("14thStageScene");
@@ -256,7 +256,7 @@ public class StageSelectController : MonoBehaviour
                     SceneManager.LoadScene("16thStageScene");
                     break;
                 case 10:
-                    SceneManager.LoadScene("2ndStageScene");
+                    SceneManager.LoadScene("17thStageScene");
                     break;
                 case 11:
                     SceneManager.LoadScene("20thStageScene");
@@ -589,7 +589,7 @@ public class StageSelectController : MonoBehaviour
                 soundManager.PlayBgmByName("stage3-2_No.09");
                 break;
             case 7:
-                soundManager.PlayBgmByName("stage1-2");
+                soundManager.PlayBgmByName("stage3-3_No.17");
                 break;
             case 8:
                 soundManager.PlayBgmByName("stage3-4_No.05");
@@ -598,7 +598,7 @@ public class StageSelectController : MonoBehaviour
                 soundManager.PlayBgmByName("stage4-1_No.04");
                 break;
             case 10:
-                soundManager.PlayBgmByName("stage1-2");
+                soundManager.PlayBgmByName("stage4-2_No.13");
                 break;
             case 11:
                 soundManager.PlayBgmByName("Ultimate_A");
