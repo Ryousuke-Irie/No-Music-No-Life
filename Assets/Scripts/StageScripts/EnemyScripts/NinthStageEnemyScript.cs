@@ -49,7 +49,7 @@ public class NinthStageEnemyScript : MonoBehaviour
 
             if (!scoreFlag)
             {
-                refObj.GetComponent<PlayerScript>().score += 300;
+                playerScript.score += 300;
             }
         }
 
@@ -60,7 +60,7 @@ public class NinthStageEnemyScript : MonoBehaviour
             {
 
             }
-            this.transform.position = new Vector3(refObj.GetComponent<PlayerScript>().Nextdist + 5.0f, this.transform.position.y, this.transform.position.z);
+            this.transform.position = new Vector3(playerScript.Nextdist + 5.0f, this.transform.position.y, this.transform.position.z);
         }
 
         // HP(ハート)を設置
@@ -115,9 +115,9 @@ public class NinthStageEnemyScript : MonoBehaviour
         {
             if (!oneTimeFlag)
             {
-                refObj.GetComponent<PlayerScript>().HP -= 1;
+                playerScript.HP -= 1;
                 oneTimeFlag = true;
-                refObj.GetComponent<PlayerScript>().blinkingFlag = true;
+                playerScript.blinkingFlag = true;
             }
         }
     }

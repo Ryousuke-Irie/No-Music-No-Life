@@ -115,9 +115,9 @@ public class RendaEnemyScript : MonoBehaviour
         {
             if (!oneTimeFlag)
             {
-                refObj.GetComponent<PlayerScript>().HP -= 1;
+                playerScript.HP -= 1;
                 oneTimeFlag = true;
-                refObj.GetComponent<PlayerScript>().blinkingFlag = true;
+                playerScript.blinkingFlag = true;
             }
         }
     }

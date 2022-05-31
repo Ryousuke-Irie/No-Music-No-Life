@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
     private Animator animator;
+    private Animator gAnimator;
 
     // ïœêî
     private int Skill = 0;
@@ -48,7 +49,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject SE2;
 
     public GameObject BGM;
-    private GameObject cloneBGM;
+    [System.NonSerialized] public GameObject cloneBGM;
 
     private GameObject Effect;
     private GameObject cloneEffect;
@@ -79,6 +80,8 @@ public class PlayerScript : MonoBehaviour
 
     private GameObject refGameOver;
     private GameObject cloneGameOver;
+
+    private AudioSource audioSource;
 
     // ÉtÉâÉOópïœêî
     private bool rotateFlag = false;
@@ -151,6 +154,8 @@ public class PlayerScript : MonoBehaviour
 
         cloneEffect = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         //cloneEffect2 = Instantiate(Effect, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+
+        gAnimator = cloneGhostGirl.GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -165,6 +170,16 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("PlayerAttackBool", false);
+        animator.SetBool("PlayerAttack2Bool", false);
+
+        gAnimator.SetBool("TamekoBool", false);
+        gAnimator.SetBool("Tameko2Bool", false);
+        gAnimator.SetBool("Tameko3Bool", false);
+
+        cloneAttackEffect2.GetComponent<Animator>().SetBool("AttackBool", false);
+        cloneAttackEffect3.GetComponent<Animator>().SetBool("AttackBool", false);
+
         if (loopFlag && goalFlag) { return; }
 
         if (deadFlag)
@@ -200,6 +215,8 @@ public class PlayerScript : MonoBehaviour
                 {
                     cloneBGM.GetComponent<AudioSource>().volume = 0.0f;
                 }
+
+                audioSource = cloneBGM.GetComponent<AudioSource>();
 
                 oneTimeFlag2 = true;
             }
@@ -296,6 +313,8 @@ public class PlayerScript : MonoBehaviour
         // â°ÇÃà⁄ìÆ
         if (this.transform.position.x < MoveLimit + MoveLimitPlus)
         {
+            // this.transform.position = new Vector3(BesideMoveAmount * cloneBGM.GetComponent<AudioSource>().time, this.transform.position.y, 0.0f);
+
             this.transform.position += new Vector3(BesideMoveAmount, 0.0f, 0.0f) * Time.deltaTime;
             cloneBGM.transform.position = this.transform.position;
         }
@@ -361,16 +380,6 @@ public class PlayerScript : MonoBehaviour
 
     private void AttackAction()
     {
-        animator.SetBool("PlayerAttackBool", false);
-        animator.SetBool("PlayerAttack2Bool", false);
-
-        cloneGhostGirl.GetComponent<Animator>().SetBool("TamekoBool", false);
-        cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko2Bool", false);
-        cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko3Bool", false);
-
-        cloneAttackEffect2.GetComponent<Animator>().SetBool("AttackBool", false);
-        cloneAttackEffect3.GetComponent<Animator>().SetBool("AttackBool", false);
-
         // çUåÇ
         if (!actionFlag && attackFlag)
         {
@@ -395,7 +404,7 @@ public class PlayerScript : MonoBehaviour
                 cloneAttackEffect.GetComponent<Animator>().SetBool("AttackBool", true);
                 cloneAttackEffect.transform.position = this.transform.position + new Vector3(PlayerToSlush + 1.5f, 0.0f, 0.0f);
 
-                cloneGhostGirl.GetComponent<Animator>().SetBool("TamekoBool", true);
+                gAnimator.SetBool("TamekoBool", true);
             }
 
             if (Skill >= 3)
@@ -410,7 +419,7 @@ public class PlayerScript : MonoBehaviour
                 GameObject cloneSlush6 = Instantiate(Slush, new Vector3(PlayerToSlush + PlayerToSlush + this.transform.position.x, UpperLimit + pPos, 0.0f), Quaternion.identity);
 
                 cloneAttackEffect3.GetComponent<Animator>().SetBool("AttackBool", true);
-                cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko3Bool", true);
+                gAnimator.SetBool("Tameko3Bool", true);
 
                 Skill = 0;
             }
@@ -424,7 +433,7 @@ public class PlayerScript : MonoBehaviour
                 GameObject cloneSlush3 = Instantiate(Slush, new Vector3(PlayerToSlush + this.transform.position.x, UpperLimit + pPos, 0.0f), Quaternion.identity);
 
                 cloneAttackEffect2.GetComponent<Animator>().SetBool("AttackBool", true);
-                cloneGhostGirl.GetComponent<Animator>().SetBool("Tameko2Bool", true);
+                gAnimator.SetBool("Tameko2Bool", true);
 
                 Skill = 0;
             }          
@@ -439,7 +448,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ChargeAction()
     {
-        cloneGhostGirl.GetComponent<Animator>().SetBool("TameBool", false);
+        gAnimator.SetBool("TameBool", false);
         // ó≠Çﬂ
         if (!actionFlag && chargeFlag)
         {
@@ -453,7 +462,7 @@ public class PlayerScript : MonoBehaviour
             GameObject cloneSE = Instantiate(SE, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
             cloneSE.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
 
-            cloneGhostGirl.GetComponent<Animator>().SetBool("TameBool", true);
+            gAnimator.SetBool("TameBool", true);
 
             chargeFlag = false;
             actionFlag = true;
@@ -494,6 +503,8 @@ public class PlayerScript : MonoBehaviour
 
             GameObject cloneSE2 = Instantiate(SE2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
             cloneSE2.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_se;
+
+            // this.transform.position = new Vector3(BesideMoveAmount * audioSource.time, this.transform.position.y, 0.0f);
         }
     }
 
@@ -562,30 +573,35 @@ public class PlayerScript : MonoBehaviour
                         {
                             cloneBGM = Instantiate(B1, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                             cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                            audioSource = cloneBGM.GetComponent<AudioSource>();
                         }
 
                         if (this.GetComponent<LastStageManagerScript>().loopNum == 1)
                         {
                             cloneBGM = Instantiate(B2, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                             cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                            audioSource = cloneBGM.GetComponent<AudioSource>();
                         }
 
                         if (this.GetComponent<LastStageManagerScript>().loopNum == 2)
                         {
                             cloneBGM = Instantiate(B1, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                             cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                            audioSource = cloneBGM.GetComponent<AudioSource>();
                         }
 
                         if (this.GetComponent<LastStageManagerScript>().loopNum == 3)
                         {
                             cloneBGM = Instantiate(B4, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                             cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                            audioSource = cloneBGM.GetComponent<AudioSource>();
                         }
                     }
                     else
                     {
                         cloneBGM = Instantiate(BGM, this.transform.position + new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                         cloneBGM.GetComponent<AudioSource>().volume = SoundController.value_all * SoundController.value_bgm;
+                        audioSource = cloneBGM.GetComponent<AudioSource>();
                     }
 
                     if (tutorialFlag)

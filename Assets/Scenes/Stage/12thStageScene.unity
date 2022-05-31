@@ -822,7 +822,7 @@ MonoBehaviour:
   PToCLength: 5
   PToCLengthAfter: 1
   StartLineX: -5
-  EndLineX: 1240
+  EndLineX: 659
 --- !u!114 &2005627217
 MonoBehaviour:
   m_ObjectHideFlags: 0

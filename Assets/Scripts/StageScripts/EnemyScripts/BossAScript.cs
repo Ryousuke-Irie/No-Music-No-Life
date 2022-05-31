@@ -95,7 +95,7 @@ public class BossAScript : MonoBehaviour
         float sp = 0.16f;
         float p = 60.0f / bpm;
         float t = 1.0f;
-        if (((sp + (p * (1.01f * 142))) * refObj.GetComponent<PlayerScript>().BesideMoveAmount) < this.transform.position.x)
+        if (((sp + (p * (1.01f * 141))) * refObj.GetComponent<PlayerScript>().BesideMoveAmount) < this.transform.position.x)
         {
             myTime = 0.0f;
             skill1 = false;

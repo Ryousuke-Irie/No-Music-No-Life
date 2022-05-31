@@ -176,8 +176,6 @@ public class FifthStageScript : StageScript
         SetStick(num++, (sp + (p * (1.01f * 139))) * vel);
         SetStick(num++, (sp + (p * (1.01f * 140))) * vel);
         SetStick(num++, (sp + (p * (1.01f * 141))) * vel);
-        SetStick(num++, (sp + (p * (1.01f * 142))) * vel);
-        SetStick(num++, (sp + (p * (1.01f * 143))) * vel);
 
         // --------------------------------------
 
@@ -269,7 +267,6 @@ public class FifthStageScript : StageScript
         SetObstacle(num++, (sp + (p * (1.01f * 133))) * vel - error, 0 * updown, obstacleTypeI);
         SetObstacle(num++, (sp + (p * (1.01f * 138))) * vel - error, 1 * updown, obstacleTypeA);
         SetObstacle(num++, (sp + (p * (1.01f * 141))) * vel - error, 1 * updown, obstacleTypeH);
-        SetObstacle(num++, (sp + (p * (1.01f * 142))) * vel - error, -1 * updown, obstacleTypeJ);
 
         // --------------------------------------
     }
@@ -277,7 +274,7 @@ public class FifthStageScript : StageScript
     public override float SetMoveLimit()
     {
         // return ((stickPosDataArray[Max - 1]) + 6.0f);
-        return ((stickPosDataArray[Max - 1]) + 3.0f);
+        return ((stickPosDataArray[Max - 1]) + 2.0f);
     }
 
     public override int GetLastStick()

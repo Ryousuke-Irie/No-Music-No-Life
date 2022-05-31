@@ -173,6 +173,21 @@ public class ResultScript : MonoBehaviour
 
     private void SetScore()
     {
+        if (Gamepad.current == null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+            {
+                tempScore = refObj.GetComponent<PlayerScript>().score;
+            }
+        }
+        else
+        {
+            if (Gamepad.current.buttonSouth.wasPressedThisFrame || Gamepad.current.buttonEast.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+            {
+                tempScore = refObj.GetComponent<PlayerScript>().score;
+            }
+        }
+
         // åÖêîåvéZ
         int number = tempScore;
 

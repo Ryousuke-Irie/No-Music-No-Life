@@ -35,6 +35,8 @@ public class StageScript : MonoBehaviour
 
     private float barPos = -2.0f;
 
+    private PlayerScript playerScript;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -51,6 +53,8 @@ public class StageScript : MonoBehaviour
         refObjUpper = GameObject.Find("Upper");
         refObjLower = GameObject.Find("Lower");
 
+        playerScript = refObjp.GetComponent<PlayerScript>();
+
         // 全データ初期化
         InitData();
 
@@ -59,12 +63,12 @@ public class StageScript : MonoBehaviour
         SetEnemyData();
         SetObstacleData();
 
-        refObjp.GetComponent<PlayerScript>().dist = stickPosDataArray[0];
-        refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[1];
-        refObjp.GetComponent<PlayerScript>().Next3dist = stickPosDataArray[2];
-        refObjp.GetComponent<PlayerScript>().Next4dist = stickPosDataArray[3];
-        refObjp.GetComponent<PlayerScript>().Next5dist = stickPosDataArray[4];
-        refObjp.GetComponent<PlayerScript>().MoveLimit = SetMoveLimit();
+        playerScript.dist = stickPosDataArray[0];
+        playerScript.Next2dist = stickPosDataArray[1];
+        playerScript.Next3dist = stickPosDataArray[2];
+        playerScript.Next4dist = stickPosDataArray[3];
+        playerScript.Next5dist = stickPosDataArray[4];
+        playerScript.MoveLimit = SetMoveLimit();
 
         refObjCenter.transform.localScale = new Vector3(SetMoveLimit(), refObjCenter.transform.localScale.y, refObjCenter.transform.localScale.z);
         refObjCenter.transform.position = new Vector3(SetMoveLimit() * 0.5f, refObjCenter.transform.position.y, refObjCenter.transform.position.z);
@@ -77,10 +81,10 @@ public class StageScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (refObjp.GetComponent<PlayerScript>().loopStageFlag)
+        if (playerScript.loopStageFlag)
         {
             ResetData();
-            refObjp.GetComponent<PlayerScript>().loopStageFlag = false;
+            playerScript.loopStageFlag = false;
         }
 
         // カメラの位置を参照してオブジェクトを設置＆削除する
@@ -124,48 +128,48 @@ public class StageScript : MonoBehaviour
         }
 
         // 縦棒付近判定のリセット処理
-        if (refObjp.transform.position.x > refObjp.GetComponent<PlayerScript>().dist + refObjp.GetComponent<PlayerScript>().TempoTimeError)
+        if (refObjp.transform.position.x > playerScript.dist + playerScript.TempoTimeError)
         {
             if (stickNum < GetLastStick())
             {
                 stickNum++;
 
-                refObjp.GetComponent<PlayerScript>().dist = stickPosDataArray[stickNum];
+                playerScript.dist = stickPosDataArray[stickNum];
 
                 if (stickNum < GetLastStick() - 1)
                 {
-                    refObjp.GetComponent<PlayerScript>().Nextdist = stickPosDataArray[stickNum + 1];
+                    playerScript.Nextdist = stickPosDataArray[stickNum + 1];
                 }
 
                 if (stickNum < GetLastStick() - 2)
                 {
-                    refObjp.GetComponent<PlayerScript>().Next2dist = stickPosDataArray[stickNum + 2];
+                    playerScript.Next2dist = stickPosDataArray[stickNum + 2];
                 }
 
                 if (stickNum < GetLastStick() - 3)
                 {
-                    refObjp.GetComponent<PlayerScript>().Next3dist = stickPosDataArray[stickNum + 3];
+                    playerScript.Next3dist = stickPosDataArray[stickNum + 3];
                 }
 
                 if (stickNum < GetLastStick() - 4)
                 {
-                    refObjp.GetComponent<PlayerScript>().Next4dist = stickPosDataArray[stickNum + 4];
+                    playerScript.Next4dist = stickPosDataArray[stickNum + 4];
                 }
 
                 if (stickNum < GetLastStick() - 5)
                 {
-                    refObjp.GetComponent<PlayerScript>().Next5dist = stickPosDataArray[stickNum + 5];
+                    playerScript.Next5dist = stickPosDataArray[stickNum + 5];
                 }
 
-                refObjp.GetComponent<PlayerScript>().oneTimeFlag = false;
+                playerScript.oneTimeFlag = false;
 
-                refObjp.GetComponent<PlayerScript>().actionFlag = false;
+                playerScript.actionFlag = false;
             }
             else
             {
-                if (!refObjp.GetComponent<PlayerScript>().loopFlag)
+                if (!playerScript.loopFlag)
                 {
-                    refObjp.GetComponent<PlayerScript>().lastStickFlag = true;
+                    playerScript.lastStickFlag = true;
                 }
             }
         }
